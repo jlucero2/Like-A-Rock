@@ -1,0 +1,21 @@
+<h1>Listing deohtests</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @deohtests.each do |deohtest| %>
+  <tr>
+    <td><%= link_to 'Show', deohtest %></td>
+    <td><%= link_to 'Edit', edit_deohtest_path(deohtest) %></td>
+    <td><%= link_to 'Destroy', deohtest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Deohtest', new_deohtest_path %>
