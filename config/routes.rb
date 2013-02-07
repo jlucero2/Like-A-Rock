@@ -1,4 +1,7 @@
 LikeARock::Application.routes.draw do
+  resources :deohtests
+
+
   resources :tests
 
 
