@@ -1,5 +1,9 @@
 LikeARock::Application.routes.draw do
+<<<<<<< HEAD
   resources :deohtests
+=======
+  resources :look_changes
+>>>>>>> forgot the config/routes.rb file
 
 
   resources :tests
