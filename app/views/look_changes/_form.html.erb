@@ -1,0 +1,17 @@
+<%= form_for(@look_change) do |f| %>
+  <% if @look_change.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@look_change.errors.count, "error") %> prohibited this look_change from being saved:</h2>
+
+      <ul>
+      <% @look_change.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
