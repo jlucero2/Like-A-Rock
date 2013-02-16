@@ -15,9 +15,8 @@
 //= require underscore
 //= require backbone
 //= require like_a_rock
-//= require_tree ../templates
-//= require_tree ./models
-//= require_tree ./collections
-//= require_tree ./views
-//= require_tree ./routers
-//= require_tree .
+//= require contentflow
+//= require_tree ../../models
+//= require_tree ../../views
+//= require_tree ../img
+
