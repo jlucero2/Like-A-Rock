@@ -17,5 +17,6 @@
 #Ignore lock files 
 /*.lock
 
-
+#ignore database config file 
+/config/database.yml
 
