@@ -5,4 +5,6 @@ class Image < ActiveRecord::Base
   validates :sol, :presence => true
 
   has_many :comments
+  has_many :tags
+  has_many :votes
 end
