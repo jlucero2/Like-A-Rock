@@ -1,19 +1,21 @@
 <h1>Listing images</h1>
 
 <h1>Shit just got real</h1>
+
 <script language="JavaScript" type="text/javascript" src="assets/contentflow.js"></script>
 
-<div class="ContentFlow">
-            <div class="loadIndicator"><div class="indicator"></div></div>
-            <div class="flow">
-		<% @images.each do |image| %>
-	                <img class="item" src="<%= image.url %>" title="<%= image.sol %>"/>
-		<% end %>
-            </div>
-            <div class="globalCaption"></div>
-            <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
-        </div>
 
+  <div class="ContentFlow">
+    <div class="loadIndicator"><div class="indicator"></div></div>
+    <div class="flow">
+      <% @img = Image.where(:sol => 48) %>
+      <% @img.each do |image| %>
+        <img class="item" src="<%= image.url %>" title="<%= image.sol %>"/>
+      <% end %>
+    </div>
+    <div class="globalCaption"></div>
+    <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
+  </div>
 
 <table>
   <tr>
