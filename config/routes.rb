@@ -1,4 +1,14 @@
 LikeARock::Application.routes.draw do
+  resources :users do
+    resources :comments
+  end
+
+
+  resources :images do
+    resources :comments
+  end
+
+
   get "home/index"
 
   get "greetings/hello"
