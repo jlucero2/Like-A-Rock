@@ -1,0 +1,57 @@
+<h1>Listing albums</h1>
+
+<h1>Shit just got real</h1>
+
+<script language="JavaScript" type="text/javascript" src="assets/contentflow.js"></script>
+  <script src="prototype.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var ajax_cf = new ContentFlow('ajax_cf');
+
+function addPictures(t){
+        var ic = document.getElementById('itemcontainer');
+        var is = ic.getElementsByTagName('img');
+        for (var i=0; i< is.length; i++) {
+            ajax_cf.addItem(is[i], 'last');
+        }
+}
+function getAlbumImages(album_path, album) {
+    n = parseInt(n);
+    new Ajax.Updater('album.images', "getpics.php?n="+n, {
+        onComplete: addPictures
+    });
+    return false;
+}
+
+
+</script>
+
+
+<div id="ajax_cf" class="ContentFlow">
+    <div class="flow"> 
+		<% @albums.each do |alb|  %>
+			<img class="item" href="<%= album_path(alb) %>" src="<%= alb.images.first.url%>" title="<%= alb.sol %>"/>
+		<% end %>
+	</div>
+    <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
+</div>
+<div id="itemcontainer" style="height: 0px; width: 0px; visibility: hidden"></div>
+
+  <div class="ContentFlow">
+    <div class="loadIndicator"><div class="indicator"></div></div>
+    <div class="flow">
+      <% @albums.each do |alb|  %>
+			<!--% sleep(50) %-->
+			<img class="item" href="<%= album_path(alb) %>" src="<%= alb.images.first.url%>" title="<%= alb.sol %>"/>
+			<!--% link_to(album_path(alb)) do %-->
+				<!--%= image_tag(alb.images.first!.url, :title => "Album #{alb.sol}", :class => "item")%>
+				<!--script>getRailsPath(<%= album_path(alb) %>) </script>
+			<!--% end %>
+			<!--% link_to(album_path(alb))%-->
+      <% end %>
+    </div>
+    <div class="globalCaption"></div>
+    <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
+  </div>
+
+
