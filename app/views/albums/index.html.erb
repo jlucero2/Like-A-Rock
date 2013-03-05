@@ -1,0 +1,19 @@
+<h1>Listing albums</h1>
+
+<h1>Shit just got real</h1>
+
+<script language="JavaScript" type="text/javascript" src="assets/contentflow.js"></script>
+
+
+  <div class="ContentFlow">
+    <div class="loadIndicator"><div class="indicator"></div></div>
+    <div class="flow">
+      <% @albums.each do |alb|  %>
+			<img class="item" href= "<%= album_path(alb) %>" src="<%= alb.images.first.url  %>" title="<%= alb.sol %>"/>
+      <% end %>
+    </div>
+    <div class="globalCaption"></div>
+    <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
+  </div>
+
+

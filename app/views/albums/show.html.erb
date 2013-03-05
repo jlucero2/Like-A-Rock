@@ -1,0 +1,15 @@
+<h1> listing images </h1>
+<script language="JavaScript" type="text/javascript" src="assets/contentflow.js"></script>
+
+  <div class="ContentFlow">
+    <div class="loadIndicator"><div class="indicator"></div></div>
+    <div class="flow">
+      <% @images.find_in_batches do |img| %>
+			<% img.each do |image|%>
+				<img class="item" src="<%= image.url %>" title="<%= image.sol %>"/>
+			<% end %>
+      <% end %>
+    </div>
+    <div class="globalCaption"></div>
+    <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
+  </div>
