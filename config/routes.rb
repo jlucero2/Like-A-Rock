@@ -1,4 +1,4 @@
-LikeARock::Application.routes.draw do
+TestJpl::Application.routes.draw do
   resources :albums do
     resources :images
   end

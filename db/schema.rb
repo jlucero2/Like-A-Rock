@@ -22,17 +22,6 @@ ActiveRecord::Schema.define(:version => 20130303000342) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "comments", :force => true do |t|
-    t.text     "body"
-    t.integer  "image_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "comments", ["image_id"], :name => "index_comments_on_image_id"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
   create_table "images", :force => true do |t|
     t.string   "url"
     t.integer  "sol"
@@ -42,41 +31,5 @@ ActiveRecord::Schema.define(:version => 20130303000342) do
   end
 
   add_index "images", ["album_id"], :name => "index_images_on_album_id"
-
-  create_table "tags", :force => true do |t|
-    t.string   "coords"
-    t.integer  "user_id"
-    t.integer  "image_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "tags", ["image_id"], :name => "index_tags_on_image_id"
-  add_index "tags", ["user_id"], :name => "index_tags_on_user_id"
-
-  create_table "tests", :force => true do |t|
-    t.string   "name"
-    t.boolean  "complete"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "votes", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "image_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "votes", ["image_id"], :name => "index_votes_on_image_id"
-  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

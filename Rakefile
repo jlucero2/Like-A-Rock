@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-LikeARock::Application.load_tasks
+TestJpl::Application.load_tasks

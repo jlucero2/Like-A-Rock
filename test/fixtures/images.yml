@@ -3,7 +3,9 @@
 one:
   url: MyString
   sol: 1
+  album: 
 
 two:
   url: MyString
   sol: 1
+  album: 

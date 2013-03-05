@@ -5,6 +5,7 @@
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
       <% @images.find_in_batches do |img| %>
+			<% sleep 1.5 %>
 			<% img.each do |image|%>
 				<img class="item" src="<%= image.url %>" title="<%= image.sol %>"/>
 			<% end %>
