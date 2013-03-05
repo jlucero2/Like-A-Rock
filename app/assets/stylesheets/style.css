@@ -1,0 +1,277 @@
+/*BODY BG - START*/
+body, html { background-color: #000000; margin: 0px; padding: 0px; background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/background_bottom.jpg'); background-repeat: repeat-y; background-position: 50% 0%; }
+#contentBox { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/background_bottom.jpg'); background-repeat: repeat-y; background-position: 50% 0%; background-color: #000000; height: 100%; margin: 0px; padding: 0px; }
+#content { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/background_WithBlue.jpg'); background-repeat: no-repeat; background-position: 50% 0%; /*height: 100%;*/ height: 1350px; margin: 0px; padding: 0px; }
+/*BODY BG - END*/
+/*BANNER - START*/
+#top_jplBanner { text-align: center; width: 980; /*height: 57px;
+margin-top: 17px;*/ padding-top: 17px; padding-left: 0px; height: 74px;/*background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/top_jplBanner.png');
+background-repeat: no-repeat;
+background-position: 17px;*/ }
+#top_marsBanner { text-align: center; width: 1130px; height: 169px; background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/top_marsBanner.png'); background-repeat: no-repeat; padding-top: 111px; }
+#top_marsBanner .MSLhome { margin-top:-90px; }
+#top_marsBanner #topSiteNavBox { margin-top: 2px; margin-top: -2px !important\9;
+*margin-top: -2px !important;
+_margin-top: -2px !important; margin-left: -1px !important; }
+html>body #top_marsBanner #topSiteNavBox { margin-top: 2px; }
+*:#top_marsBanner #topSiteNavBox_html {
+margin-top: -2px !important;
+}
+/*BANNER - END*/
+
+/*CONTENT - START*/
+/*standard content page - start*/
+#contentBlueOuter_contentPage { height: 100%; vertical-align: top; }
+#contentBox_contentPage { width: 990px; text-align: left; margin: -26 0 0 0px; padding: 0px; vertical-align: top; }
+html>body #contentBox_contentPage { margin-top: -138px; }
+#breadcrumbs { margin-bottom: 2px; margin-top: 8px; font-weight:bold; color:#84B4FE; font-size:12px; font-family: arial, helvetica, verdana, sans-serif; height:20px; padding-left: 60px; }
+#breadcrumbs a:link, #breadcrumbs a:visited { color:#84B4FE !important; text-decoration:none; }
+#breadcrumbs a:hover { text-decoration:underline; }
+#contentBox_contentPage td.pageTitleBox { width: 990px; background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/content_titleBg.png'); background-repeat: no-repeat; font-size: 30px; color: #FFFDFC; font-weight: bold; padding-left: 20px; vertical-align: top; margin-bottom: 0px; height: 17px !important; padding-bottom: 0px; padding-top: 40px; line-height: 17px; }
+.Title { font-size: 16px; color: #003573; font-weight: bold; }
+.SubTitle { font-size: 14px; color: #003573; font-weight: bold; }
+.SubSubTitle { font-size: 12px; color: #832D00; font-weight: bold; }
+.ContentTitle { font-size: 20px !important; color: #07427a; font-weight: bold; margin-top:20px; }
+#contentBox_contentPage td.pageContent { width: 990px; background-color: #FFFDFC; padding-left:20px; padding-right:20px; vertical-align: top; }
+html>body #contentBox_contentPage td.pageContent { }
+#contentBox_contentPage td.pageContent, #contentBox_contentPage td.pageContent p, #contentBox_contentPage td.pageContent td { color: #475870; font-size: 14px; }
+#contentBox_contentPage td.pageContent a:link, #contentBox_contentPage td.pageContent p a:link, #contentBox_contentPage td.pageContent a:visited, #contentBox_contentPage td.pageContent p a:hover { text-decoration:underline; }
+.sitemap a:link, .sitemap a:visited { text-decoration:none !important; }
+.sitemap a:hover { text-decoration:underline !important; }
+#contentBox_contentPage #footerBG { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/footerBG.jpg'); background-repeat: no-repeat; width: 990px; height: 170px; clear: both; }
+#contentBox_contentPage #footerBG { margin-top: -12px; }
+#footerBG a:link, #footerBG a:visited { color: #BFA491; text_decoration: none; }
+#footerBG a.selected:hover { color: #FFFFFF; text_decoration: none; }
+.footerNetworkingText { color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+.footerText { margin-top: 100px; color: #&nbsp;
+&nbsp;
+font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+#usagov { margin-top: 118px; margin-left: 26px; float: left; }
+.bottomnav { padding-top: 134px; margin-left: 340px; color:#B0AFAD; }
+.bottomnavlinkoff:link, .bottomnavlinkoff:visited { font-family: arial, helvetica, verdana, sans-serif; font-weight: bold; font-size: 12px; color: #BFA491 !important; text-decoration: none; position: relative; }
+.bottomnavlinkon:link, .bottomnavlinkon:visited { font-family: arial, helvetica, verdana, sans-serif; font-weight: bold; font-size: 12px; color: #FFFDFC !important; text-decoration: none; position: relative; }
+a.bottomnavlinkoff:hover { font-family: arial, helvetica, verdana, sans-serif; font-weight: bold; font-size: 12px; color: #FFFDFC; text-decoration: none; position: relative; }
+a.bottomnavlinkon:hover { font-family: arial, helvetica, verdana, sans-serif; font-weight: bold; font-size: 12px; color: #FFFDFC; text-decoration: none; position: relative; }
+/* Middle Navigation */
+/* Middle Navigation */
+/* Middle Navigation */
+#MidNavContainer a:link, #MidNavContainer a:visited { text-decoration: none !important; font-size: 13px; font-weight: bold; }
+#MidNavContainer a:hover { text-decoration: none; }
+#MidNavContainer a.middlenavselected:link, #MidNavContainer a.middlenavselected:visited { color: #122744; text-decoration: none; text-transform:uppercase; }
+#MidNavContainer a.middlenavselected:hover { text-decoration: none; }
+#MidNavContainer a.middlenav:link, #MidNavContainer a.middlenav:visited { color: #92543F; text-decoration: none; }
+#MidNavContainer a.middlenav:hover { text-decoration: underline; }
+table.middlenavTblL3 { }
+#MidNavContainer td.middlenavTdL3 { color: #FFFFFF; background-color:#dab862; text-align:center; }
+#MidNavContainer td.middlenavTdL3_sel { color: #FFFFFF; background-color:#255697; text-align:center; }
+#MidNavContainer table.middlenavTblL3 td.rightCorner { height:18px; width:2px; background-color:#dab862; }
+#MidNavContainer table.middlenavTblL3 td.rightCorner_sel { height:18px; width:2px; background-color:#255697; }
+#MidNavContainer table.middlenavTblL3 td.leftCorner { height:18px; width:2px; background-color:#dab862; }
+#MidNavContainer table.middlenavTblL3 td.leftCorner_sel { height:18px; width:2px; background-color:#255697; }
+#MidNavContainer table.middlenavTblL3 td.firstCorner { height:18px; width:21px; background-color:#dab862; }
+#MidNavContainer table.middlenavTblL3 td.firstCorner_sel { height:18px; width:21px; background-color:#255697; }
+#MidNavContainer td.middlenavTdL3 a:link, #MidNavContainer td.middlenavTdL3 a:visited, #MidNavContainer td.middlenavTdL3 a:hover #MidNavContainer td.middlenavTdL3_sel a:link, #MidNavContainer td.middlenavTdL3_sel a:visited, #MidNavContainer td.middlenavTdL3_sel a:hover { display:block; text-decoration: none; margin: 2px 8px 0px 8px; padding-bottom:0px; }
+#MidNavContainer a.middlenavselectedL3:link, #MidNavContainer a.middlenavselectedL3:hover, #MidNavContainer a.middlenavselectedL3:visited { color: #ffffff; }
+#MidNavContainer a.middlenavL3:link, #MidNavContainer a.middlenavL3:visited { color: #FFFFFF; }
+#MidNavContainer table.middlenavTblL3 td.middlenavBottom, #MidNavContainer table.middlenavTblL3 td.firstCornerBottom { background-color:#ffffff; height:2px !important; }
+#MidNavContainer table.middlenavTblL3 td.middlenavBottom_sel, #MidNavContainer table.middlenavTblL3 td.firstCornerBottom_sel { background-color:#255697; height:2px !important; }
+#MidNavContainer table.middlenavTblL4 { margin-bottom:0px; background-color:#255697; }
+#MidNavContainer table.middlenavTblL4 { color: #98bdee; padding:4px; }
+#MidNavContainer table.middlenavTblL4 td a:link, #MidNavContainer table.middlenavTblL4 td a:hover, #MidNavContainer table.middlenavTblL4 td a:visited { padding-left: 8px; padding-right: 8px; }
+#MidNavContainer table.middlenavTblL4 .verticalLine { background-color: #98bdee; }
+#MidNavContainer a.middlenavselectedL4:link, #MidNavContainer a.middlenavselectedL4:visited { color: #ffffff; text-decoration: none; }
+#MidNavContainer a.middlenavselectedL4:hover { text-decoration: none; }
+#MidNavContainer a.middlenavL4:link, #MidNavContainer a.middlenavL4:visited { color: #98bdee; text-decoration: none; }
+#MidNavContainer a.middlenavL4:hover { text-decoration: none; }
+/* end - Middle Navigation */
+/* end - Middle Navigation */
+/* end - Middle Navigation */
+/* content image - 250 wide, left/right */
+#contentImage { width: 282px !important; padding: 1px !important; background-color: #ffffff; text-align: left; vertical-align: top; }
+#contentImage .contentImageInner { width:280px; height:100%; padding: 13px !important; border-style: solid; border-color: #c5c6c7; border-width:1px; text-align: center; vertical-align: top; }
+html>body #contentImage .contentImageInner { width:256px !important; padding-left: 15px !important; padding-right: 11px !important; }
+.columntype_sidebar #contentImage .contentImageInner { border-width:0px; }
+#twocolumnwrap .columntype_main .dynamicwidth17 { margin-top:-11px; }
+.dynamicwidth17 #contentImage .contentImageInner { border-width: 0px; padding-left: 0px !important; padding-top: 0px !important; }
+#contentImage .imageGrayBorder { width:252px; padding: 1px !important; text-align: left; vertical-align: top; }
+html>body #contentImage .imageGrayBorder { width:250px !important; }
+#contentImage .imageTitle { width:252px; padding-top: 8px; text-align: left; vertical-align: top; font-size:12px; font-weight:bold; color: #92543f; }
+html>body #contentImage .ImageTitle { width:250px !important; }
+#contentImage .imageCaption, #contentImage .imageCaption p { color: #5d7ea1; width:252px; padding-top: 8px; text-align: left; vertical-align: top; font-size:11px; font-style: normal; margin-top: 2px; font-family: arial, helvetica, verdana, sans-serif; }
+html>body #contentImage .imageCaption { width:250px !important; }
+#contentImage .imageCaption a:link, #contentImage .imageCaption a:visited, #contentImage .imageCaption p a:link, #contentImage .imageCaption p a:visited { color: #5d7ea1; text-decoration: underline; font-size:12px; }
+#contentImage .imageCaption a:hover, #contentImage .imageCaption p a:hover { color: #995f4b; text-decoration: underline; }
+/* content image - end 250 wide, left/right */
+/* content image - 500 wide, centered */
+#contentImageCentered { width: 532px !important; padding: 1px !important; background-color: #ffffff; text-align: left; vertical-align: top; }
+#contentImageCentered .contentImageInner { height:100%; padding: 13px !important; border-style: solid; border-color: #c5c6c7; border-width:1px; text-align: center; vertical-align: top; }
+html>body #contentImageCentered .contentImageInner { width:506px !important; padding-left: 15px !important; padding-right: 11px !important; }
+.columntype_sidebar #contentImageCentered .contentImageInner { border-width:0px; }
+.dynamicwidth17 #contentImageCentered .contentImageInner { border-width: 0px; padding-left: 0px !important; padding-top: 0px !important; }
+#contentImageCentered .imageGrayBorder { background-color: #B1B4B8; width:502px; padding: 1px !important; text-align: left; vertical-align: top; }
+html>body #contentImageCentered .imageGrayBorder { width:500px !important; }
+#contentImageCentered .imageTitle { width:502px; padding-top: 8px; text-align: left; vertical-align: top; font-size:12px; font-weight:bold; color: #92543f; }
+html>body #contentImageCentered .ImageTitle { width:500px !important; }
+#contentImageCentered .imageCaption, #contentImageCentered .imageCaption p { color: #5d7ea1; width:502px; padding-top: 8px; text-align: left; vertical-align: top; font-size:11px; font-weight:bold; font-style: normal; margin-top: 2px; font-family: arial, helvetica, verdana, sans-serif; }
+html>body #contentImageCentered .imageCaption { width:500px !important; }
+#contentImageCentered .imageCaption a:link, #contentImageCentered .imageCaption a:visited { color: #FFFFFF; text-decoration: underline; }
+#contentImageCentered .imageCaption a:hover { color: #E5ECF5; text-decoration: underline; }
+/* content image - end 500 wide, centered */
+/* dynamic content image */
+/* class for variabled content image begin */
+#dynamiccontentimage { margin-right:31px; padding-top:10px; padding-bottom:10px; }
+.columntype_sidebar #dynamiccontentimage { margin-right:0px; }
+#dynamiccontentimage #contentImage { width: 100% !important; }
+#dynamiccontentimage #contentImage .contentImageInner { width: 100% !important; }
+html>body #dynamiccontentimage #contentImage .contentImageInner { width: 100% !important; }
+#dynamiccontentimage #contentImage .imageGrayBorder { width: 100% !important; }
+#dynamiccontentimage #contentImage .imageTitle { width: 100% !important; }
+#dynamiccontentimage #contentImage .imageCaption, #dynamiccontentimage #contentImage .imageCaption p { width: 100% !important; }
+html>body #dynamiccontentimage #contentImage .imageCaption { width: 100% !important; }
+#dynamiccontentimage #contentImageCentered { width: 100% !important; }
+html>body #dynamiccontentimage #contentImageCentered .contentImageInner { width: 100% !important; }
+#dynamiccontentimage #contentImageCentered .imageGrayBorder { width: 100% !important; }
+#dynamiccontentimage #contentImageCentered .imageTitle { width: 100% !important; }
+html>body #dynamiccontentimage #contentImageCentered .ImageTitle { width: 100% !important; }
+#dynamiccontentimage #contentImageCentered .imageCaption, #dynamiccontentimage #contentImageCentered .imageCaption p { width: 100% !important; }
+html>body #dynamiccontentimage #contentImageCentered .imageCaption { width: 100% !important; }
+/* dynamic content image end */
+/* news list */
+#newsList_LatestArticle { text-align: left; vertical-align: top; margin-top: 0px; }
+html>body #newsList_LatestArticle { margin-top: -14px; }
+#newsList_LatestArticle .newsLatestInner { height:100%; text-align: center; vertical-align: top; }
+html>body #newsList_LatestArticle .newsLatestInner { }
+#newsList_LatestArticle .newsLatestImage { padding-bottom: 5px; }
+html>body #newsList_LatestArticle .newsLatestImage { }
+#newsList_LatestArticle .imageGrayBorder { text-align: left; }
+html>body #newsList_LatestArticle .imageGrayBorder { }
+#newsList_LatestArticle .imageTitle { color: #ECA35F; width:640px; padding-top: 8px; text-align: left; vertical-align: top; }
+html>body #newsList_LatestArticle .imageTitle { width:640px !important; }
+#newsList_LatestArticle .imageCaption, #newsList_LatestArticle .imageCaption p { color: #FFFFFF; width:640px; padding-top: 8px; text-align: left; vertical-align: top; }
+#newsList_LatestArticle .imageCaption p { margin-top: 2px; }
+html>body #newsList_LatestArticle .imageCaption { width:640px !important; }
+#newsList_LatestArticle .imageCaption a:link, #newsList_LatestArticle .imageCaption a:visited { color: #FFFFFF; text-decoration: underline; }
+#newsList_LatestArticle .imageCaption a:hover { color: #E5ECF5; text-decoration: underline; }
+#newsList_LatestArticle .newsLatestText { width: 640px; text-align: left; }
+#newsList_LatestArticle .newsLatestText .date { color: #5d7ea1; font-size: 14px; font-weight: bold; }
+#newsList_LatestArticle .newsLatestText .title { margin-top: 8px; }
+#newsList_LatestArticle .newsLatestText .title a:link, #newsList_LatestArticle .newsLatestText .title a:visited { color: #92543f; font-size: 16px; font-weight: bold; text-decoration: none; }
+#newsList_LatestArticle .newsLatestText .title a:hover { color: #72400B; text-decoration: underline; }
+#newsList_LatestArticle .newsLatestText .source { font-size: 12px; color: #475870; font-style: italic; margin-top: 5px; }
+#newsList_LatestArticle .newsLatestText .blurb { margin-top: 13px; font-size: 14px; line-height: 18px; color: #5d7ea1; }
+#newsList_LatestArticle .newsLatestText .blurb a:link, #newsList_LatestArticle .newsLatestText .blurb a:visited { color: #475870; font-size: 14px; text-decoration: underline; }
+#newsList_LatestArticle .newsLatestText .blurb a:hover { color: #000000; text-decoration: underline; }
+.newsList_Article { text-align: left; vertical-align: top; margin-top: 4px; }
+.newsList_Article .articleInner { background-color: #FFFDFC; text-align: center; vertical-align: top; }
+.newsList_Article .left { width:176px; float:left; }
+.newsList_Article .right { width:450px; float:right; padding-left:12px; }
+.newsList_Article .type { color: #475870; font-size: 12px; font-weight: bold; float:left; width:160px; text-align: center; }
+.newsList_Article .date { color: #5d7ea1; font-size: 12px; font-weight: bold; float: left; }
+.newsList_Article .source { color: #475870; font-size: 12px; float:right; }
+.newsList_Article .image { text-align: center; vertical-align: top; float: left; margin-top:5px; }
+html>body .newsList_Article .image { width:170px !important; }
+.newsList_Article .imageGrayBorder { text-align: left; }
+html>body .newsList_Article .imageGrayBorder { width:160px !important; }
+.newsList_Article .title { margin-top: 5px; float: left; }
+.newsList_Article .title a:link, .newsList_Article .title a:visited { color: #003573; font-size: 14px; font-weight: bold; text-decoration: none !important; float: left; clear:left; text-align:left; }
+.newsList_Article .title a:hover { color: #72400B; text-decoration: underline !important; }
+.newsList_Article .blurb { margin-top: 10px; color: #475870; font-size: 14px; line-height: 18px; float: left; clear:left; width:100%; text-align:left; }
+.newsList_Article .blurb a:link, .newsList_Article .blurb a:visited { color: #475870; font-size: 14px; text-decoration: underline; }
+.newsList_Article .blurb a:hover { color: #000000; text-decoration: underline; }
+.newsList_filter_criteria { text-align: right; color: #92543F; font-weight: bold; font-sise: 12px; padding-top: 2px; }
+.newsList_filter_value { text-align: left; font-weight: bold; font-sise: 12px; width: 100px; color: #92543F; padding-top: 2px; }
+.newsList_filter_value a:link, .newsList_filter_value a:visited { color: #336189; text-decoration: none !important; }
+.newsList_filter_value a:hover { color: #92543F; text-decoration: none !important; }
+td.newsList_filter_value a.selected:link, td.newsList_filter_value a.selected:visited, td.newsList_filter_value a.selected:hover { color: #92543F !important; text-decoration: none !important; }
+#newsDetails .date { font-weight: bold; margin-top:10px; color: #003573; }
+#newsDetails .source { font-style: italic; font-weight: bold; margin-top:5px; color: #003573; }
+#newsDetails .title { font-weight: bold; margin-top:10px; margin-bottom:20px; color: #003573; font-size: 18px; }
+/* news list - end */
+/*standard content page - end*/
+.footerNetworkingText { color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+.footerText { margin-top: 20px; color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+/*CONTENT - END*/
+/* FLOAT CLEAR */
+.clearleft { clear: left; }
+.clearright { clear: right; }
+.clearboth { clear: both; }
+/* FLOAT CLEAR END*/
+/* [[COLUMN]] style begin */
+div#twocolumnwrap { width:950px; margin:0 auto; }
+div.columntype_main { float:left; width: 560px; }
+div.columntype_sidebar { float:right; border: 1px solid #C6C6C6; background: #ffffff; width: 270px; margin-left:-35px; }
+div.columntype_sidebar p { padding-right: 5px; padding-left: 15px; }
+div.columntype_sidebar div.sidebarheader { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/sidebar_header_background.jpg'); width:272px; height:20px; padding: 10px 0; text-align: center; font-weight: bold; font-size: 14px; color: #fff; margin: -1px 0 0 -1px; border: 0; }
+div.columntype_sidebar #dynamiccontentImage { width: 237px !important; padding-top: 0; padding-bottom: 0; }
+div.columntype_sidebar #contentImage { width: 237px !important; background: 0; padding-bottom: 0 !important; margin-bottom: 0 !important; }
+div.columntype_sidebar #contentImage .contentImageInner { width: 237px !important; padding-bottom: 0 !important; margin-bottom: 0 !important; background: 0; }
+div.columntype_sidebar #contentImage .imageGrayBorder { width: 237px !important; background: 0; padding: 0; }
+html>body div.columntype_sidebar #contentImage .imageGrayBorder { width:237px !important; }
+div.columntype_sidebar #contentImage .imageTitle { color: #915441; width: 237px !important; }
+div.columntype_sidebar #contentImage .imageCaption, div.columntype_sidebar #contentImage .imageCaption p { width: 237px !important; color: #5C7EA1; font-weight:normal; }
+div.columntype_sidebar .browseimagecontainer { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/icon_enlarge_background.jpg'); width: 238px; height: 15px; margin-top: 10px; }
+div.columntype_sidebar .clearleft, div.columntype_sidebar .clearright, div.columntype_sidebar .clearboth { clear: both; }
+div.columntype_sidebar .newline { border-top: 1px solid #C6C6C6; float:left; height: 1px; margin-top: 5px; padding-bottom: 5px; margin-left: 15px; width: 237px !important; }
+/* class for variabled content image end */
+/* [[COLUMN]] style end */
+td.unavailable { color:#CCC !important; font-style:italic !important; }
+</style>
+<!--[if lte IE 6]>
+<style type="text/css">
+#dynamiccontentimage {
+margin-right:0px;
+}
+</style>
+<![endif]-->
+<style type="text/css">
+img, div, td, table, a, span { behavior: url(http://marsstaticcdn.jpl.nasa.gov/layout/iepngfix/iepngfix.htc) }
+p { margin-bottom: 1em; }
+#topnav_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/topnav_bg.png'); }
+.topnav { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; text-align: center; padding-left: 7; padding-right: 7; }
+.topnavtbl a:link, .topnavtbl a:visited, .topnavtbl a:hover { color: #FFFFFF; text-decoration: none; }
+.topnavsearch { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; padding-left: 7; padding-right: 7; }
+.leftnav_titlebar { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftnav_titlebar.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+.leftnav_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftnav_bg.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+.leftnav_selectedbg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftnav_selectedbg.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+.leftnav_sep { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftnav_sep.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+.leftnav_bottom { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftnav_bottom.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#leftbox1_titlebar { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftbox1_titlebar.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#leftbox1_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftbox1_bg.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#leftbox2_titlebar { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftbox2_titlebar_rev2.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#leftbox2_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/leftbox2_bg_rev2.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#rightbox1_titlebar { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/rightbox1_titlebar.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#rightbox1_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/rightbox1_bg.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#rightbox2_titlebar { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/rightbox2_titlebar.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#rightbox2_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/rightbox2_bg.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#rightbox3_titlebar { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/rightbox3_titlebar.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#rightbox3_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/rightbox3_bg.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#featurestory_titlebar { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/featurestory_titlebar_rev2.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#featurestory_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/featurestory_bg_rev2.png'); background-position: top; behavior: url(../../css/iepngfix/iepngfix.htc); }
+#featurestorybox { height: 245; margin-right: 5; margin-left: 5; margin-top: 18; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; overflow: hidden; padding-left:5px; padding-right:5px; }
+#footer_bg_top { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/footer_top_rev2.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#footer_bg_bottom { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/footer_bottom_rev2.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
+#footer_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/footer_bg_rev2.png'); behavior: url(../../css/iepngfix/iepngfix.htc); text-align: center; vertical-align: top; }
+#footer_bg td { padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; }
+#footerbox { width: 941; margin-right: 10; margin-left: 10; margin-top: 2; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; }
+#searchbox { height: 16; width: 137; border: thin solid #9f5824; font-family: Arial, Helvetica, sans-serif; font-size: 11px; padding-left: 5px; padding-right: 5px; }
+.leftnav_titlebar, #leftbox1_titlebar, #leftbox2_titlebar, #rightbox1_titlebar, #rightbox2_titlebar, #rightbox3_titlebar, #featurestory_titlebar { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; text-align: center; }
+#featurestory_titlebar { padding-top: 10; }
+.leftnav, .leftnavselected { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #2a6495; margin-top: 7; margin-bottom: 6; margin-left: 15; margin-right: 15; }
+.leftnavselected { font-weight: bold; }
+.leftnav a:link, .leftnav a:hover, .leftnav a:visited { color: #2a6495; }
+.leftnavselected a:link, .leftnavselected a:hover, .leftnavselected a:visited { color: #2a6495; }
+#leftbox1, #leftbox2, #rightbox1, #rightbox2, #rightbox3 { font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #153D60; margin-top: 3; }
+.featuredListItemTitle { margin-left:10px; margin-right:10px; overflow: hidden; }
+.featuredListItemTitle a:link, .featuredListItemTitle a:visited { color: #153D60; font-size: 13px; font-weight: bold; }
+.featuredListItemTitle a:hover { text-decoration: underline; color: Black; }
+.featuredListItemBlurb { margin-top: 5px; font-size: 11px; margin-left:10px; }
+html>body .featuredListItemBlurb { margin-left:10px; }
+#newsbox { height: 168; overflow: hidden; width: 180px; margin-left:10px; margin-top:7px; }
+#leftbox1, #leftbox2 { margin-right: 15; margin-left: 11; }
+#leftbox1 { height: 390; }
+#leftbox2 { height: 200; }
+#rightbox1, #rightbox2, #rightbox3 { margin-right: 11; margin-left: 15; height: 200; }
+#more { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #2C83CE; text-align: right; margin-right: 16; text-decoration:none; }
+#more a:link, #more a:hover, #more a:visited { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #2C83CE; margin-right: 3px; text-decoration:none; }
+a.pageOn:link, a.pageOn:hover, a.pageOn:visited { color:#2C83CE; font-size:12px; font-weight:bold; margin-left:3px; }
+a.pageOff:link, a.pageOff:hover, a.pageOff:visited { color:#72B0E6; font-weight:bold; font-size:12px; margin-left:3px; }
