@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225070734) do
+ActiveRecord::Schema.define(:version => 20130303000342) do
+
+  create_table "albums", :force => true do |t|
+    t.string   "url"
+    t.integer  "sol"
+    t.string   "timestamp"
+    t.integer  "num_images"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -27,6 +36,27 @@ ActiveRecord::Schema.define(:version => 20130225070734) do
   create_table "images", :force => true do |t|
     t.string   "url"
     t.integer  "sol"
+    t.integer  "album_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "images", ["album_id"], :name => "index_images_on_album_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "coords"
+    t.integer  "user_id"
+    t.integer  "image_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["image_id"], :name => "index_tags_on_image_id"
+  add_index "tags", ["user_id"], :name => "index_tags_on_user_id"
+
+  create_table "tests", :force => true do |t|
+    t.string   "name"
+    t.boolean  "complete"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -38,5 +68,15 @@ ActiveRecord::Schema.define(:version => 20130225070734) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "image_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "votes", ["image_id"], :name => "index_votes_on_image_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end
