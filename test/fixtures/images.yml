@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  sol: 1
+  album: 
+
+two:
+  url: MyString
+  sol: 1
+  album: 

@@ -6,7 +6,13 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', '0.3.11'
+<<<<<<< HEAD
 
+=======
+gem 'httparty'
+gem 'curb'
+gem 'pg'
+>>>>>>> e0fdaaec235fbe50a4f68632360a8d95b2dacc0f
 
 # Gems used only for assets and not required
 # in production environments by default.

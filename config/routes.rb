@@ -1,13 +1,11 @@
-LikeARock::Application.routes.draw do
-  get "home/index"
-
-  get "greetings/hello"
-
-  resources :deohtests
-
-  resources :tests
-
-
+TestJpl::Application.routes.draw do
+  resources :albums do
+    resources :images
+  end
+  
+  get "albums/index"
+  
+  root :to => 'albums#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -57,7 +55,7 @@ LikeARock::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'home#index'
+  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

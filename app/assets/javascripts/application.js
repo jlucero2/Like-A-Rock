@@ -18,5 +18,5 @@
 //= require contentflow
 //= require_tree ../../models
 //= require_tree ../../views
-//= require_tree ../img
+//= require_tree .
 

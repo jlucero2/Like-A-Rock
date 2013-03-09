@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-LikeARock::Application.config.secret_token = '8f3d046843c06090765e2355affd6deac831cab814dedb92225a6130e321119ce9535d67fff9edf8bcb9ddff6da081874aa945bdfab06bc4aebc64cc97d82f41'
+TestJpl::Application.config.secret_token = 'c6c18179700725171f833cce7681928c6722082389b7479db553884157a883642fac6baa8fa46a7903fd415d2792f4c17d8f0d9d8c00bc1c83d9da4d6ccf81ea'
