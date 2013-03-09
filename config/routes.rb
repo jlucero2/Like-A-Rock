@@ -1,7 +1,12 @@
 TestJpl::Application.routes.draw do
+  devise_for :users, :controllers => {:registrations => "registrations"}
+
+  resources :users
+
   resources :albums do
     resources :images
   end
+  
   
   get "albums/index"
   
