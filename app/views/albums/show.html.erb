@@ -1,4 +1,6 @@
 <h1> listing images </h1>
+<p><%= link_to "New Image", new_album_image_path(@album)%></p>
+<p><%= link_to "Delete Album", album_path, :method => "delete"%></p>
 <script language="JavaScript" type="text/javascript" src="assets/contentflow.js"></script>
 
   <div class="ContentFlow">
@@ -7,10 +9,11 @@
       <% @images.find_in_batches do |img| %>
 			<% sleep 1.5 %>
 			<% img.each do |image|%>
-				<img class="item" src="<%= image.url %>" title="<%= image.sol %>"/>
+				<img class="item" href= "<%= album_image_path(@album, image)%>" src="<%= image.url %>" title="<%= image.id %>"/>
 			<% end %>
       <% end %>
     </div>
     <div class="globalCaption"></div>
     <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
   </div>
+

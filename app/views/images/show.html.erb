@@ -10,21 +10,21 @@
   <%= @image.sol %>
 </p>
 
+<p>
+  <b>URL:</b>
+  <%= @image.url %>
+</p>
+
+<p><%= link_to "Delete Image", album_image_path, :method => "delete"%></p>
+
 <h2>Comments</h2>
-<%= render @image.comments %>
+
 
 <h2>Add a comment:</h2>
-<%= form_for([@image, @image.comments.build]) do |f| %>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
  
 <br />
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
-<%= link_to 'Back', images_path %>
+<%= link_to 'Edit', edit_album_image_path(@image) %> |
+<%= link_to 'Back', album_images_path %>
+

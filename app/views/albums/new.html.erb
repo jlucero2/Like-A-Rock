@@ -1,0 +1,18 @@
+<h2>Temporary Manual Album Creation Page</h2>
+
+<%= form_for(@album) do |f| %>
+
+  <div><%= f.label :url %><br />
+  <%= f.text_field :url, :autofocus => true %></div>
+
+  <div><%= f.label :sol %><br />
+  <%= f.text_field :sol, :autofocus => true %></div>
+
+  <div><%= f.label :timestamp %><br />
+  <%= f.text_field :timestamp %></div>
+
+  <div><%= f.label :num_images %><br />
+  <%= f.text_field :num_images %></div>
+
+  <div><%= f.submit "Create Sol" %></div>
+<% end %>

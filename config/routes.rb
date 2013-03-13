@@ -8,6 +8,7 @@ TestJpl::Application.routes.draw do
   end
   
   
+  
   get "albums/index"
   
   root :to => 'albums#index'

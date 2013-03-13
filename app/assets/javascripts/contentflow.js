@@ -89,7 +89,7 @@ var ContentFlowGlobal = {
         }
     },
     init: function () {
-        this.addStylesheet(this.CSSBaseDir + "contentflow.css");
+        //this.addStylesheet(this.CSSBaseDir + "contentflow.css");
         this.addStylesheet(this.CSSBaseDir + "mycontentflow.css");
         this.loadAddOns = new Array();
         if (this.scriptElement.getAttribute("load")) {

@@ -70,7 +70,7 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
-    @album = Album.find_in_batches(params[:id], :batch_size => 20)
+    @album = Album.find(params[:id])
     @album.destroy
 
     respond_to do |format|
