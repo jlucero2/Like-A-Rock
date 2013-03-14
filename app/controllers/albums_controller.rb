@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.all
+    @albums = Album.order(:sol).all
 
     respond_to do |format|
       format.html # index.html.erb

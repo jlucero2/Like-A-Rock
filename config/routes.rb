@@ -2,6 +2,8 @@ TestJpl::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   resources :users
+  resources :votes
+  resources :comments
 
   resources :albums do
     resources :images

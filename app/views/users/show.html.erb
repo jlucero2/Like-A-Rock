@@ -10,11 +10,30 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
+<p><b>Votes</b></p>
+<%if @votes.blank?%>
+	<p>You haven't voted for any images.</p>
+<%else%>
+	<table>
+	  <tr>
+	    <th>ID</th>
+	    <th>Link</th>
+	    <th>Asked Question?</th>
+	  </tr> 
+	   
+	<%@votes.each do |vote|%>
+	  <tr>
+		<td><%=vote.id%></td>
+		<td><%= link_to "Image", album_image_path(vote.image.album, vote.image)%></td>
+		<%if Comment.where(:user_id => current_user, :image_id => vote.image).empty?%>
+		<td>No</td>
+		<%else%>
+		<td>Yes</td>
+		<%end%>
+	  </tr>
+	<%end%>
+	</table>
+<%end%>
 
-
-<%= link_to 'Edit', edit_user_registration_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p><%= link_to 'Edit', edit_user_registration_path(@user) %> |
+<%= link_to 'Back', users_path %> </p>
