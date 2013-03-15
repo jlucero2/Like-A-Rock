@@ -15,9 +15,9 @@ function addPictures(t){
             ajax_cf.addItem(is[i], 'last');
         }
 }
-function getAlbumImages(album_path, album) {
+function getAlbumImages(n) {
     n = parseInt(n);
-    new Ajax.Updater('album.images', "getpics.php?n="+n, {
+    new Ajax.Updater('itemcontainer', "getpics.php?n="+n, {
         onComplete: addPictures
     });
     return false;
