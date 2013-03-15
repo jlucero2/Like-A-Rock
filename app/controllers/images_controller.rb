@@ -18,6 +18,7 @@ class ImagesController < ApplicationController
     @image = @album.images.new(params[:image])
     @image.sol = @album.sol
     @image.album = @album
+    @image.score = 0
 
     respond_to do |format|
       if @image.save

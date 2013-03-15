@@ -1,6 +1,11 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.order(:sol).all
+    @albums = Album.where("sol > ?", "-1").order(:sol)
+    @popular = Album.where(:url => "NULL").first 
+    if @popular.nil?
+      popular
+      @popular = Album.where(:url => "NULL").first
+    end   
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +17,12 @@ class AlbumsController < ApplicationController
   # GET /albums/1.json
   def show
     @album = Album.find(params[:id])
-    @images = @album.images
+    if @album.sol == -1
+      @images = Image.order("score DESC").all
+    else
+      @images = @album.images
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @album, json: @images }
@@ -77,6 +87,15 @@ class AlbumsController < ApplicationController
       format.html { redirect_to albums_url }
       format.json { head :no_content }
     end
+  end
+  
+  def popular
+    @popular = Album.new
+    @popular.url = "NULL"
+    @popular.sol = -1
+    @popular.timestamp = 0
+    @popular.num_images = 0
+    @popular.save
   end
 end
 

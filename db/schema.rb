@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20130309163012) do
   create_table "images", :force => true do |t|
     t.string   "url"
     t.integer  "sol"
+    t.integer  "score"
     t.integer  "album_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

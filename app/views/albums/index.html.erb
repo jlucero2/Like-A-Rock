@@ -1,4 +1,4 @@
-<h1>Listing albums</h1>
+<h1>Like-A-Rock Homepage</h1>
 
 <p><%= link_to "All Users", users_path%></p>
 
@@ -6,16 +6,14 @@
 
 <p id="notice"><%= notice %></p>
 
-<script language="JavaScript" type="text/javascript" src="assets/contentflow.js"></script>
+<script type="text/javascript" src="/assets/contentflow.js"></script>
+<script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script>
 
 
   <div class="ContentFlow">
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
-    	<!--<img class= "item" src= "/hockey.JPG" title= "Hockey">
-    	<img class= 'item' src= "/ice.jpg" title= 'ICE'>
-    	<img class= 'item' src= "/LOTRO.jpg" title= 'LotRO'>-->
-    	
+    	<img class="item" href= "<%= album_path(@popular) %>" src="<%= Image.order("score DESC").first.url if Image.first != nil %>" title="<%= "Popular" %>"/>
       <% @albums.each do |alb|  %>
 			<% alb.images.find_in_batches do |img| %>
 				<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.url  %>" title="<%= "Sol #{alb.sol}" %>"/>
