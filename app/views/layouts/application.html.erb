@@ -34,13 +34,15 @@
             <td class="pageTitleBox">SECTION</td>
           </tr>
           <tr>
-            <td class="pageContent"><div id="MidNavContainer">
+          	<td class="pageContent"><div id="MidNavContainer">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:7px;">
                   <tr>
-                    <td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: bold; "><a href="<%= root_path %>" class="middlenavselected">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="#" class="middlenav">SUBNAVIGATION</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="#" class="middlenav">SUBNAVIGATION</a><a href="#" class="middlenav"></a></td>
+					<td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: bold; "><a href="<%= root_path %>" class="middlenavselected">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= new_user_session_path %>" class="middlenav">Sign In</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= new_user_registration_path %>" class="middlenav">Register</a><a href="<% new_user_registration_path %>" class="middlenav"></a></td>
                   </tr>
                 </table>
-              </div>
+            </div>
+		  </tr>
+		</table>
               <!--div id="user_nav">
 		<!--%if user_signed_in?%>
 			Signed in as <!--%= link_to current_user.name, current_user%>. Not you?
@@ -49,7 +51,7 @@
 			Signed in as Guest. <!--%= link_to #"Sign Up", new_user_registration_path%> or <!--%= link_to #"Sign In", new_user_session_path%>
 		<!--%end%>
 	</div-->
-</table>
+
 <%= yield %>
 
 
@@ -122,8 +124,8 @@
                           <!--div class="imageTitle">class div.columntype_sidebar #contentImage .imageTitle{ Mars on the Go!</div>
                           <!--div class="imageCaption">class div.columntype_sidebar #contentImage .imageCaption{ Tune in with Mars on the go. <br>
                             Download the Be A Martian App, on your smart phones!<br>
-                            <!--a style="color: rgb(178, 85, 36); text-decoration: none; font-size: 10px;" href="#"><!--//Read More Link ---> 
-                            &rsaquo; Learn more</a></div>
+                            <!--a style="color: rgb(178, 85, 36); text-decoration: none; font-size: 10px;" href="#"><!--//Read More Link --- 
+                            &rsaquo;</a></div>
                           <!--a href="../../images/mars_mobile_info.jpg">
                           </a></div>
                       </div>
