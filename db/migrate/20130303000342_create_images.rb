@@ -3,7 +3,7 @@ class CreateImages < ActiveRecord::Migration
     create_table :images do |t|
       t.string :url
       t.integer :sol
-      t.integer :score
+      #t.integer :score
       t.references :album
 
       t.timestamps

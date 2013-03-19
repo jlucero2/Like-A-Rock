@@ -17,8 +17,6 @@
 
 <p>Score: <%= @image.score%></p>
 
-<p><%= link_to "Delete Image", album_image_path, :method => "delete"%></p>
-
 <%if Vote.where(:user => @data, :image_id => @image.id).empty?%>
 	<%= form_for(@vote) do |f| %>
 		<%= f.hidden_field :image_id, :value => @image.id%>

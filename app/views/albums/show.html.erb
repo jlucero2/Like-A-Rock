@@ -1,10 +1,5 @@
-<% if @album.sol == -1%>
-	<h1>Popular Images</h1>
-<%else%>
-	<h1>Sol <%= @album.sol%> </h1>
-<%end%>
-<p><%= link_to "New Image", new_album_image_path(@album)%></p>
-<p><%= link_to "Delete Album", album_path, :method => "delete"%></p>
+<h1>Sol <%= @album.sol%> </h1>
+
 <script type="text/javascript" src="/assets/contentflow.js"></script>
 <script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script>
 
