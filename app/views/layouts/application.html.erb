@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Mars Exploration Program: What's New</title>
+<title>Curiosity: Like-A-Rock</title>
 <meta name="title" content="Mars Exploration Program: What's New">
 <meta name="creator" content="JPL, NASA">
 <meta name="author" content="JPL, NASA">
@@ -28,36 +28,36 @@
         </div>
       </div>
       <div id="contentBox_contentPage">
-        <div id="breadcrumbs"><a href='#'>SECTION</a>&nbsp;&gt;&nbsp;<a href="<%= root_path %>">Home</a></div>
+        <div id="breadcrumbs"><a href='http://www.jpl.nasa.gov/'>Jet Propulsion Laboratory</a>&nbsp;&gt;&nbsp;<a href="<%= root_path %>">Like-A-Rock</a></div>
         <table border="0" cellpadding="0" cellspacing="0" align="center">
           <tr>
-            <td class="pageTitleBox">SECTION</td>
+            <td class="pageTitleBox">Like-A-Rock</td>
           </tr>
           <tr>
           	<td class="pageContent"><div id="MidNavContainer">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:7px;">
                   <tr>
-					<td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: bold; "><a href="<%= root_path %>" class="middlenavselected">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= new_user_session_path %>" class="middlenav">Sign In</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= new_user_registration_path %>" class="middlenav">Register</a><a href="<% new_user_registration_path %>" class="middlenav"></a></td>
-                  </tr>
+					<div id = "user_nav">
+						<% if user_signed_in? %>
+							<td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: normal; "><a href="<%= root_path %>" class="middlenavselected">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= destroy_user_session_path %>" data-method="delete" class="middlenav">Sign Out</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span></td>
+						<% else %>
+							<td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: normal; "><a href="<%= root_path %>" class="middlenavselected">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= new_user_session_path %>" class="middlenav">Sign In</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= new_user_registration_path %>" class="middlenav">Register</a><a href="<% new_user_registration_path %>" class="middlenav"></a></td>
+						<% end %>
+					</div>
+				  </tr>
                 </table>
             </div>
 		  </tr>
 		</table>
               <!--div id="user_nav">
 		<!--%if user_signed_in?%>
-			Signed in as <!--%= link_to current_user.name, current_user%>. Not you?
+			<!--Signed in as <!--%= link_to current_user.name, current_user%>. Not you?-->
 			<!--%= link_to "Sign Out", destroy_user_session_path, :method => 'delete'%>
 		<!--%else%>
 			Signed in as Guest. <!--%= link_to #"Sign Up", new_user_registration_path%> or <!--%= link_to #"Sign In", new_user_session_path%>
 		<!--%end%>
-	</div-->
-
+	</div>
 <%= yield %>
-
-
-
-
-
 
               <!--div style="margin-top:10px !important;"> 
                 <!-- Skip navigation link --><!--a name="maincontent"></a><!-- /Skip navigation link -->
