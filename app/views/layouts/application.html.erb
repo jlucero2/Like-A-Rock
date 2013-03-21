@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<title>Curiosity: Like-A-Rock</title>
+<title>Mars Exploration Program: What's New</title>
 <meta name="title" content="Mars Exploration Program: What's New">
 <meta name="creator" content="JPL, NASA">
 <meta name="author" content="JPL, NASA">
@@ -28,40 +28,46 @@
         </div>
       </div>
       <div id="contentBox_contentPage">
-        <div id="breadcrumbs"><a href='http://www.jpl.nasa.gov/'>Jet Propulsion Laboratory</a>&nbsp;&gt;&nbsp;<a href="<%= root_path %>">Like-A-Rock</a></div>
+        <div id="breadcrumbs"><a href='#'>SECTION</a>&nbsp;&gt;&nbsp;<a href='#'>Title of the page</a></div>
         <table border="0" cellpadding="0" cellspacing="0" align="center">
           <tr>
-            <td class="pageTitleBox">Like-A-Rock</td>
+            <td class="pageTitleBox">SECTION</td>
           </tr>
           <tr>
-          	<td class="pageContent"><div id="MidNavContainer">
+            <td class="pageContent"><div id="MidNavContainer">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:7px;">
                   <tr>
-					<div id = "user_nav">
-						<% if user_signed_in? %>
-							<td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: normal; "><a href="<%= root_path %>" class="middlenavselected">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= destroy_user_session_path %>" data-method="delete" class="middlenav">Sign Out</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span></td>
-						<% else %>
-							<td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: normal; "><a href="<%= root_path %>" class="middlenavselected">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= new_user_session_path %>" class="middlenav">Sign In</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="<%= new_user_registration_path %>" class="middlenav">Register</a><a href="<% new_user_registration_path %>" class="middlenav"></a></td>
-						<% end %>
-					</div>
-				  </tr>
+                    <td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: bold; "><a href="#" class="middlenavselected">Title of the page</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="#" class="middlenav">SUBNAVIGATION</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> <a href="#" class="middlenav">SUBNAVIGATION</a><a href="#" class="middlenav"></a></td>
+                  </tr>
                 </table>
-            </div>
-		  </tr>
-		</table>
-              <!--div id="user_nav">
-		<!--%if user_signed_in?%>
-			<!--Signed in as <!--%= link_to current_user.name, current_user%>. Not you?-->
-			<!--%= link_to "Sign Out", destroy_user_session_path, :method => 'delete'%>
-		<!--%else%>
-			Signed in as Guest. <!--%= link_to #"Sign Up", new_user_registration_path%> or <!--%= link_to #"Sign In", new_user_session_path%>
-		<!--%end%>
-	</div-->
+              </div>
+              <div id="user_nav">
+  <%= javascript_include_tag :application %>
+  <%= csrf_meta_tags %>
+		<%= link_to "Home", root_path%>
+		<%if admin_signed_in?%>
+			Administrator Signed in as <%= link_to current_admin.name, current_admin%>.
+			<%= link_to "Sign Out Admin", destroy_admin_session_path, :method => 'delete' %>
+		<%else%>
+			<%if user_signed_in?%>
+				Signed in as <%= link_to current_user.name, current_user%>. Not you?
+				<%= link_to "Sign Out", destroy_user_session_path, :method => 'delete' %>
+			<%else%>
+				Signed in as Guest. <%= link_to "Sign Up", new_user_registration_path%> or <%= link_to "Sign In", new_user_session_path%>
+			<%end%>
+		<%end%>
+	</div>
+
 <%= yield %>
 
-              <!--div style="margin-top:10px !important;"> 
-                <!-- Skip navigation link --><!--a name="maincontent"></a><!-- /Skip navigation link -->
-                <!--div id="twocolumnwrap">
+
+
+
+
+
+              <div style="margin-top:10px !important;"> 
+                <!-- Skip navigation link --><a name="maincontent"></a><!-- /Skip navigation link -->
+                <div id="twocolumnwrap">
                   <div class="columntype_main"><br>
                     <div style="margin-top:14px;">
                       <div id="newsList_LatestArticle" style="">
@@ -74,10 +80,10 @@
                       <br clear="all">
                       <table cellpadding="0" cellspacing="0" border="0" width="640">
                         <tr>
-                          <!--td bgcolor="#c5c6c7"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/spacer.gif" width="1" height="1" alt=""></td>
+                          <td bgcolor="#c5c6c7"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/spacer.gif" width="1" height="1" alt=""></td>
                         </tr>
                         <tr>
-                          <!--td height="10px;"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/spacer.gif" width="1" height="1" alt=""></td>
+                          <td height="10px;"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/spacer.gif" width="1" height="1" alt=""></td>
                         </tr>
                         <tr>
                           <td><div class="newsList_Article">
@@ -113,20 +119,20 @@
                     </div>
                   </div>
                   <br>
-                  <!--div class="columntype_sidebar">
-                    <!--div class="sidebarheader">Side Bar Title</div>
+                  <div class="columntype_sidebar">
+                    <div class="sidebarheader">Side Bar Title</div>
                     <br>
-                    <!-- Mars Mobile --->
-                    <!--iv style="padding-right: 20px; float: Left;" >
+                    <!--- Mars Mobile --->
+                    <div style="padding-right: 20px; float: Left;" >
                       <div id="contentImage">
                         <div class="contentImageInner">
-                          <!--div class="imageGrayBorder"><a href="#" class="captionText"><!img src="http://mars.jpl.nasa.gov/images/mars_mobile_info-ci.jpg" width="250" alt="Mars on the Go!" border="0" hspace="0" vspace="0" align='absmiddle'></a></div>
-                          <!--div class="imageTitle">class div.columntype_sidebar #contentImage .imageTitle{ Mars on the Go!</div>
-                          <!--div class="imageCaption">class div.columntype_sidebar #contentImage .imageCaption{ Tune in with Mars on the go. <br>
+                          <div class="imageGrayBorder"><a href="#" class="captionText"><img src="http://mars.jpl.nasa.gov/images/mars_mobile_info-ci.jpg" width="250" alt="Mars on the Go!" border="0" hspace="0" vspace="0" align='absmiddle'></a></div>
+                          <div class="imageTitle">class div.columntype_sidebar #contentImage .imageTitle{ Mars on the Go!</div>
+                          <div class="imageCaption">class div.columntype_sidebar #contentImage .imageCaption{ Tune in with Mars on the go. <br>
                             Download the Be A Martian App, on your smart phones!<br>
-                            <!--a style="color: rgb(178, 85, 36); text-decoration: none; font-size: 10px;" href="#"><!--//Read More Link --- 
-                            &rsaquo;</a></div>
-                          <!--a href="../../images/mars_mobile_info.jpg">
+                            <a style="color: rgb(178, 85, 36); text-decoration: none; font-size: 10px;" href="#"><!--//Read More Link ---> 
+                            &rsaquo; Learn more</a></div>
+                          <a href="../../images/mars_mobile_info.jpg">
                           </a></div>
                       </div>
                     </div>
@@ -136,13 +142,13 @@
                   <br clear="both">
                 </div>
                 <!--close twocolumnwrap-->
-                <!--/P>
-              <!--/div>
-              <!--br clear="all">
+                </P>
+              </div>
+              <br clear="all">
               
-              <!-- Skip navigation link --><!--a name="maincontent"></a><!-- /Skip navigation link --></td>
-          <!--/tr>
-        </table-->
+              <!-- Skip navigation link --><a name="maincontent"></a><!-- /Skip navigation link --></td>
+          </tr>
+        </table>
         
         
         
