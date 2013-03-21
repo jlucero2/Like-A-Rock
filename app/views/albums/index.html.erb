@@ -1,21 +1,16 @@
-<!--p id="notice"><%= notice %></p-->
+<script type = "text/javascript" src="/assets/contentflow.js"></script>
 
-<script type="text/javascript" src="/assets/contentflow.js"></script>
-<!--script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script-->
-
-
-  <div class="ContentFlow">
+<div class="ContentFlow">
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
-    	<!--img class="item" href= "<#%= album_path(@popular) %>" src="<#%= Image.order("score DESC").first.url if Image.first != nil %>" title="<#%= "Popular" %>"/-->
       <% @albums.each do |alb|  %>
 			<% alb.images.find_in_batches do |img| %>
-				<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.url  %>" title="<%= "Sol #{alb.sol}" %>"/>
+				<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.url %>" title="<%= "Sol #{alb.sol}" %>"/>
 			<% end %>
       <% end %>
     </div>
     <div class="globalCaption"></div>
     <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
-  </div>
+</div>
 
 

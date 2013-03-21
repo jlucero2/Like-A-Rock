@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
     # GET /images/new.json
   def new
     @album = Album.find(params[:album_id])
-    @image = @album.images.new
+    @image = @album.images.new(params[:image])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -15,9 +15,6 @@ class ImagesController < ApplicationController
   def create #UPDATED FOR ALBUMS
     @album = Album.find(params[:album_id])
     @image = @album.images.create(params[:image])
-    #@image.sol = @album.sol
-    #@image.album = @album
-    #@image.score = 0
 
     respond_to do |format|
       if @image.save
@@ -30,8 +27,6 @@ class ImagesController < ApplicationController
     end
   end
   def index
-    #@album = Album.find(params[:album_id])
-    #redirect_to album_path(@album)
     @images = Image.all
   end
 
@@ -40,14 +35,6 @@ class ImagesController < ApplicationController
   def show
     @album = Album.find(params[:album_id])
     @image = @album.images.find(params[:id])
-    #@vote = Vote.new
-    # @comment = Comment.new
-    #@comments = Comment.where(:user_id => current_user, :image_id => @image)
-    #if current_user
-    #  @data = current_user.id.to_s
-    #else
-    #  @data = request.remote_ip.to_s
-    #end
 
     respond_to do |format|
       format.html # show.html.erb

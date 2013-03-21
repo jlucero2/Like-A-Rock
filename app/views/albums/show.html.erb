@@ -1,7 +1,7 @@
 <h1>Sol <%= @album.sol%> </h1>
 
 <script type="text/javascript" src="/assets/contentflow.js"></script>
-<script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script>
+<!--script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script-->
 
   <div class="ContentFlow">
     <div class="loadIndicator"><div class="indicator"></div></div>
@@ -9,7 +9,7 @@
       <% @images.each do |img| %>
 			<%# sleep 1.5 %>
 			<%# img.each do |image|%>
-				<img class="item" href= "<%= album_image_path(img.album, img)%>" src="<%= img.url %>" title="<%= img.id %>"/>
+				<img class="item" src="<%= img.url %>" title="<%= img.id %>"/>
 			<%# end %>
       <% end %>
     </div>

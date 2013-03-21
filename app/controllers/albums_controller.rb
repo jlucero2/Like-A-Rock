@@ -1,11 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.all
-    #@popular = Album.where(:url => "NULL").first 
-    #if @popular.nil?
-     # popular
-      #@popular = Album.where(:url => "NULL").first
-    #end   
+    @albums = Album.all 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,9 +12,6 @@ class AlbumsController < ApplicationController
   # GET /albums/1.json
   def show
     @album = Album.find(params[:id])
-    #if @album.sol == -1
-     # @images = Image.order("score DESC").all
-    #else
     @images = @album.images
     #end
     
