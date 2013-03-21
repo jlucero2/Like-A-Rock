@@ -35,7 +35,14 @@ class ImagesController < ApplicationController
   def show
     @album = Album.find(params[:album_id])
     @image = @album.images.find(params[:id])
-
+    @vote = Vote.new
+    @comment = Comment.new
+    @comments = Comment.where(:user_id => current_user, :image_id => @image)
+    if current_user
+      @data = current_user.id.to_s
+    else
+      @data = request.remote_ip.to_s
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @image }

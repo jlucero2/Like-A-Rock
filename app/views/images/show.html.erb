@@ -15,17 +15,17 @@
   <%= @image.url %>
 </p>
 
-<p>Score: <%= @image.score%></p>
+<p>Score: <%#= @image.score%></p>
 
-<%if Vote.where(:user => @data, :image_id => @image.id).empty?%>
-	<%= form_for(@vote) do |f| %>
-		<%= f.hidden_field :image_id, :value => @image.id%>
-	  	<div><%= f.submit "Vote for Image" %></div>
-	<% end %>
-<%else%>
-	<p>Already Voted for this Image</p>	
-<%end%>
-
+<%#if Vote.where(:user => @data, :image_id => @image.id).empty?%>
+<%= form_for(@vote) do |f| %>
+	<%= f.hidden_field :image_id, :value => @image.id%>
+	<div><%= f.submit "Vote for Image" %></div>
+<% end %>
+<%#else%>
+	<!--p>Already Voted for this Image</p>	
+<%#end%>
+<-->
 <h2>Your Questions</h2>
 
 <%if @comments.empty?%>
