@@ -15,7 +15,10 @@
   <%= @image.url %>
 </p>
 
-<p>Score: <%#= @image.score%></p>
+<p>
+  <b>Score:</b>
+  <%= @image.votes.count%>
+</p>
 
 <%#if Vote.where(:user => @data, :image_id => @image.id).empty?%>
 <%= form_for(@vote) do |f| %>
