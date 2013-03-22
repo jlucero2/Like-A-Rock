@@ -2,16 +2,20 @@
 
 <script type="text/javascript" src="/assets/contentflow.js"></script>
 <!--script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script-->
+<!--script>
+	var myNewFlow = new ContentFlow('cf', { reflectionHeight: 0, circularFlow: false } ) ;
+</script>
 
-  <div class="ContentFlow">
+  <div id = "cf" class="ContentFlow"-->
+  <div class = "ContentFlow">
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
-      <% @images.each do |img| %>
-			<%# sleep 1.5 %>
-			<%# img.each do |image|%>
-				<img class="item" src="<%= img.url %>" title="<%= img.id %>"/>
-
-			<%# end %>
+      <% @images.find_in_batches do |img| %>
+			<% sleep 1.5 %>
+			<% img.each do |image|%>
+				<img class="item" href = "<%= album_image_path(@album, image) %>" src="<%= image.url %>" title="<%= image.id %>"/>
+				<!--div class="item"><div class="content">Text content to display</div></div-->
+			<% end %>
       <% end %>
     </div>
     <div class="globalCaption"></div>
