@@ -9,6 +9,10 @@ gem 'rails', '3.2.11'
 gem 'devise'
 #gem 'sqlite3'
 #<<<<<<< HEAD
+group :development do
+  gem "rails-erd"
+end
+
 
 #=======
 gem 'httparty'
