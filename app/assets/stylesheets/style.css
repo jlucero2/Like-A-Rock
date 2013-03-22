@@ -5,9 +5,9 @@ body, html { background-color: #000000; margin: 0px; padding: 0px; background-im
 /*BODY BG - END*/
 /*BANNER - START*/
 #top_jplBanner { text-align: center; width: 980; /*height: 57px;
-margin-top: 17px;*/ padding-top: 17px; padding-left: 0px; height: 74px;/*background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/top_jplBanner.png');
+margin-top: 17px;*/ padding-top: 17px; padding-left: 0px; height: 74px; background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/top_jplBanner.png');
 background-repeat: no-repeat;
-background-position: 17px;*/ }
+background-position: 17px; }
 #top_marsBanner { text-align: center; width: 1130px; height: 169px; background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/top_marsBanner.png'); background-repeat: no-repeat; padding-top: 111px; }
 #top_marsBanner .MSLhome { margin-top:-90px; }
 #top_marsBanner #topSiteNavBox { margin-top: 2px; margin-top: -2px !important\9;
