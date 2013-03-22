@@ -14,12 +14,6 @@ background-position: 17px;*/ }
 *margin-top: -2px !important;
 _margin-top: -2px !important; margin-left: -1px !important; }
 html>body #top_marsBanner #topSiteNavBox { margin-top: 2px; }
-*#top_marsBanner {
-margin-top: -2px !important;
-}
-*#topSiteNavBox_html {
-margin-top: -2px !important;
-}
 /*BANNER - END*/
 
 /*CONTENT - START*/
