@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130319194038) do
 
   create_table "albums", :force => true do |t|
     t.string   "url"
-    t.integer  "sol"
+    t.string   "sol"
     t.string   "timestamp"
     t.integer  "num_images"
     t.datetime "created_at", :null => false
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20130319194038) do
   create_table "images", :force => true do |t|
     t.string   "url"
     t.integer  "sol"
-    t.integer  "score"
     t.integer  "album_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -83,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130319194038) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
+    t.string   "ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "email",                  :default => "", :null => false
@@ -101,12 +101,13 @@ ActiveRecord::Schema.define(:version => 20130319194038) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "votes", :force => true do |t|
-    t.string   "user"
+    t.integer  "user_id"
     t.integer  "image_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "votes", ["image_id"], :name => "index_votes_on_image_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

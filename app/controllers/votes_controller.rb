@@ -2,14 +2,15 @@ class VotesController < ApplicationController
   
   def create
     @vote = Vote.new
-#    @vote.user = current_user ? current_user.id.to_s : request.remote_ip.to_s
     @vote.image = Image.find(params[:vote][:image_id])
+    if user_signed_in?
+      @vote.user = current_user
+    else
+       @vote.user = User.where(:ip => request.remote_ip).first
+    end
     
     respond_to do |format|
       if @vote.save
-        @image = @vote.image
-        #@newscore = @image.score + 1
-        #@image.update_attributes(:score => @newscore)
         format.html { redirect_to album_image_path(@vote.image.album, @vote.image), notice: 'Vote was successfully created.' }
       else
         format.html { redirect_to album_image_path(@vote.image.album, @vote.image), notice: 'Vote was unsucessful.' }

@@ -20,14 +20,15 @@
   <%= @image.votes.count%>
 </p>
 
-<%#if Vote.where(:user => @data, :image_id => @image.id).empty?%>
+<%if @votes.empty?%>
 <%= form_for(@vote) do |f| %>
 	<%= f.hidden_field :image_id, :value => @image.id%>
+	<%= f.hidden_field :user_id, :value => @user.id%>
 	<div><%= f.submit "Vote for Image" %></div>
 <% end %>
-<%#else%>
-	<!--p>Already Voted for this Image</p>	
-<%#end%>
+<%else%>
+	<p>Already Voted for this Image</p>	
+<%end%>
 <-->
 <h2>Your Questions</h2>
 
@@ -48,6 +49,7 @@
   	<%= f.text_field :body, :autofocus => true %></div>
 
 	<%= f.hidden_field :image_id, :value => @image.id%>
+	<%= f.hidden_field :user_id, :value => @user.id%>
 	<div><%= f.submit "Submit Question" %></div>
 <% end %>
 

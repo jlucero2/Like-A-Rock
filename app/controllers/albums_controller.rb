@@ -80,14 +80,5 @@ class AlbumsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  #def popular
-  #  @popular = Album.new
-  #  @popular.url = "NULL"
-  #  @popular.sol = -1
-  #  @popular.timestamp = 0
-  #  @popular.num_images = 0
-  #  @popular.save
-  #end
 end
 
