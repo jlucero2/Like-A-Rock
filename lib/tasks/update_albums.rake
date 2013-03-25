@@ -19,7 +19,7 @@ task :update_albums => :environment do
      solnum = arrayofsols[0][1]
      if Album.find_by_sol(solnum.to_s).nil?
        if numimages.to_i > 0
-         puts "***Album Sol#{solnum} doesn't exist. Creating...***\n"
+         puts "\n***Album Sol #{solnum} doesn't exist. Creating it...***\n"
          puts "Number of images: #{numimages}"  
          a = Album.new
          a.sol = solnum.to_s
@@ -32,10 +32,10 @@ task :update_albums => :environment do
          solarray = jsonsol.to_a
          solalb = Album.find_by_sol(solnum.to_s)
          thumbnailcount = 0
+         puts "Adding New Images."
          solarray[3][1].each do |j|
            imagearray = j.to_a
            sampletype = imagearray[22][1]
-           puts "Adding New Images."
            if sampletype != "thumbnail"
              imageurl = imagearray[14][1]
              solday = imagearray[5][1]
@@ -47,13 +47,13 @@ task :update_albums => :environment do
              thumbnailcount += 1
            end
          end
-         puts "thumbnails: #{thumbnailcount}"
+         puts "Thumbnails: #{thumbnailcount}"
          if numimages.to_i != 0 and thumbnailcount == numimages.to_i
            puts "Destroying album: All images are thumbnails"
            solalb.destroy
          else
            totnum = numimages.to_i - thumbnailcount
-           puts "Number of images: #{totnum}\n"
+           puts "Number of images added: #{totnum}\n"
            solalb.num_images = numimages.to_i - thumbnailcount
            solalb.save
          end
@@ -61,10 +61,10 @@ task :update_albums => :environment do
      else
        solalb = Album.find_by_sol(solnum.to_s)
        puts "\n***Sol #{solnum}***"
-       puts "Sol#{solnum} timestamp: #{solalb.timestamp}"
-       puts "last update: #{lastupdate}"
+       puts "Timestamp: #{solalb.timestamp}"
+       puts "Last Update: #{lastupdate}"
        if solalb.timestamp != lastupdate and numimages.to_i != solalb.num_images      
-         puts "updating... Album Sol#{solnum}\n"
+         puts "Updating Album Sol #{solnum}...\n"
          solobject = Curl.get(thesolurl)
          jsonsol = JSON.parse(solobject.body_str)
          solarray = jsonsol.to_a
@@ -75,7 +75,7 @@ task :update_albums => :environment do
            imageurl = imagearray[14][1]
            if solalb.images.find_by_url(imageurl).nil?
              if sampletype != "thumbnail"
-               puts "Adding new image"
+               puts "Adding new image..."
                solday = imagearray[5][1]
                n = solalb.images.new
                n.url = imageurl 
@@ -93,7 +93,7 @@ task :update_albums => :environment do
            solalb.destroy
          else
            puts "New Images added: #{numimages.to_i - solalb.num_images - thumbnailcount}"
-           puts "Timestamp updated: #{solalb.timestamp} -> #{lastupdate}"
+           puts "Timestamp updated: #{solalb.timestamp} -> #{lastupdate}\n"
            solalb.timestamp = lastupdate
            solalb.num_images = numimages.to_i - thumbnailcount
            solalb.save
