@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.all 
+    @albums = Album.all
+    @images = Image.all(:limit => 10)
 
     respond_to do |format|
       format.html # index.html.erb
