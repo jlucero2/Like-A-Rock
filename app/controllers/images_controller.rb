@@ -42,8 +42,11 @@ class ImagesController < ApplicationController
     else
       @user = User.where(:ip => request.remote_ip).first
     end
-    
-    @comments = Comment.where(:user_id => @user, :image_id => @image)
+    if admin_signed_in?
+      @comments = Comment.where(:image_id => @image)
+    else  
+      @comments = Comment.where(:user_id => @user, :image_id => @image)
+    end
     @votes = Vote.where(:user_id => @user, :image_id => @image)
 
     
