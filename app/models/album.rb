@@ -4,5 +4,5 @@ class Album < ActiveRecord::Base
   validates :timestamp, :presence => true
   validates :sol, :presence => true, :uniqueness => true
   validates :num_images, :presence => true 
-  has_many :images, :dependent => :destroy
+  has_many :images
 end
