@@ -1,5 +1,5 @@
 TestJpl::Application.routes.draw do
-  devise_for :admins#, :controllers => {:registrations => "registrations"}
+  devise_for :admins, :controllers => {:registrations => "registrations"}
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 

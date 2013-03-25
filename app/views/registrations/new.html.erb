@@ -6,7 +6,9 @@
   <div><%= f.label :name %><br />
   <%= f.text_field :name, :autofocus => true %></div>
 
-  <%= f.hidden_field :ip, :value => request.remote_ip.to_s %>
+  <%if resource == User%>
+  	<%= f.hidden_field :ip, :value => request.remote_ip.to_s %>
+  <%end%>
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
