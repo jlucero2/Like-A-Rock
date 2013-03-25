@@ -3,6 +3,7 @@ TestJpl::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
+  resources :responses
   resources :admins
   resources :users
   resources :votes
