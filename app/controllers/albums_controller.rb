@@ -14,11 +14,11 @@ class AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
     @images = @album.images
-    #end
     
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @album, json: @images }
+      #format.js {render :layout => false}
     end
   end
 

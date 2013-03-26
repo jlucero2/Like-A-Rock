@@ -35,21 +35,18 @@ class ImagesController < ApplicationController
   def show
     @album = Album.find(params[:album_id])
     @image = @album.images.find(params[:id])
-    @vote = Vote.new
+    
     @comment = Comment.new
     if user_signed_in?
       @user = current_user
     else
-      @user = User.where(:ip => request.remote_ip).first
+      @user = User.find_by_ip(request.remote_ip)
     end
-    if admin_signed_in?
-      @comments = Comment.where(:image_id => @image)
-    else  
-      @comments = Comment.where(:user_id => @user, :image_id => @image)
-    end
-    @votes = Vote.where(:user_id => @user, :image_id => @image)
-
-    
+    @votes = @image.votes
+    @comments = Comment.where(:user_id => @user, :image_id => @image)
+    @vote = @image.votes.find_by_user_id_and_image_id(@user, @image)
+    @newvote = @image.votes.new
+    #@vote = @image.votes.find_by_user_id_and_image_id(@user, @image)
 
     respond_to do |format|
       format.html # show.html.erb

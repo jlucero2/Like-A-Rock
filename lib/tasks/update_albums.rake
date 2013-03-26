@@ -10,6 +10,14 @@ task :update_albums => :environment do
   jsonmanifest = JSON.parse(test.body_str)
 
   arraymanifest = jsonmanifest.to_a
+  
+  if Album.find_by_sol("Popular Images").nil?
+    puts "\n***Creating Album: Populate Images***\n"
+    a = Album.new
+    a.sol = "Popular Images"
+    a.num_images = 0
+    a.save
+  end
 
   arraymanifest[4][1].each do |i|
      arrayofsols = i.to_a #makes i into array
@@ -89,7 +97,7 @@ task :update_albums => :environment do
          puts "Thumbnails: #{thumbnailcount}"
          puts "Images: #{numimages}\n"
          if numimages.to_i != 0 and thumbnailcount == numimages.to_i
-           puts "Destroying Album: All images are thumbnails"
+           puts "**Destroying Album: All images are thumbnails."
            solalb.destroy
          else
            puts "New Images added: #{numimages.to_i - solalb.num_images - thumbnailcount}"

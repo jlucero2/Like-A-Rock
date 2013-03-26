@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <b>Image:</b>
-  <img width="25%" height="25%" src="<%= @image.url %>" />
+  <img width = "978" src="<%= @image.url %>" />
 </p>
 
 <p>
@@ -17,63 +15,48 @@
 
 <p>
   <b>Score:</b>
-  <%= @image.votes.count%>
+  <%= @votes.count%>
 </p>
 
-
-<%if admin_signed_in?%>
-	<%if @comments.empty?%>
-		<p>There are no questions for this image.</p>
-	<%else%>
-		<%@comments.each do |comment|%>
-			<p><%=comment.user.name%></p>
-			<p><%=comment.body%></p>
-			<p><%=link_to 'Repond', new_response_path(:comment => comment, :image => @image)%></p>
-			<p></p>
-		<%end%>
-	<%end%>
-<%else%>
-	<%if @votes.empty?%>
-	<%= form_for(@vote) do |f| %>
-		<%= f.hidden_field :image_id, :value => @image.id%>
-		<%= f.hidden_field :user_id, :value => @user.id%>
+<%if @vote.nil?%>
+	<%= form_for(@newvote) do |f| %>
+		<%= f.hidden_field :image_id, :value => @image.id %>
+		<%= f.hidden_field :user_id, :value => @user.id %>
 		<div><%= f.submit "Vote for Image" %></div>
 	<% end %>
-	<%else%>
-		<p>Already Voted for this Image</p>	
-	<%end%>
-	<-->
-	<h2>Your Questions</h2>
-	
-	<%if @comments.empty?%>
-		<%if current_user%>
-			<p>You have asked no Questions.</p>
-		<%end%>
-	<%else%>
-		<%@comments.each do |comment|%>
-		<p>Comment <%= comment.id%>: <%= comment.body%></p>
-		<%end%>
-	<%end%>
-	
+<%else%>
+	<%= form_for(@newvote) do |f| %>
+		<%= "Already Voted for this image." %>
+	<%%>	
+<%end%>
+
+<h2>Your Questions</h2>
+
+<%if @comments.empty?%>
 	<%if current_user%>
-	
-	<h2>Ask a Question:</h2>
+		<p>You have asked no Questions.</p>
+	<%end%>
+<%else%>
+	<%@comments.each do |comment|%>
+	<p>Comment <%= comment.id%>: <%= comment.body%></p>
+	<%end%>
+<%end%>
+
+<%if current_user%>
+
+<h2>Ask a Question:</h2>
 	<%= form_for(@comment) do |f| %>
-	  	<%= f.text_field :body, :autofocus => true %></div>
-	
+  		<%= f.text_field :body, :autofocus => true %></div>
 		<%= f.hidden_field :image_id, :value => @image.id%>
 		<%= f.hidden_field :user_id, :value => @user.id%>
 		<div><%= f.submit "Submit Question" %></div>
 	<% end %>
-	
-	
-	<%else%>
-	<p>You must <%= link_to "Sign In", new_user_session_path%> to add a comment.</p>
-	<%end%>
+<%else%>
+<p>You must <%= link_to "Sign In", new_user_session_path%> to add a comment.</p>
 <%end%>
  
 <br />
 
-<%= link_to 'Edit', edit_album_image_path(@image) %> |
-<%= link_to 'Back', album_images_path %>
+<!--%= link_to 'Edit', edit_album_image_path(@image) %> |
+<!--%= link_to 'Back', album_images_path %-->
 
