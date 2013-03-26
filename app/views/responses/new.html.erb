@@ -1,0 +1,12 @@
+<h1>Respond to Comment</h1>
+<img width="25%" height="25%" src="<%= @image.url %>" />
+<p><%=@comment.user.name%></p>
+<p><%=@comment.body%></p>
+
+<%= form_for(@response) do |f| %>
+	<div><%= f.label :body %><br />
+	<%= f.text_field :body, :autofocus => true %></div>
+	<%= f.hidden_field :image_id, :value => @image.id%>
+	<%= f.hidden_field :admin_id, :value => @admin.id%>
+	<div><%= f.submit "Respond" %></div>
+<% end %>

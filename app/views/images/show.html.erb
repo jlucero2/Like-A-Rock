@@ -28,7 +28,7 @@
 		<%@comments.each do |comment|%>
 			<p><%=comment.user.name%></p>
 			<p><%=comment.body%></p>
-			<p><%=link_to 'Repond', new_response_path%></p>
+			<p><%=link_to 'Repond', new_response_path(:comment => comment, :image => @image)%></p>
 			<p></p>
 		<%end%>
 	<%end%>

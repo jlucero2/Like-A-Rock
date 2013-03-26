@@ -6,8 +6,8 @@ class CreateResponses < ActiveRecord::Migration
       t.references :image
 
       t.timestamps
-      add_index :votes, :admin_id
-      add_index :votes, :image_id
     end
+    add_index :responses, :admin_id
+    add_index :responses, :image_id
   end
 end
