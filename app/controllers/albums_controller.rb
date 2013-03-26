@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @album, json: @images }
-      #format.js {render :layout => false}
+      format.js {render :layout => false}
     end
   end
 

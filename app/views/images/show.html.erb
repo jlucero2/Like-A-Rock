@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <img width = "978" src="<%= @image.url %>" />
+  <img width = "978" height= "1000" src="<%= @image.url %>" />
 </p>
 
 <p>
@@ -25,9 +25,7 @@
 		<div><%= f.submit "Vote for Image" %></div>
 	<% end %>
 <%else%>
-	<%= form_for(@newvote) do |f| %>
-		<%= "Already Voted for this image." %>
-	<%%>	
+	<%= "Already Voted for this image." %>	
 <%end%>
 
 <h2>Your Questions</h2>
@@ -52,7 +50,7 @@
 		<div><%= f.submit "Submit Question" %></div>
 	<% end %>
 <%else%>
-<p>You must <%= link_to "Sign In", new_user_session_path%> to add a comment.</p>
+	<p>You must <%= link_to "Sign In", new_user_session_path%> to add a comment.</p>
 <%end%>
  
 <br />
