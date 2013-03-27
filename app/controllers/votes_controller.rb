@@ -13,8 +13,10 @@ class VotesController < ApplicationController
     respond_to do |format|
       if @vote.save
         format.html { redirect_to album_image_path(@image.album, @image), notice: 'Vote was successfully created.' }
+        #format.js {render :layout => false}
       else
-        format.html { redirect_to album_image_path(@image.album, @image), notice: 'Vote was unsucessful.' }
+        format.html { redirect_to album_image_path(@image.album, @image), notice: 'Vote was unsucessful.'  }
+        #format.js {render :layout => false}
       end
     end
   end
