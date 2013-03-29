@@ -15,9 +15,9 @@ TestJpl::Application.routes.draw do
   
   
   
-  get "albums/index"
+  get "albums/popular"
   
-  root :to => 'albums#index'
+  root :to => 'albums#popular'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
