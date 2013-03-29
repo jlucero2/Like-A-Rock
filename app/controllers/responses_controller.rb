@@ -21,7 +21,7 @@ class ResponsesController < ApplicationController
     
     respond_to do |format|
       if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
+        format.html { redirect_to album_image_path(@response.image.album, @response.image), notice: 'Response was successfully created.' }
         format.json { render json: @response, status: :created, location: @response }
       else
         format.html { render action: "new" }

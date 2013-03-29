@@ -42,7 +42,7 @@
 						<a href="<%=root_path%>" class="middlenavselected">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
 					<% if admin_signed_in? %>
                     		<a class="middlenav">Signed in as Administrator</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> 
-                    		<a href="<%=destroy_admin_session_path%>" class="middlenav">Sign Out</a><a href="#" class="middlenav">
+                    		<a href="<%=destroy_admin_session_path%>" class="middlenav">Sign Out</a><a href="#" class="middlenav"><span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
 					<% elsif user_signed_in? %>
 							<a class="middlenav">Signed in as <%= current_user.name %> </a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span> 
 							<a href="<%=destroy_user_session_path%>" class="middlenav">Sign Out</a><a href="#" class="middlenav"><span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>

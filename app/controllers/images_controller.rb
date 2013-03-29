@@ -26,8 +26,11 @@ class ImagesController < ApplicationController
       end
     end
   end
+  
+  
   def index
-    @images = Image.all
+    @album = Album.find(params[:album_id])
+    redirect_to album_path(@album)
   end
 
     # GET /images/1
@@ -42,11 +45,17 @@ class ImagesController < ApplicationController
     else
       @user = User.find_by_ip(request.remote_ip)
     end
+    
+    if admin_signed_in?
+      @comments = Comment.where(:image_id => @image)
+    else
+      @comments = Comment.where(:user_id => @user, :image_id => @image)
+    end
     @votes = @image.votes
-    @comments = Comment.where(:user_id => @user, :image_id => @image)
     @vote = @image.votes.find_by_user_id_and_image_id(@user, @image)
     @newvote = @image.votes.new
-    #@vote = @image.votes.find_by_user_id_and_image_id(@user, @image)
+    @responses = Response.where(:image_id => @image)
+    @newresponse = Response.new
 
     respond_to do |format|
       format.html # show.html.erb

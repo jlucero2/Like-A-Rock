@@ -13,8 +13,6 @@ TestJpl::Application.routes.draw do
     resources :images
   end
   
-  
-  
   get "albums/popular"
   
   root :to => 'albums#popular'
