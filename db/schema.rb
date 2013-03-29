@@ -56,8 +56,9 @@ ActiveRecord::Schema.define(:version => 20130325221047) do
     t.string   "url"
     t.integer  "sol"
     t.integer  "album_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "votes_count", :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "images", ["album_id"], :name => "index_images_on_album_id"

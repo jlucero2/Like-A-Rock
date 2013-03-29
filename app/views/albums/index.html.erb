@@ -3,17 +3,19 @@
 <div class="ContentFlow" style = "margin-top:20px;margin-bottom:20px;">
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
-    <%if admin_signed_in?%>
+    <!--%if admin_signed_in?%-->
     	<% @images.each do |img| %>
-    		<img class="item" href= "<%= album_image_path(img.album, img) %>" src="<%= img.url %>" title="<%= "Image #{img.id}" %>"/>
+    		<img class="item" href= "<%= album_image_path(img.album, img) %>" src="<%= img.url %>"/>
     	<%end%>
-    <%else%>
+    	
+    	
+    <!--%else%>
       <% @albums.each do |alb|  %>
 			<% alb.images.find_in_batches do |img| %>
 				<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.url %>" title="<%= "Sol #{alb.sol}" %>"/>
 			<% end %>
       <% end %>
-    <%end%>
+    <%end%-->
     </div>
     <div class="globalCaption"></div>
     <!--div class="albumInformationForm" align="center" > Hello World

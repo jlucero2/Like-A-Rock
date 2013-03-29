@@ -4,6 +4,7 @@ class CreateImages < ActiveRecord::Migration
       t.string :url
       t.integer :sol
       t.references :album
+      t.integer :votes_count, :default => 0
 
       t.timestamps
     end
