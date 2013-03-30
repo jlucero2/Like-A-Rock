@@ -3,11 +3,11 @@
 <div class="ContentFlow" style = "margin-top:20px;margin-bottom:20px;">
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
-      	<% @albums.each do |alb| %>
-			<% alb.images.find_in_batches do |img| %>
-				<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.url %>" title="<%= "Sol #{alb.sol}" %>"/>
-			<% end %>
-      <% end %>
+      		<% @albums.each do |alb| %>
+				<% alb.images.find_in_batches do |img| %>
+					<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.url %>" title="<%= "Sol #{alb.sol}" %>"/>
+				<% end %>
+      		<% end %>
     </div>
     <div class="globalCaption"></div>
     <!--div class="albumInformationForm" align="center" > Hello World

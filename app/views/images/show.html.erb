@@ -29,8 +29,6 @@
 	<%= "Already Voted for this image." %>	
 <%end%>
 
-<h2>Your Questions</h2>
-
 <%if @comments.empty?%>
 	<%if current_user%>
 		<p>You have asked no Questions.</p>
@@ -40,9 +38,18 @@
 	<p>Comment <%= comment.id%>: <%= comment.body%></p>
 	<%end%>
 <%end%>
-
-<%if current_user%>
-
+<%if admin_signed_in?%>
+  <%if @comments.empty?%>
+    <p>There are no questions for this image.</p>
+  <%else%>
+    <%@comments.each do |comment|%>
+      <p><%=comment.user.name%></p>
+      <p><%=comment.body%></p>
+      <p><%=link_to 'Repond', new_response_path%></p>
+      <p></p>
+    <%end%>
+  <%end%>
+<%else%>
 <h2>Ask a Question:</h2>
 <div id="new_comment">
 	<%= form_for(@comment, :remote => true) do |f| %>
@@ -52,15 +59,11 @@
 		<%= f.hidden_field :user_id, :value => @user.id%></div>
 		<div class = "actions"><%= f.submit "Submit Question" %></div>
 	<% end %>
+<%end%>
 </div>
 <!--div id="comments-container">
   <%#= render :partial => @comments %>
 </div-->
-<%else%>
-	<p>
-	<div id = "Signin"> You must <%= link_to "Sign In", new_user_session_path, :remote => true %> to add a comment.</div>
-	</p>
-<%end%>
  
 <br />
 
