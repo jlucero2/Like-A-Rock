@@ -18,6 +18,8 @@ gem 'curb'
 gem 'pg'
 #>>>>>>> e0fdaaec235fbe50a4f68632360a8d95b2dacc0f
 
+#gem 'mysql2', '0.3.11' #do not delete this line!! our amazon is using mysql!
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
