@@ -1,3 +1,4 @@
+.ContentFlow {border: 20px solid #FFF;}
 .ContentFlow .flow .item canvas.content{height:100%;width:100%}
 .ContentFlow .flow .item.active{cursor:pointer}
 .ContentFlow .flow .item .caption{font-size:100%;font-weight:700;text-align:center;color:black;max-height:30%;bottom:10%;background:url(1x1_0.5_black.png);width:100%;position:absolute;display:none}
