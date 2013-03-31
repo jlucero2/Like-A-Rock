@@ -1,4 +1,13 @@
 class ResponsesController < ApplicationController
+
+  def index
+    @responses = Response.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @albums }
+    end
+  end
   
   def new
     @response = Response.new
