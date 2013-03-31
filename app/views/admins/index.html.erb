@@ -19,4 +19,22 @@
 <% end %>
 </table>
 
+<h1>Popular Images</h1> <!--Need to qualify for responded images -->
+<h2>Images that are popular but have no responses</h2>
+      <% @images.each do |img| %>
+        <img class="item" href= "<%=  %>" src="<%= img.url %>" width = "100" height = "100" />
+      <%end%>
+
+<h1>Trending Images</h1>
+<h2>All time most popular Images</h2>
+      <% @images.each do |img| %>
+        <img class="item" href= "<%=  %>" src="<%= img.url %>" width = "100" height = "100" />
+      <%end%>
+
+<h1>Recent Questions</h1>
+<h2>Recent posts about images that have not yet been answered</h2>
+      <% @images.each do |img| %>
+        <img class="item" href= "<%=  %>" src="<%= img.url %>" width = "100" height = "100" />
+      <%end%>
+
 <br />

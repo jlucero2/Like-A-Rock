@@ -1,4 +1,17 @@
 class ResponsesController < ApplicationController
+
+  def new
+    @response = Response.new
+    @comment = Comment.find(params[:comment])
+    @image = Image.find(params[:image])
+    @admin = current_admin
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @response }
+    end
+  end
+
   
   def new
     @response = Response.new

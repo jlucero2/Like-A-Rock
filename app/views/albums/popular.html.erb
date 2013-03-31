@@ -4,7 +4,7 @@
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
     	<% @images.each do |img| %>
-    		<img class="item" href= "<%= album_image_path(img.album, img) %>" src="<%= img.url %>""/>
+    		<img class="item" href= "<%= album_image_path(img.album, img) %>" src="<%= img.url %>"/>
     	<%end%>
     </div>
     <div class="globalCaption"></div>
