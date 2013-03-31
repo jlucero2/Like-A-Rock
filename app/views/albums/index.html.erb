@@ -1,3 +1,4 @@
+
 <script type = "text/javascript" src="/assets/contentflow.js"></script>
 
 <div class="ContentFlow" >
@@ -5,7 +6,7 @@
     <div class="flow">
       		<% @albums.each do |alb| %>
 				<% alb.images.find_in_batches do |img| %>
-					<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.url %>" title="<%= "Sol #{alb.sol}" %>"/>
+					<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.urlList %>" title="<%= "Sol #{alb.sol}" %>"/>
 				<% end %>
       		<% end %>
     </div>

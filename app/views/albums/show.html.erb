@@ -12,7 +12,7 @@
       <% @images.find_in_batches do |img| %>
 			<% sleep 1.5 %>
 			<% img.each do |image|%>
-				<img class="item" href = "<%= album_image_path(@album, image) %>" src="<%= image.url %>" title="<%= image.id %>"/>
+				<img class="item" href = "<%= album_image_path(@album, image) %>" src="<%= image.urlList %>" title="<%= image.id %>"/>
 				<!--div class="item"><div class="content">Text content to display</div></div-->
 			<% end %>
       <% end %>

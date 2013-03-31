@@ -248,7 +248,7 @@ p { margin-bottom: 1em; }
 #footer_bg_bottom { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/footer_bottom_rev2.png'); behavior: url(../../css/iepngfix/iepngfix.htc); }
 #footer_bg { background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/footer_bg_rev2.png'); behavior: url(../../css/iepngfix/iepngfix.htc); text-align: center; vertical-align: top; }
 #footer_bg td { padding: 5px 5px 5px 5px; text-align: center; vertical-align: top; }
-#footerbox { width: 941; margin-right: 10; margin-left: 10; margin-top: 2; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; }
+#footerbox { position: absolute; width: 941; margin-right: 10; margin-left: 10; margin-top: 2; font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000; }
 #searchbox { height: 16; width: 137; border: thin solid #9f5824; font-family: Arial, Helvetica, sans-serif; font-size: 11px; padding-left: 5px; padding-right: 5px; }
 .leftnav_titlebar, #leftbox1_titlebar, #leftbox2_titlebar, #rightbox1_titlebar, #rightbox2_titlebar, #rightbox3_titlebar, #featurestory_titlebar { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; color: #FFFFFF; text-align: center; }
 #featurestory_titlebar { padding-top: 10; }

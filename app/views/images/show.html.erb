@@ -18,16 +18,16 @@
   <%= @votes.count%>
 </p>
 
-<%if @vote.nil?%>
-	<%= form_for(@newvote, :remote => true) do |f| %>
+<%= form_for(@newvote, :remote => true) do |f| %>
+	<%if @vote.nil?%>
 		<%= f.hidden_field :image_id, :value => @image.id %>
 		<%= f.hidden_field :user_id, :value => @user.id %>
 		<div class = "actions">
 		<%= f.submit "Vote for Image" %> </div>
-	<% end %>
-<%else%>
-	<%= "Already Voted for this image." %>	
-<%end%>
+	<%else%>
+		<%= "Already Voted for this image." %>	
+	<%end%>
+<% end %>
 
 
 <%if admin_signed_in?%>

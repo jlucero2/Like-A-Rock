@@ -12,7 +12,7 @@ task :update_albums => :environment do
   arraymanifest = jsonmanifest.to_a
   
   if Album.find_by_sol("Popular Images").nil?
-    puts "\n***Creating Album: Populate Images***\n"
+    puts "\n***Creating Album: Popular Images***\n"
     a = Album.new
     a.sol = "Popular Images"
     a.num_images = 0
@@ -33,7 +33,7 @@ task :update_albums => :environment do
          a.sol = solnum.to_s
          a.url = thesolurl
          a.timestamp = lastupdate
-         a.num_images = numimages
+         a.num_images = numimages.to_i
          a.save
          solobject = Curl.get(thesolurl)
          jsonsol = JSON.parse(solobject.body_str)
@@ -43,13 +43,15 @@ task :update_albums => :environment do
          puts "Adding New Images."
          solarray[3][1].each do |j|
            imagearray = j.to_a
-           sampletype = imagearray[22][1]
-           if sampletype != "thumbnail"
-             imageurl = imagearray[14][1]
-             solday = imagearray[5][1]
+           imagehash = Hash[*imagearray.flatten]
+           #sampletype = imagearray[22][1]
+           if imagehash['sampleType'] != "thumbnail"
              n = solalb.images.new
-             n.url = imageurl 
-             n.sol = solday
+             imagehash.each do |info|
+               #puts info[0] + ": " + info[1]
+               n[info[0]] = info[1].to_s
+             end
+             #puts "n: #{n.inspect}"
              n.save
            else
              thumbnailcount += 1
@@ -79,18 +81,18 @@ task :update_albums => :environment do
          thumbnailcount = 0
          solarray[3][1].each do |j|
            imagearray = j.to_a
-           sampletype = imagearray[22][1]
-           imageurl = imagearray[14][1]
-           if solalb.images.find_by_url(imageurl).nil?
-             if sampletype != "thumbnail"
-               puts "Adding new image..."
-               solday = imagearray[5][1]
-               n = solalb.images.new
-               n.url = imageurl 
-               n.sol = solday
-               n.save
+           imagehash = Hash[*imagearray.flatten]
+           if solalb.images.find_by_urlList(imagehash["urlList"]).nil?
+             if imagehash["sampleType"] != "thumbnail"
+                n = solalb.images.new
+                imagehash.each do |info|
+                  #puts info[0] + ": " + info[1]
+                  n[info[0]] = info[1].to_s
+                end
+                puts "New Image: #{n.inspect}"
+                n.save
              else
-               thumbnailcount += 1
+                thumbnailcount += 1
              end
            end
          end
