@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <img width = "978" height= "500" src="<%= @image.url %>" />
+  <img width = "300" height= "300" src="<%= @image.url %>" />
 </p>
 
 <p>
@@ -27,6 +27,24 @@
 	<% end %>
 <%else%>
 	<%= "Already Voted for this image." %>	
+<%end%>
+
+
+<%if admin_signed_in?%>
+ <!-- if response . nill -->
+
+<p>
+<b>Respond To Image</b> 
+</p>
+
+
+        <%= form_for(@newresponse, :remote => true) do |f| %>
+                <div class="field">
+                <%= f.text_field :body, :autofocus => true %>
+                <%= f.hidden_field :image_id, :value => @image.id%>
+                <%= f.hidden_field :admin_id, :value => @user.id%></div>
+                <div class = "actions"><%= f.submit "Submit Response" %></div>
+        <% end %>
 <%end%>
 
 <%if @comments.empty?%>

@@ -6,9 +6,16 @@ class AdminsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @admins }
-    end
-    
+    end   
   end
-  #need a seperate column for count so that it doesn't have to go through every image every time. 
-  #rails provides us with a way to update the vote count automatically.
+
+  def show
+    @admin = Admin.find(params[:id])
+    @responses = @admin.responses
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user }
+    end
+  end
 end
