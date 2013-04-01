@@ -1,5 +1,3 @@
-<h1><font color = "white">Sol <%= @album.sol%></font> </h1>
-
 <script type="text/javascript" src="/assets/contentflow.js"></script>
 <!--script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script-->
 <!--script>
@@ -8,6 +6,7 @@
 
   <div id = "cf" class="ContentFlow"-->
   <div class = "ContentFlow">
+    <h1><font>Sol <%= @album.sol%></font> </h1>
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
       <% @images.find_in_batches do |img| %>
