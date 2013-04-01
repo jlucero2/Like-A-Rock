@@ -1,0 +1,20 @@
+<script type = "text/javascript" src="/assets/contentflow.js"></script>
+
+<div class="ContentFlow" style = "margin-top:20px;margin-bottom:20px;">
+    <div class="loadIndicator"><div class="indicator"></div></div>
+    <div class="flow">
+    	<% @images.each do |img| %>
+    		<img class="item" href= "<%= album_image_path(img.album, img) %>" src="<%= img.urlList %>""/>
+    	<%end%>
+    </div>
+    <div class="globalCaption"></div>
+    <!--div class="albumInformationForm" align="center" > Hello World
+      <div><label>Album Id: </label>  </div>
+      <div><label>Album Name: </label>  </div>
+      <div><label>Album Pictures: </label>  </div>
+      <div><label>Album Id: </label>  </div>
+    
+    </div-->
+    <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
+
+</div>

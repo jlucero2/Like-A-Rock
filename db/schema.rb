@@ -53,12 +53,35 @@ ActiveRecord::Schema.define(:version => 20130325221047) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "images", :force => true do |t|
-    t.string   "url"
-    t.integer  "sol"
+    t.string   "urlList"
+    t.string   "sol"
     t.integer  "album_id"
-    t.integer  "votes_count", :default => 0
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer  "votes_count",              :default => 0
+    t.string   "bucket"
+    t.string   "cameraModelComponentList"
+    t.string   "dateAdded"
+    t.string   "filterName"
+    t.string   "pdsLabelUrl"
+    t.string   "scaleFactor"
+    t.string   "sclk"
+    t.string   "attitude"
+    t.string   "cameraPosition"
+    t.string   "contributor"
+    t.string   "drive"
+    t.string   "cameraModelType"
+    t.string   "mastAz"
+    t.string   "site"
+    t.string   "cameraVector"
+    t.string   "itemName"
+    t.string   "subframeRect"
+    t.string   "utc"
+    t.string   "mastEl"
+    t.string   "instrument"
+    t.string   "lmst"
+    t.string   "sampleType"
+    t.string   "xyz"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   add_index "images", ["album_id"], :name => "index_images_on_album_id"
