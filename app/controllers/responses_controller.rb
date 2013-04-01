@@ -39,5 +39,14 @@ class ResponsesController < ApplicationController
       format.json { render json: @response}
     end
   end
+
+  def index
+    @responses = Response.all
+
+    respond_to do |format|
+	format.html # index.html.erb
+	format.json { render json: @albums }
+    end
+  end
   
 end
