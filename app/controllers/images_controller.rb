@@ -48,6 +48,7 @@ class ImagesController < ApplicationController
     
     if admin_signed_in?
       @comments = Comment.where(:image_id => @image)
+      @admin = current_admin
     else
       @comments = Comment.where(:user_id => @user, :image_id => @image)
     end
