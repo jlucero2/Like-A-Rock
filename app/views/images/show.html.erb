@@ -19,74 +19,74 @@
 </p>
 
 <%if admin_signed_in?%>
+	<h2>Questions:</h2>
+	<%if @comments.empty?%>
+			<p>There are no Questions for this image.</p>
+	<%else%>
+		<%@comments.each do |comment|%>
+		<p>Comment <%= comment.id%>: <%= comment.body%></p>
+		<%end%>
+	<%end%>
+
+	<h1>Respond</h1>
+
+	<%= form_for(@newresponse) do |f| %>
+	<div><%= f.label :body %><br />
+	<%= f.text_field :body, :autofocus => true %></div>
+	<%= f.hidden_field :image_id, :value => @image.id%>
+	<%= f.hidden_field :admin_id, :value => current_admin.id%>
+	<div><%= f.submit "Respond" %></div>
+
+<% end %>
 <%else%>
-<%= form_for(@newvote, :remote => true) do |f| %>
 	<%if @vote.nil?%>
-		<%= f.hidden_field :image_id, :value => @image.id %>
-		<%= f.hidden_field :user_id, :value => @user.id %>
-		<div class = "actions">
-		<%= f.submit "Vote for Image" %> </div>
+		<%= form_for(@newvote) do |f| %>
+			<%= f.hidden_field :image_id, :value => @image.id %>
+			<%= f.hidden_field :user_id, :value => @user.id %>
+			<div><%= f.submit "Vote for Image" %></div>
+		<% end %>
 	<%else%>
 		<%= "Already Voted for this image." %>	
 	<%end%>
-<% end %>
-<%end%>
 
+	<h2>Your Questions</h2>
 
-<%if admin_signed_in?%>
- <!-- if response . nill -->
+	<%if @comments.empty?%>
+		<%if current_user%>
+			<p>You have asked no Questions.</p>
+		<%end%>
+	<%else%>
+		<%@comments.each do |comment|%>
+		<p>Comment <%= comment.id%>: <%= comment.body%></p>
+		<%end%>
+	<%end%>
 
-<p>
-<b>Respond To Image</b> 
-</p>
-
-
-        <%= form_for(@newresponse, :remote => true) do |f| %>
-                <div class="field">
-                <%= f.text_field :body, :autofocus => true %>
-                <%= f.hidden_field :image_id, :value => @image.id%>
-                <%= f.hidden_field :admin_id, :value => @admin.id%></div>
-                <div class = "actions"><%= f.submit "Submit Response" %></div>
-        <% end %>
-<%end%>
-
-<%if @comments.empty?%>
 	<%if current_user%>
-		<p>You have asked no Questions.</p>
-	<%end%>
-<%else%>
-	<%@comments.each do |comment|%>
-	<p>Comment <%= comment.id%>: <%= comment.body%></p>
+		<h2>Ask a Question:</h2>
+		<%= form_for(@comment) do |f| %>
+	  		<%= f.text_field :body, :autofocus => true %></div>
+			<%= f.hidden_field :image_id, :value => @image.id%>
+			<%= f.hidden_field :user_id, :value => @user.id%>
+			<div><%= f.submit "Submit Question" %></div>
+		<% end %>
+	<%else%>
+		<p>You must <%= link_to "Sign In", new_user_session_path%> to add a comment.</p>
 	<%end%>
 <%end%>
-<%if admin_signed_in?%>
-  <%if @comments.empty?%>
-    <p>There are no questions for this image.</p>
-  <%else%>
-    <%@comments.each do |comment|%>
-      <p><%=comment.user.name%></p>
-      <p><%=comment.body%></p>
-      <p><%#=link_to 'Repond', new_response_path%></p>
-      <p></p>
-    <%end%>
-  <%end%>
-<%else%>
-<h2>Ask a Question:</h2>
-<div id="new_comment">
-	<%= form_for(@comment, :remote => true) do |f| %>
-		<div class="field">
-  		<%= f.text_field :body, :autofocus => true %>
-		<%= f.hidden_field :image_id, :value => @image.id%>
-		<%= f.hidden_field :user_id, :value => @user.id%></div>
-		<div class = "actions"><%= f.submit "Submit Question" %></div>
-	<% end %>
-<%end%>
-</div>
+ 
+ <h2>Responses:</h2>
+ <%if @responses.empty?%>
+		<p>There are no responses.</p>
+	<%else%>
+		<%@responses.each do |response|%>
+		<p>Response <%= response.id%>: <%= response.body%></p>
+		<%end%>
+	<%end%>
+ 
+<br />
 <!--div id="comments-container">
   <%#= render :partial => @comments %>
 </div-->
- 
-<br />
 
 <!--%= link_to 'Edit', edit_album_image_path(@image) %> |
 <!--%= link_to 'Back', album_images_path %-->
