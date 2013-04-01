@@ -5,6 +5,7 @@ class CreateImages < ActiveRecord::Migration
       t.string :sol
       t.references :album
       t.integer :votes_count, :default => 0
+      t.integer :responses_count, :default => 0
       t.string :bucket
       t.string :cameraModelComponentList
       t.string :dateAdded

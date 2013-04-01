@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130325221047) do
     t.string   "sol"
     t.integer  "album_id"
     t.integer  "votes_count",              :default => 0
+    t.integer  "responses_count",          :default => 0
     t.string   "bucket"
     t.string   "cameraModelComponentList"
     t.string   "dateAdded"

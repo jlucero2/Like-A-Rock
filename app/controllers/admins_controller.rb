@@ -2,7 +2,8 @@ class AdminsController < ApplicationController
   
   def index
     @admins = Admin.all
-    @images = Image.order('votes_count DESC').all(:limit => 10)
+    @images1 = Image.where(:responses_count => 0).order('votes_count DESC').all(:limit => 9)
+    @images2 = Image.order('votes_count DESC').all(:limit => 9)
     
 
 

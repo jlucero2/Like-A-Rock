@@ -1,5 +1,5 @@
 class Response < ActiveRecord::Base
-  belongs_to :image
+  belongs_to :image, :counter_cache => true
   belongs_to :admin
   attr_accessible :body
 
