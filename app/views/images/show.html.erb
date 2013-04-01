@@ -24,7 +24,7 @@
 			<p>There are no Questions for this image.</p>
 	<%else%>
 		<%@comments.each do |comment|%>
-		<p>Comment <%= comment.id%>: <%= comment.body%></p>
+		<p>Comment from <%= comment.user.name%>: <%= comment.body%></p>
 		<%end%>
 	<%end%>
 
