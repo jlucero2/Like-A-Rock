@@ -2,12 +2,17 @@ class AdminsController < ApplicationController
   
   def index
     @admins = Admin.all
-    @images = Image.order('votes_count DESC').all(:limit => 15)
+    @images = Image.order('votes_count DESC').all(:limit => 10)
+    
+
+
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @admins }
+      format.html # index.html.erb after it's finished running the controller function
+                  #index it looks for a file index.erb.html 
+      format.json { render json: @admins } #index it looks for a file index.json 
     end   
   end
+
 
   def show
     @admin = Admin.find(params[:id])

@@ -1,10 +1,10 @@
 <script language="JavaScript" type="text/javascript" src="assets/contentflow.js"></script>
-
+<h1>Popular Images</h1>
 <div class="ContentFlow">
-            <div class="loadIndicator"><div class="indicator"></div></div>
-            <div class="flow">
-		<img class="item" src="/assets/mugiwaras.jpg" title="Mugiwara"/>
-                <img class="item" src="/assets/Analysis.jpg" title="Analysis"/>
+        <div class="loadIndicator"><div class="indicator"></div></div>
+        <div class="flow">
+	<img class="item" src="/assets/mugiwaras.jpg" title="Mugiwara"/>
+            <img class="item" src="/assets/Analysis.jpg" title="Analysis"/>
                                 <img class="item" src="/assets/vintageff.jpg" title="Final Fantasy"/>
             </div>
             <div class="globalCaption"></div>
