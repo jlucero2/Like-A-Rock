@@ -22,7 +22,7 @@
 <h1>Popular Images</h1> <!--Need to qualify for responded images -->
 <h2>Images that are popular but have no responses</h2>
       <% @images.each do |img| %>
-        <img class="item" href= "<%=  %>" src="<%= img.url %>" width = "100" height = "100" />
+        <img class="item" src="<%= img.urlList %>" width = "100" height = "100" />
       <%end%>
 
 <h1>Trending Images</h1>
