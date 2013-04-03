@@ -4,6 +4,7 @@ class AdminsController < ApplicationController
     @admins = Admin.all
     @images1 = Image.where(:responses_count => 0).order('votes_count DESC').all(:limit => 9)
     @images2 = Image.order('votes_count DESC').all(:limit => 9)
+    @images3 = Image.where(:responses_count => 0).order('votes_count DESC').all(:limit => 9)
     
 
 

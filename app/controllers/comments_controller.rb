@@ -3,7 +3,11 @@ class CommentsController < ApplicationController
   
   def create
     @image = Image.find(params[:comment][:image_id])
-    @user = current_user
+    if user_signed_in?
+      @user = current_user
+    else
+      @user = User.find_by_ip(request.remote_ip)
+    end
     @comment = Comment.new
     @comment.user = @user
     @comment.image = @image

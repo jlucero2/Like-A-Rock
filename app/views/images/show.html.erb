@@ -52,16 +52,14 @@
 	<h2>Your Questions</h2>
 
 	<%if @comments.empty?%>
-		<%if current_user%>
 			<p>You have asked no Questions.</p>
-		<%end%>
 	<%else%>
 		<%@comments.each do |comment|%>
 		<p>Comment <%= comment.id%>: <%= comment.body%></p>
 		<%end%>
 	<%end%>
 
-	<%if current_user%>
+	
 		<h2>Ask a Question:</h2>
 		<%= form_for(@comment) do |f| %>
 	  		<%= f.text_field :body, :autofocus => true %></div>
@@ -69,9 +67,7 @@
 			<%= f.hidden_field :user_id, :value => @user.id%>
 			<div><%= f.submit "Submit Question" %></div>
 		<% end %>
-	<%else%>
-		<p>You must <%= link_to "Sign In", new_user_session_path%> to add a comment.</p>
-	<%end%>
+	
 <%end%>
  
  <h2>Responses:</h2>
@@ -79,7 +75,7 @@
 		<p>There are no responses.</p>
 	<%else%>
 		<%@responses.each do |response|%>
-		<p>Response <%= response.id%>: <%= response.body%></p>
+		<p>Response from <%= response.admin.name%>: <%= response.body%></p>
 		<%end%>
 	<%end%>
  
