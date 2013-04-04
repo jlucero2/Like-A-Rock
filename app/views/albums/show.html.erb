@@ -6,7 +6,7 @@
 
   <div id = "cf" class="ContentFlow"-->
   <div class = "ContentFlow">
-    <h1><font>Sol <%= @album.sol%></font> </h1>
+    <h1><font>Date:  <%= @album.earthday%></font> </h1>
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
       <% @images.find_in_batches do |img| %>

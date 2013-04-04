@@ -4,7 +4,7 @@ require 'net/http'
 require 'open-uri'
 require 'curb'
 
-task :update_albums => :environment do
+task :update_earthalbums => :environment do
   puts "rake the world!"
   test = Curl.get("mars.jpl.nasa.gov/msl-raw-images/image/image_manifest.json")
   jsonmanifest = JSON.parse(test.body_str)
