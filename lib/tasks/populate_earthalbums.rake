@@ -47,8 +47,8 @@ task :update_earthalbums => :environment do
             a = Album.new
             a.earthday = earthday.to_s
             a.url = thesolurl
-            #a.timestamp = lastupdate
-            #a.num_images = numimages.to_i
+            a.timestamp = lastupdate
+            a.num_images = numimages.to_i
             a.save
             earthalb = Album.find_by_earthday(earthday.to_s)
             n = earthalb.images.new

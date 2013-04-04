@@ -42,12 +42,13 @@ task :update_earthalbums => :environment do
           datetime = imagehash['utc']
           earthday = datetime.split('t', 2).first
           if Album.find_by_earthday(earthday.to_s).nil?
+            puts "creating new album for #{earthday} \n"
             #create it if it doesn't
             a = Album.new
             a.earthday = earthday.to_s
             a.url = thesolurl
-            a.timestamp = lastupdate
-            a.num_images = numimages.to_i
+            #a.timestamp = lastupdate
+            #a.num_images = numimages.to_i
             a.save
             earthalb = Album.find_by_earthday(earthday.to_s)
             n = earthalb.images.new
@@ -59,17 +60,18 @@ task :update_earthalbums => :environment do
             n.save
           else
             earthalb = Album.find_by_earthday(earthday.to_s)
-            if earthalb.timestamp != lastupdate and numimages.to_i != earthalb.num_images
-              puts "Updating Album Sol #{solnum}...\n"
-              n = earthalb.images.new
-              imagehash.each do |info|
-                #puts info[0] + ": " + info[1]
-                n[info[0]] = info[1].to_s
-              end
-              puts "New Image: #{n.inspect}"
-              n.save
-            else
-              puts "***Album up to date.***\n"
+            #if earthalb.timestamp != lastupdate and numimages.to_i != earthalb.num_images
+            puts "Updating Album Sol #{solnum}...\n"
+            n = earthalb.images.new
+            imagehash.each do |info|
+              #puts info[0] + ": " + info[1]
+              n[info[0]] = info[1].to_s
+            end
+            puts "New Image: #{n.inspect}"
+            #if n
+            #n.save
+            #else
+            #  puts "***Album up to date.***\n"
             end
           end
         else
