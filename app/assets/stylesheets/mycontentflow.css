@@ -9,9 +9,6 @@
 * html .ContentFlow .scrollbar .slider .virtualSlider{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=crop, src='slider_white.png');height:100%}
 .ContentFlow .scrollbar .slider .position{top:120%;font-size:16px;font-weight:700;color:silver;position:absolute;text-align:center}
 .ContentFlow .globalCaption{text-align:center;font-weight:700;color:#FFF;font-size:14px;height:20px;position:relative;z-index:1;margin:2em auto}
-.ContentFlow .loadIndicator{width:100%;height:100%;top:0;left:0;background:#000;position:absolute;z-index:65000}
-.ContentFlow .loadIndicator .indicator{background:url(loader.gif) center center no-repeat;width:100%;height:100%}
-* html .ContentFlow .loadIndicator .indicator{height:100px}
 .ContentFlow{position:relative;overflow:hidden}
 .ContentFlow *{margin:0;padding:0}
 .ContentFlow img{-ms-interpolation-mode:bicubic}
