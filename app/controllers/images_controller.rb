@@ -14,6 +14,7 @@ class ImagesController < ApplicationController
     
      def ajaxTest 
     @images = Image.order('votes_count DESC').all(:limit => 5)
+    @moreImages = Image.order('votes_count DESC').all(:limit => 200)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @albums }

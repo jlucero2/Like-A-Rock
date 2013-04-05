@@ -5,9 +5,14 @@
   <script type="text/javascript">
   var myCF = new ContentFlow('myContentFlow');
   var imageURLs = []; 
-
+  var jsObj = []; 
+  function bar(){
+      <% @moreImages.each do |img| %>
+      jsObj.push("<%= img.urlList %>"); 
+      <% end %>
+  }
     function foo(){
- imageURLs.push("http://jacksasylum.eu/ContentFlow/pics/pic2.jpg");
+            imageURLs.push("http://jacksasylum.eu/ContentFlow/pics/pic2.jpg");
             imageURLs.push("http://jacksasylum.eu/ContentFlow/pics/pic3.jpg");
             imageURLs.push("http://jacksasylum.eu/ContentFlow/pics/pic4.jpg");
             imageURLs.push("http://jacksasylum.eu/ContentFlow/pics/pic5.jpg");
@@ -50,6 +55,7 @@
     } 
     function populateImageArray(){
       foo(); 
+      bar(); 
       $("#testing1").hide();
       for (var i=0; i< imageURLs.length; i++) {
         var img = $('<img class="image">');
