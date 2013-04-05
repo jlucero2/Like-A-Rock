@@ -12,6 +12,15 @@ class ImagesController < ApplicationController
     end
   end
     
+     def ajaxTest 
+    @images = Image.order('votes_count DESC').all(:limit => 5)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @albums }
+      format.js {render :layout => false}
+    end
+  end 
+  
   def create #UPDATED FOR ALBUMS
     @album = Album.find(params[:album_id])
     @image = @album.images.create(params[:image])
