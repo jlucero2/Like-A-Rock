@@ -1,23 +1,52 @@
 
 <script type = "text/javascript" src="/assets/contentflow.js"></script>
-
-<div class="ContentFlow" >
+<script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+  <script type="text/javascript">
+  var myCF = new ContentFlow('albContentFlow');
+  var imageURLs = []; 
+  var jsObj = [];
+  var hrefObj = [];
+  var titleObj = [];
+  function bar(){
+	<% @albums.each do |alb| %>
+		<% alb.images.find_in_batches do |img| %>
+      		jsObj.push("<%= img.first.urlList %>"); 
+			hrefObj.push("<%= album_path(alb) %>");
+			titleObj.push("<%= "Sol: #{alb.sol}" %>");
+		<% end %>
+      <% end %>
+  }
+	function populateImageArray(){
+    bar(); 
+    $("#testing1").hide();
+    for (var i=0; i< jsObj.length; i++) {
+      var img = $('<img class="image">');
+      img.attr('src', jsObj[i]);
+		img.attr('href', hrefObj[i]);
+		img.attr('title', titleObj[i])
+      img.appendTo('#testing1');
+      }     
+  }
+  function updateCoverFlow(){
+    var ic = document.getElementById('testing1');
+    var is = ic.getElementsByTagName('img');
+      for (var i=0; i< is.length; i++) {
+          myCF.addItem(is[i], 'last');}
+  }
+  function window_OnLoadEvent() {
+      populateImageArray(); 
+      updateCoverFlow(); 
+      }
+  window.onload = setTimeout(window_OnLoadEvent,800);
+</script>
+<div id="albContentFlow" div class="ContentFlow" >
     <div class="loadIndicator"><div class="indicator"></div></div>
     <div class="flow">
-      		<% @albums.each do |alb| %>
-				<% alb.images.find_in_batches do |img| %>
-					<img class="item" href= "<%= album_path(alb) %>" src="<%= img.first.urlList %>" title="<%= "Sol #{alb.sol}" %>"/>
-				<% end %>
-      		<% end %>
     </div>
     <div class="globalCaption"></div>
-    <!--div class="albumInformationForm" align="center" > Hello World
-      <div><label>Album Id: </label>  </div>
-      <div><label>Album Name: </label>  </div>
-      <div><label>Album Pictures: </label>  </div>
-      <div><label>Album Id: </label>  </div>
-    
-    </div-->
     <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
-
+</div>
+<div id="testing1" class="testing2" style="display: hidden">
 </div>

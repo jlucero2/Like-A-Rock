@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
     end
   end
     
-     def ajaxTest 
+  def ajaxTest 
     @images = Image.order('votes_count DESC').all(:limit => 5)
     @moreImages = Image.order('votes_count DESC').all(:limit => 200)
     respond_to do |format|

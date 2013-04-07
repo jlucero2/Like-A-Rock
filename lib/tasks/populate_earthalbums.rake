@@ -4,7 +4,7 @@ require 'net/http'
 require 'open-uri'
 require 'curb'
 
-task :update_earthalbums => :environment do
+task :update_earthalbums2 => :environment do
   puts "rake the world!"
   test = Curl.get("mars.jpl.nasa.gov/msl-raw-images/image/image_manifest.json")
   jsonmanifest = JSON.parse(test.body_str)
@@ -72,7 +72,7 @@ task :update_earthalbums => :environment do
             #n.save
             #else
             #  puts "***Album up to date.***\n"
-            end
+            #end
           end
         else
           thumbnailcount += 1

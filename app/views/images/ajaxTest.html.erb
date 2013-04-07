@@ -5,10 +5,12 @@
   <script type="text/javascript">
   var myCF = new ContentFlow('myContentFlow');
   var imageURLs = []; 
-  var jsObj = []; 
+  var jsObj = [];
+  var hrefObj = [];
   function bar(){
       <% @moreImages.each do |img| %>
-      jsObj.push("<%= img.urlList %>"); 
+      		jsObj.push("<%= img.urlList %>"); 
+			hrefObj.push("<%= album_image_path(img.album, img) %>");
       <% end %>
   }
     function foo(){
@@ -54,12 +56,13 @@
             imageURLs.push("http://jacksasylum.eu/ContentFlow/pics/pic41.jpg");
     } 
     function populateImageArray(){
-      foo(); 
+      //foo(); 
       bar(); 
       $("#testing1").hide();
-      for (var i=0; i< imageURLs.length; i++) {
+      for (var i=0; i< jsObj.length; i++) {
         var img = $('<img class="image">');
-        img.attr('src', imageURLs[i]);
+        img.attr('src', jsObj[i]);
+		img.attr('href', hrefObj[i]);
         img.appendTo('#testing1');
         }     
     }

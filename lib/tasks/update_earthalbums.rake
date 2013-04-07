@@ -72,7 +72,7 @@ task :update_earthalbums => :environment do
             #n.save
             #else
             #  puts "***Album up to date.***\n"
-            end
+            #end
           end
         else
           thumbnailcount += 1

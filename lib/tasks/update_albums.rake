@@ -11,13 +11,13 @@ task :update_albums => :environment do
 
   arraymanifest = jsonmanifest.to_a
   
-  if Album.find_by_sol("Popular Images").nil?
-    puts "\n***Creating Album: Popular Images***\n"
-    a = Album.new
-    a.sol = "Popular Images"
-    a.num_images = 0
-    a.save
-  end
+  #if Album.find_by_sol("Popular Images").nil?
+   # puts "\n***Creating Album: Popular Images***\n"
+    #a = Album.new
+    #a.sol = "Popular Images"
+    #a.num_images = 0
+    #a.save
+  #end
 
   arraymanifest[4][1].each do |i|
      arrayofsols = i.to_a #makes i into array

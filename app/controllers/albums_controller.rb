@@ -5,12 +5,13 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @albums }
+      format.js {render :layout => false}
     end
   end
 
   def popular
     @albums = Album.all
-    @images = Image.order('votes_count DESC').all(:limit => 15)
+    @images = Image.order('votes_count DESC').all(:limit => 100)
 
     respond_to do |format|
       format.html # index.html.erb
