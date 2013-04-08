@@ -16,8 +16,8 @@ TestJpl::Application.routes.draw do
   get "albums/popular"
   root :to => 'albums#popular'
 
-  get "images/ajaxTest"
-  root :to => 'images#ajax'
+  get "images/tagTest"
+  root :to => 'images#tagTest'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
