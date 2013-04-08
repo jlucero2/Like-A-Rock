@@ -1,6 +1,0 @@
-var form = $("#new_comment");
-
-$("#comments-container").prepend('<%= j(render(:partial => "comment", :object => @comment))%>');
-
-  // empty the form for new submission
-  form.find('input:text,textarea').val('');
