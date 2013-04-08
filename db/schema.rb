@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20130404204254) do
 
   create_table "responses", :force => true do |t|
     t.text     "body"
+    t.text     "url"
     t.integer  "admin_id"
     t.integer  "image_id"
     t.datetime "created_at", :null => false
