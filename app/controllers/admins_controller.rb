@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
   
   def authenticate
     if !admin_signed_in?
-      #redirect_to(request.env["HTTP_REFERER"])
+      redirect_to root_path
     end
   end
   
