@@ -3,6 +3,8 @@ TestJpl::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
+  match "/admins/sign_up" => redirect('/')
+
   resources :responses
   resources :admins
   resources :users
@@ -15,10 +17,8 @@ TestJpl::Application.routes.draw do
   
   get "albums/popular"
   root :to => 'albums#popular'
-
-  #get "images/ajaxTest"
-  #get "images/tagTest"
-  #root :to => 'images#ajax'
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
