@@ -1,4 +1,11 @@
 class AdminsController < ApplicationController
+  prepend_before_filter :authenticate
+  
+  def authenticate
+    if !admin_signed_in?
+      #redirect_to(request.env["HTTP_REFERER"])
+    end
+  end
   
   def index
     @admins = Admin.all

@@ -4,5 +4,6 @@ class Image < ActiveRecord::Base
   validates :sol, :presence => true
   belongs_to :album
   has_many :votes, :dependent => :destroy
+  has_many :responses, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 end
