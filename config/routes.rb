@@ -3,8 +3,6 @@ TestJpl::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  match "/admins/sign_up" => redirect('/')
-
   resources :responses
   resources :admins
   resources :users
