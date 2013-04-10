@@ -5,6 +5,9 @@ class RegistrationsController < Devise::RegistrationsController #< DeviseControl
   # GET /resource/sign_up
   def new
     resource = build_resource({})
+    if resource_name == :admin && !admin_logged_in?
+      redirect_to(root_path) and return
+    end
     respond_with resource
   end
 

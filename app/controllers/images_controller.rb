@@ -67,8 +67,15 @@ class ImagesController < ApplicationController
     @newvote = @image.votes.new
     @responses = Response.where(:image_id => @image)
     @newresponse = Response.new
+    
+    if admin_signed_in?
+        render 'adminShow' and return
+      else
+        render 'show' and return
+      end
 
     respond_to do |format|
+      
       format.html # show.html.erb
       format.json { render json: @image }
       format.js {render :layout => false }
