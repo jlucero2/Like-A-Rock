@@ -271,3 +271,12 @@ html>body .featuredListItemBlurb { margin-left:10px; }
 #more a:link, #more a:hover, #more a:visited { font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #2C83CE; margin-right: 3px; text-decoration:none; }
 a.pageOn:link, a.pageOn:hover, a.pageOn:visited { color:#2C83CE; font-size:12px; font-weight:bold; margin-left:3px; }
 a.pageOff:link, a.pageOff:hover, a.pageOff:visited { color:#72B0E6; font-weight:bold; font-size:12px; margin-left:3px; }
+
+
+
+.center{ margin: 0 auto; width: 400px; }
+.centre {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}

@@ -11,7 +11,7 @@ class AlbumsController < ApplicationController
 
   def popular
     @albums = Album.all
-    @images = Image.order('votes_count DESC').all(:limit => 100)
+    @images = Image.order('votes_count DESC').all(:limit => 25)
 
     respond_to do |format|
       format.html # index.html.erb
