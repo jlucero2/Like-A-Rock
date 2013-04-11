@@ -12,12 +12,14 @@ class ImagesController < ApplicationController
     end
   end
     
-  def tagTest 
-    @images = Image.order('votes_count DESC').all(:limit => 100)
-    @moreImages = Image.order('votes_count DESC').all(:limit => 200)
+  def tagTest
+    #@album = Album.find(params[:album_id]) 
+    #@images = Image.order('votes_count DESC').all(:limit => 100)
+    #@moreImages = Image.order('votes_count DESC').all(:limit => 200)
+    @id = "ID"
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @albums }
+      #format.json { render json: @albums }
       format.js {render :layout => false}
     end
   end 

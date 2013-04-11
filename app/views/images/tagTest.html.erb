@@ -1,0 +1,24 @@
+<link media="screen" type="text/css" href="/assets/jquery-ui-1.8.17.custom.css" rel="stylesheet">
+<link media="screen" type="text/css" href="/assets/tagstyles2.css" rel="stylesheet">
+<script type="text/javascript" src="/assets/jquery.dev.1.7.1.js"></script>
+<script type="text/javascript" src="/assets/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="/assets/jquery.phototag.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.photoTag').photoTag({
+		addTagUrl: "<%= images_tagTest_path %>",
+		parametersForNewTag: {
+			name: {
+				parameterKey: 'name',
+				isAutocomplete: true,
+				label: "<%= @id %>"					
+			}
+		}
+	});
+});
+</script> 
+<img src="http://th06.deviantart.net/fs70/PRE/i/2012/222/e/2/pokemon_space_by_hamzilla22-d5ameyi.jpg" class="photoTag" width = "990" height= "500"> data-user-id="25> data-image-id="200> data-album-id="200>
+
+ 
+
+<p> Hello World! </p>

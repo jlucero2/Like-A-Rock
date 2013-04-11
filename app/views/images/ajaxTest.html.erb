@@ -1,0 +1,48 @@
+<script type="text/javascript" src="/assets/contentflow.js"></script>
+<script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script>
+</script>
+  <script type="text/javascript">
+  var myCF = new ContentFlow('imgContentFlow');
+  var imageURLs = []; 
+  var jsObj = [];
+  var hrefObj = [];
+  function bar(){
+	<% @images.find_in_batches do |img| %>
+		<% img.each do |image| %>
+      		jsObj.push("<%= image.urlList %>"); 
+			hrefObj.push("<%= album_image_path(@album, image) %>");
+		<% end %>
+      <% end %>
+  }
+	function populateImageArray(){
+    bar(); 
+    $("#testing1").hide();
+    for (var i=0; i< jsObj.length; i++) {
+      var img = $('<img class="image">');
+      img.attr('src', jsObj[i]);
+		img.attr('href', hrefObj[i]);
+      img.appendTo('#testing1');
+      }     
+  }
+  function updateCoverFlow(){
+    var ic = document.getElementById('testing1');
+    var is = ic.getElementsByTagName('img');
+      for (var i=0; i< is.length; i++) {
+          myCF.addItem(is[i], 'last');}
+  }
+  function window_OnLoadEvent() {
+      populateImageArray(); 
+      updateCoverFlow(); 
+      }
+  window.onload = setTimeout(window_OnLoadEvent,800);
+</script>
+<div id="imgContentFlow" div class="ContentFlow" >
+    <div class="loadIndicator"><div class="indicator"></div></div>
+    <div class="flow">
+    </div>
+    <div class="globalCaption"></div>
+    <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
+</div>
+<div id="testing1" class="testing2" style="display: hidden">
+</div>
+

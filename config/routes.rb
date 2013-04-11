@@ -8,20 +8,31 @@ TestJpl::Application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
-  resources :responses
-  resources :admins
-  resources :users
   resources :votes
   resources :comments
+  
+  resources :admins do
+    resources :responses
+  end
 
   resources :albums do
     resources :images
   end
   
+  resources :images do
+    resources :tags
+  end
+  
+  resources :users do
+    resources :tags
+  end
+  
   get "albums/popular"
   root :to => 'albums#popular'
-  
-  
+
+  #get "images/ajaxTest"
+  #get "images/tagTest"
+  #root :to => 'images#tagTest'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
