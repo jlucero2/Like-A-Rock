@@ -1,5 +1,10 @@
 TestJpl::Application.routes.draw do
-  devise_for :admins, :controllers => {:registrations => "registrations"}
+
+  devise_for :admins, :skip => [:registrations]
+  
+  as :admin do
+    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
+  end
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 

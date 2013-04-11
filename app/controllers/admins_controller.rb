@@ -7,6 +7,26 @@ class AdminsController < ApplicationController
     end
   end
   
+  def new
+    @admin = Admin.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+  
+  def create
+    @admin = Admin.new(params[:admin])
+
+    respond_to do |format|
+      if @admin.save
+        format.html { redirect_to admins_path, notice: 'Admin was successfully created.' }
+      else
+        format.html { render action: "new", notice: 'Admin not saved' }
+      end
+    end
+  end
+  
   def index
     @admins = Admin.all
     @images1 = Image.where(:responses_count => 0).order('votes_count DESC').all(:limit => 9)
