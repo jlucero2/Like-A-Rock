@@ -1,1 +1,39 @@
-<p>This is the OTHER SHOW (for admin) page</p>
+<script type="text/javascript" src="/assets/ContentFlowAddOn_white.js"></script>
+<p id="notice"><%= notice %></p>
+  <img width = "990" height= "500" src="<%= @image.urlList %>" align = "middle" />
+<p>
+  <b>Sol:</b>
+  <%= @image.sol %>
+</p>
+
+<p>
+  <b>URL:</b>
+  <%= @image.urlList %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%= @votes.count%>
+</p>
+
+
+<h2>Questions:</h2>
+<%if @comments.empty?%>
+		<p>There are no Questions for this image.</p>
+<%else%>
+	<%@comments.each do |comment|%>
+	<p>Comment from <%= comment.user.name%>: <%= comment.body%></p>
+	<%end%>
+<%end%>
+
+<h1>Respond</h1>
+
+<%= form_for(@newresponse) do |f| %>
+<div><%= f.label "URL" %><br />
+<%= f.text_area :url, :size => "100x1"%></div>
+<div><%= f.label "Body" %><br />
+<%= f.text_area :body, :size => "100x10"%></div>
+<%= f.hidden_field :image_id, :value => @image.id%>
+<%= f.hidden_field :admin_id, :value => current_admin.id%>
+<div><%= f.submit "Respond" %></div>
+<%end%>

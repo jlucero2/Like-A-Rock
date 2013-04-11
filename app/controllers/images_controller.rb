@@ -70,9 +70,9 @@ class ImagesController < ApplicationController
     
     if admin_signed_in?
         render 'adminShow' and return
-      else
+    else
         render 'show' and return
-      end
+    end
 
     respond_to do |format|
       

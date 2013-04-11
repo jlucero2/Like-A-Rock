@@ -273,8 +273,7 @@ a.pageOn:link, a.pageOn:hover, a.pageOn:visited { color:#2C83CE; font-size:12px;
 a.pageOff:link, a.pageOff:hover, a.pageOff:visited { color:#72B0E6; font-weight:bold; font-size:12px; margin-left:3px; }
 
 
-
-.center{ margin: 0 auto; width: 400px; }
+/*This is the class for the videos.*/
 .centre {
     margin-left: auto;
     margin-right: auto;

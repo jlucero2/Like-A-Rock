@@ -17,6 +17,7 @@ class ResponsesController < ApplicationController
     @response = Response.new 
     
     @response.body = params[:response][:body]
+    @response.url = params[:response][:url]
     @response.image = Image.find(params[:response][:image_id])
     @response.admin = Admin.find(params[:response][:admin_id])
     
