@@ -1,4 +1,4 @@
- <img width = "990" height= "500" src="<%= @image.urlList %>" align = "middle" />
+ <img width = "800" height= "450" src="<%= @image.urlList %>" align = "middle" />
 <p>
   <b>Sol:</b>
   <%= @image.sol %>
@@ -59,14 +59,12 @@
 	
 		<h2>Ask a Question:</h2>
 		<%= form_for(@comment, remote: true) do |f| %>
-	  		<%= f.text_field :body, :autofocus => true %></div>
+	  		<%= f.text_field :body, :autofocus => true %>
 			<%= f.hidden_field :image_id, :value => @image.id%>
 			<%= f.hidden_field :user_id, :value => @user.id%>
 			<div><%= f.submit "Submit Question" %></div>
-		<% end %>
-	
+		<% end %>	
 <%end%>
- 
  <h2>Responses:</h2>
  <%if @responses.empty?%>
 		<p>There are no responses.</p>
