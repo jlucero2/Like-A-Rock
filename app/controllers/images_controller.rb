@@ -75,6 +75,21 @@ class ImagesController < ApplicationController
     else
         render 'show' and return
     end
+      @tags = @image.tags
+      @tag = @tags.find(params[:id])
+      @newtag = @tags.create(params[:tag])
+     
+      respond_to do |format|
+        if @image.save
+          format.html { redirect_to album_image_path(@album, @image), notice: 'Image was successfully created.' }
+          format.json { render json: @image, status: :created, location: @image }
+          format.js {render :layout => false}
+        else
+          format.html { render action: "new" }
+          format.json { render json: @image.errors, status: :unprocessable_entity }
+          format.js {render :layout => false}
+        end
+      end
 
     respond_to do |format|
       
@@ -103,6 +118,28 @@ class ImagesController < ApplicationController
       else
         format.html { render action: "edit" }
         format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def picture
+    @image = Image.find(params[:image_id])
+    @tags = @image.tags
+    @tag = @image.tags.find(params[:id])
+    @newtag = @image.tags.create(params[:tag])
+    if user_signed_in?
+      @user = current_user
+    else
+      @user = User.find_by_ip(request.remote_ip)
+    end
+    respond_to do |format|
+      if @image.save
+        format.html { redirect_to album_image_path(@album, @image), notice: 'Image was successfully created.' }
+        format.json { render json: @image, status: :created, location: @image }
+        format.js {render :layout => false}
+      else
+        format.html { render action: "new" }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+        format.js {render :layout => false}
       end
     end
   end

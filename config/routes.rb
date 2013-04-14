@@ -16,7 +16,9 @@ TestJpl::Application.routes.draw do
   end
 
   resources :albums do
-    resources :images
+    resources :images do
+      resources :tags
+    end
   end
   
   resources :images do
@@ -29,6 +31,8 @@ TestJpl::Application.routes.draw do
   
   get "albums/popular"
   root :to => 'albums#popular'
+  #get "images/tagTest"
+  #match 'images/:id/tags' => 'images#tagTest'
 
   #get "images/ajaxTest"
   #get "images/tagTest"
