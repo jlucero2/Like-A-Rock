@@ -184,7 +184,7 @@ preloadImages();
 </div>
 </div>
 <div id="contentBox_contentPage">
-  <div id="breadcrumbs"><a href='#'>Like A Rock</a>&nbsp;&gt;&nbsp;<a href='#'>Title of the page</a></div>
+  <div id="breadcrumbs"><a href='#'>Like A Rock</a>&nbsp;&gt;&nbsp;<a href='#'><%= controller.controller_name.capitalize%></a>&nbsp;&gt;&nbsp;<a href='#'><%= controller.action_name.capitalize%></a></div>
   <table border="0" cellpadding="0" cellspacing="0" align="center">
     <tr>
       <td class="pageTitleBox">Like-A-Rock</td>
@@ -194,20 +194,25 @@ preloadImages();
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:7px;">
           <tr>
            <div id = "user_nav">
-            <td width="100%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: bold; ">
+           	<td width="50%" align="left" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: bold; ">
               <a href="<%=root_path%>" class="middlenav">Home</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
+              <a href="<%=albums_path%>" class="middlenav">Albums By Day</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span></a>
+              <a href="<%=albums_responded_path%>" class="middlenav">Recent Responses</a> 
+            </td>
+            
+            <td width="50%" align="right" style="padding-left: 0px; padding-right: 0px; padding-bottom: 4px; color: #92543F; font-weight: bold; ">
               <% if admin_signed_in? %>
-              <a href="<%=admins_path%>" class="middlenav">Signed in as Administrator</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
-              <a href="<%=destroy_admin_session_path%>" class="middlenav">Sign Out</a><a href="#" class="middlenav"><span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
+              	<a href="<%=admins_path%>" class="middlenav">Signed in as Administrator</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
+              	<a href="<%=destroy_admin_session_path%>" class="middlenav">Sign Out</a>
               <% elsif user_signed_in? %>
-              <a class="middlenav">Signed in as <%= current_user.name %> </a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
-              <a href="<%=destroy_user_session_path%>" class="middlenav">Sign Out</a><a href="#" class="middlenav"><span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
+              	<a href="<%=user_path(current_user)%>">Signed in as <%= current_user.name %> </a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
+              	<a href="<%=destroy_user_session_path%>" class="middlenav">Sign Out</a>
               <% else %>
-              <a class="middlenav">Signed in as Guest</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
-              <a href="<%=new_user_session_path%>" class="middlenav">Sign In</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
-              <a href="<%=new_user_registration_path%>" class="middlenav">Sign Up</a><a class="middlenav"><span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>	
+              	<a class="middlenav">Signed in as Guest</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
+              	<a href="<%=new_user_session_path%>" class="middlenav">Sign In</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span>
+              	<a href="<%=new_user_registration_path%>" class="middlenav">Sign Up</a>
               <% end %>
-              <a href="<%=albums_path%>" class="middlenav">Albums By Day</a> <span style="margin-left:5px;margin-right:5px;font-size:15px;font-weight:normal;">|</span></a></td>
+            </td>
             </div>
           </tr>
         </table>
