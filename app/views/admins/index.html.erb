@@ -19,22 +19,22 @@
 </table>
 <p><%=link_to 'Create New Admin', new_admin_path%></p>
 
-<h1>Popular Images</h1> <!--Need to qualify for responded images -->
-<h2>Images that are popular but have no responses</h2>
+<h1>Popular Images</h1>
+<h2>All time most popular Images</h2>
       <% @images1.each do |img| %>
+        <%=link_to (image_tag(img.urlList, :size =>'100x100')), album_image_path(img.album, img)%>
+      <%end%>
+
+<h1>Unresponded Images</h1>
+<h2>Images that are popular but have no responses</h2>
+      <% @images2.each do |img| %>
       	<%=link_to (image_tag(img.urlList, :size =>'100x100')), album_image_path(img.album, img)%>
         <!--img class="image" href= "<%=album_image_path(img.album, img)%>"  src="<%= img.urlList %>" width = "100" height = "100" /-->
       <%end%>
 
-<h1>Trending Images</h1>
-<h2>All time most popular Images</h2>
-      <% @images2.each do |img| %>
-        <%=link_to (image_tag(img.urlList, :size =>'100x100')), album_image_path(img.album, img)%>
-      <%end%>
-
 <h1>Recent Questions</h1>
-<h2>Recent posts about images that have not yet been answered</h2>
-      <% @images2.each do |img| %>
+<h2>Most recent comments about images that have not yet been answered</h2>
+      <% @images3.each do |img| %>
         <%=link_to (image_tag(img.urlList, :size =>'100x100')), album_image_path(img.album, img)%>
       <%end%>
 

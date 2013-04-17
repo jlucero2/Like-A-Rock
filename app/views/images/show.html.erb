@@ -14,57 +14,35 @@
   <%= @votes.count %>
 </ul>
 
-<%if admin_signed_in?%>
-	<h2>Questions:</h2>
-	<%if @comments.empty?%>
-			<p>There are no Questions for this image.</p>
-	<%else%>
-		<%@comments.each do |comment|%>
-			<%= render comment %>
-		<%end%>
-	<%end%>
-
-	<h1>Respond</h1>
-
-	<%= form_for(@newresponse) do |f| %>
-	<div><%= f.label :body %><br />
-	<%= f.text_area :body, :size => "100x10"%></div>
-	<%= f.hidden_field :image_id, :value => @image.id%>
-	<%= f.hidden_field :admin_id, :value => current_admin.id%>
-	<div><%= f.submit "Respond" %></div>
-
-<% end %>
+<%if @vote.nil?%>
+	<%= form_for(@newvote, remote: true) do |f| %>
+		<%= f.hidden_field :image_id, :value => @image.id %>
+		<%= f.hidden_field :user_id, :value => @user.id %>
+		<div><%= f.submit "Vote for Image" %></div>
+	<% end %>
 <%else%>
-	<%if @vote.nil?%>
-		<%= form_for(@newvote, remote: true) do |f| %>
-			<%= f.hidden_field :image_id, :value => @image.id %>
-			<%= f.hidden_field :user_id, :value => @user.id %>
-			<div><%= f.submit "Vote for Image" %></div>
-		<% end %>
-	<%else%>
-		<%= "Already Voted for this image." %>	
-	<%end%>
-
-	<h2>Your Questions</h2>
-
-	<%if @comments.empty?%>
-			<p>You have asked no Questions.</p>
-	<%else%>
-	<ul id="comments">
-		<%@comments.each do |comment|%>
-			<%= render comment %>
-		<%end%>
-	<%end%>
-	</ul>
-	
-		<h2>Ask a Question:</h2>
-		<%= form_for(@comment, remote: true) do |f| %>
-	  		<%= f.text_field :body, :autofocus => true %>
-			<%= f.hidden_field :image_id, :value => @image.id%>
-			<%= f.hidden_field :user_id, :value => @user.id%>
-			<div><%= f.submit "Submit Question" %></div>
-		<% end %>	
+	<%= "Already Voted for this image." %>	
 <%end%>
+
+<h2>Your Questions</h2>
+
+<%if @comments.empty?%>
+		<p>You have asked no Questions.</p>
+<%else%>
+<ul id="comments">
+	<%@comments.each do |comment|%>
+		<%= render comment %>
+	<%end%>
+<%end%>
+</ul>
+
+	<h2>Ask a Question:</h2>
+	<%= form_for(@comment, remote: true) do |f| %>
+  		<%= f.text_field :body, :autofocus => true %>
+		<%= f.hidden_field :image_id, :value => @image.id%>
+		<%= f.hidden_field :user_id, :value => @user.id%>
+		<div><%= f.submit "Submit Question" %></div>
+	<% end %>	
  <h2>Responses:</h2>
  <%if @responses.empty?%>
 		<p>There are no responses.</p>

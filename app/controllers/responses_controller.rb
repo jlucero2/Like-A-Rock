@@ -15,14 +15,16 @@ class ResponsesController < ApplicationController
   
   def create
     @response = Response.new 
-    
+    @image = Image.find(params[:response][:image_id])
     @response.body = params[:response][:body]
     @response.url = params[:response][:url]
-    @response.image = Image.find(params[:response][:image_id])
+    @response.image = @image
     @response.admin = Admin.find(params[:response][:admin_id])
     
     respond_to do |format|
       if @response.save
+        @image.responded_at = Time.now;
+        @image.save
         format.html { redirect_to album_image_path(@response.image.album, @response.image), notice: 'Response was successfully created.' }
         format.json { render json: @response, status: :created, location: @response }
       else

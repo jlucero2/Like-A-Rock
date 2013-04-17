@@ -29,6 +29,8 @@ class CreateImages < ActiveRecord::Migration
       t.string :lmst
       t.string :sampleType
       t.string :xyz
+      t.datetime :responded_at, :default => Time.now
+      t.datetime :commented_at, :default => Time.now
 
       t.timestamps
     end
