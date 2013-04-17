@@ -10,19 +10,15 @@ TestJpl::Application.routes.draw do
 
   resources :votes
   resources :comments
-  
-  resources :admins do
-    resources :responses
-  end
+  resources :responses
 
+  resources :admins 
+
+  match "albums/responded" => "albums#responded"
   resources :albums do
     resources :images do
       resources :tags
     end
-  end
-  
-  resources :images do
-    resources :tags
   end
   
   resources :users do

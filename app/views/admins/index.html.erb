@@ -34,7 +34,7 @@
 
 <h1>Recent Questions</h1>
 <h2>Recent posts about images that have not yet been answered</h2>
-      <% @images2.each do |img| %>
+      <% @images3.each do |img| %>
         <%=link_to (image_tag(img.urlList, :size =>'100x100')), album_image_path(img.album, img)%>
       <%end%>
 

@@ -16,6 +16,8 @@ class CommentsController < ApplicationController
     #respond_with(@comment, :location => album_image_path(@image.album, @image))
     respond_to do |format|
       if @comment.save
+        @image.commented_at = Time.now;
+        @image.save
         format.html { redirect_to album_image_path(@image.album, @image), notice: 'Question was successfully created.' }
       else
         format.html { redirect_to album_image_path(@image.album, @image), notice: 'Question was unsucessful.' }

@@ -9,8 +9,19 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def responded
+    #@albums = Album.all
+    @images = Image.order('responded_at DESC').all(:limit => 10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      #format.json { render json: @albums }
+      #format.js {render :layout => false}
+    end
+  end
+
   def popular
-    @albums = Album.all
+    #@albums = Album.all
     @images = Image.order('votes_count DESC').all(:limit => 50)
 
     respond_to do |format|
