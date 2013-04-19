@@ -1,5 +1,7 @@
 <%= form_for(@newtag) do |f| %>
-<%= f.hidden_field :image_id, :value => @image.id%>
-<%= f.hidden_field :user_id, :value => @user.id %>
-<%= f.hidden_field :x, :value => %>
+	<%= f.hidden_field :image_id, :value => @image.id%>
+	<%= f.hidden_field :user_id, :value => @user.id %>
+	<%= f.hidden_field :x, :remote => true, "data-url" => "/images/show" %>
+	<%= f.hidden_field :y, :remote => true, "data-url" => "/images/show" %>
+	<span id= '#tagit #btnsave'>&nbsp;</span>
 <% end %>

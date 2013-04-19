@@ -75,26 +75,13 @@ class ImagesController < ApplicationController
     else
         render 'show' and return
     end
-      @tags = @image.tags
-      @tag = @tags.find(params[:id])
-      @newtag = @tags.create(params[:tag])
-     
-      respond_to do |format|
-        if @image.save
-          format.html { redirect_to album_image_path(@album, @image), notice: 'Image was successfully created.' }
-          format.json { render json: @image, status: :created, location: @image }
-          format.js {render :layout => false}
-        else
-          format.html { render action: "new" }
-          format.json { render json: @image.errors, status: :unprocessable_entity }
-          format.js {render :layout => false}
-        end
-      end
+      @tags = @image.tags.where(:user_id => @user, :image_id => @image)
+      @tag = @image.tags.find_by_user_id_and_image_id(@user, @image)
+      @newtag = @image.tags.new
 
     respond_to do |format|
-      
       format.html # show.html.erb
-      format.json { render json: @image }
+      format.json 
       format.js {render :layout => false }
     end
   end

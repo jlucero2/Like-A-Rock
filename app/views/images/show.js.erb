@@ -1,4 +1,7 @@
+
 $("<%= escape_javascript(render @comment) %>").appendTo("#comments");
 
-$("<%= escape_javascript(render @votes) %>").appendTo("#votes");
+$("<%= escape_javascript(render @votes) %>").appendTo("#newvote");
 
+
+$("<%= escape_javascript(render @newtag) %>").appendTo("#tagit #btnsave");
