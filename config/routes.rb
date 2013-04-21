@@ -4,7 +4,7 @@ TestJpl::Application.routes.draw do
   
   as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
-    match "albums/:album_id/images/:id" => "images#adminShow", :as => 'admin_show'
+    get 'albums/:album_id/images/:id/admin' => 'images#adminShow', :as => 'admin_show'
   end
 
   devise_for :users, :controllers => {:registrations => "registrations"}
