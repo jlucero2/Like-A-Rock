@@ -1,5 +1,4 @@
 class ImagesController < ApplicationController
-  
   # GET /images/new
     # GET /images/new.json
   def new
@@ -65,7 +64,7 @@ class ImagesController < ApplicationController
       @comments = Comment.where(:user_id => @user, :image_id => @image)
     end
     @votes = @image.votes
-    @vote = @image.votes.find_by_user_id_and_image_id(@user, @image)
+    @vote = @image.votes.find_by_user_id(@user)
     @newvote = @image.votes.new
     @responses = Response.where(:image_id => @image)
     @newresponse = Response.new
@@ -75,13 +74,16 @@ class ImagesController < ApplicationController
     else
         render 'show' and return
     end
-      @tags = @image.tags.where(:user_id => @user, :image_id => @image)
-      @tag = @image.tags.find_by_user_id_and_image_id(@user, @image)
-      @newtag = @image.tags.new
-
+    #@tag = @image.tags.find_by_user_id_and_image_id(@user, @image)
+    #@newtag = @image.tags.new
+    if user_signed_in? 
+        @tags = @image.tags.where(:user_id => @user)
+    else
+      flash[:notice] = "Must be signed in to see your tags."
+    end
     respond_to do |format|
-      format.html # show.html.erb
-      format.json 
+      format.html 
+      format.json {render :layout => false }
       format.js {render :layout => false }
     end
   end
@@ -105,28 +107,6 @@ class ImagesController < ApplicationController
       else
         format.html { render action: "edit" }
         format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-  def picture
-    @image = Image.find(params[:image_id])
-    @tags = @image.tags
-    @tag = @image.tags.find(params[:id])
-    @newtag = @image.tags.create(params[:tag])
-    if user_signed_in?
-      @user = current_user
-    else
-      @user = User.find_by_ip(request.remote_ip)
-    end
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to album_image_path(@album, @image), notice: 'Image was successfully created.' }
-        format.json { render json: @image, status: :created, location: @image }
-        format.js {render :layout => false}
-      else
-        format.html { render action: "new" }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-        format.js {render :layout => false}
       end
     end
   end

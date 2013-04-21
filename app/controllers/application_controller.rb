@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   prepend_before_filter :application
-  
+
   def application
     if !admin_signed_in? && !user_signed_in?
       if User.where(:name => "Guest" + request.remote_ip).empty?

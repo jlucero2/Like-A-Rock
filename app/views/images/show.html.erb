@@ -95,7 +95,7 @@
       mouseX = e.pageX - $(imgtag).offset().left; // x and y axis
       mouseY = e.pageY - $(imgtag).offset().top;
       $('#tagit').remove(); // remove any tagit div first
-      $(imgtag).append('<div id="tagit"><div class="box"></div><div class="name"><div class="text">Comment?</div><input type="text" name="txtinput" id="tagname" /><input type="button" name="btnsave" value="Save" id="btnsave" /><input type="button" name="btncancel" value="Cancel" id="btncancel" /></div></div>');
+      $(imgtag).append('<div id="tagit"><div class="box"></div><input type="button" name="btnsave" value="Save" id="btnsave" /><input type="button" name="btncancel" value="Cancel" id="btncancel" /></div></div>');
       $('#tagit').css({top:mouseY,left:mouseX});
 
       $('#tagname').focus();
@@ -106,15 +106,13 @@
 		
       $.ajax({
         type: "POST", 
-        url: '/show', 
-		dataType: 'json',
+        url: <%= @image.id %> + "/tags", 
         data: {name: name, x: mouseX, y: mouseY},
         cache: true,
         success: function(data){
           viewtag();
           $('#tagit').fadeOut();
         }
-
       });
 	return false;
     });
@@ -155,8 +153,8 @@
       // get the tag list with action remove
       $.ajax({
         type: "POST", 
-        url: $(this).href, 
-        data: "image_id=" + pic_id,
+        url: <%= @image.id %> + "/tags" , 
+        data: {},
         cache: true, 
         success: function(data){
           $('#taglist ol').html(data);
@@ -166,8 +164,8 @@
       // get the tag list for boxes
       $.ajax({
         type: "POST", 
-        url: $(this).href, 
-        data: "image_id=" + pic_id,
+        url: <%= @image.id %> + "/tags",  
+        data: {},
         cache: true, 
         success: function(data){
           $('#tagbox').html(data);
@@ -184,7 +182,18 @@
 		<%= image_tag(@image.urlList, :size => "980x500")%>
 	    <div id="tagbox">
 	    </div>
-	  </div> 
+	  </div>
+	<div id="taglist"> 
+		<% if user_signed_in? %> 
+			<% unless @image.tags.where(:user_id => @user.id).nil?%>
+				<% @tags = @image.tags.where(:user_id => @user.id) %>
+			<% end %>
+		<% else %>
+		    <p class="flash-notice"><%= flash[:notice] %></p>
+		<% end %>
+	</div>
+</body>
+</html>
 <p>
   <b>Sol:</b>
   <%= @image.sol %>
@@ -196,8 +205,7 @@
 </p>
 <p>
 <div id = "newvote">
-<b>Score:</b>
-  <%= render "votes/newvote" %>
+  <%= render "votes/vote" %>
 </div>
 </p>
 
@@ -258,10 +266,3 @@
 		<p>Response from <%= response.admin.name%>: <%= response.body%></p>
 	<%end%>
   <%end%>
-	<div id="taglist"> 
-	    <!--span class="tagtitle">List of Tags</span--> 
-	    <ol> 
-	    </ol> 
-	  </div>
- </body>
-</html>

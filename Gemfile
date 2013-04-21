@@ -10,7 +10,6 @@ group :development do
   gem "rails-erd"
 end
 
-
 gem 'httparty'
 gem 'curb'
 gem 'ruby-json'

@@ -20,7 +20,7 @@ task :populate => :environment do
     earthday = -1
     solnum = arrayofsols[0][1]
     if numimages.to_i > 0
-      puts "Number of images: #{numimages}"  
+      #puts "\nNumber of images: #{numimages}"  
       solobject = Curl.get(thesolurl)
       jsonsol = JSON.parse(solobject.body_str)
       solarray = jsonsol.to_a
@@ -33,16 +33,15 @@ task :populate => :environment do
         imagehash = Hash[*imagearray.flatten]
         datetime = imagehash['utc']
         earthday = datetime.split('T', 2).first
-        puts earthday
         if Album.find_by_earthday(earthday.to_s).nil?
-          puts "creating new album for #{earthday} \n"
+          puts "\nCreating new album for #{earthday} \n"
           #create it if it doesn't
           a = Album.new
           a.earthday = earthday.to_s
           a.sol = solnum.to_s
           a.url = thesolurl
-          a.timestamp = 0.to_s
-          a.num_images = 1 #numimages.to_i
+          a.timestamp = "0"
+          a.num_images = 0 #numimages.to_i
           a.save
           earthalb = Album.find_by_earthday(earthday.to_s)
           if imagehash['sampleType'] != "thumbnail"
@@ -57,10 +56,9 @@ task :populate => :environment do
           end
         else
           earthalb = Album.find_by_earthday(earthday.to_s)
-          puts "Album #{earthday} aready exists \n"
-          if earthalb.timestamp != lastupdate and numimages.to_i != earthalb.num_images
-            puts "Updating Album Day #{earthday}...\n"
-            if imagehash['sampleType'] != "thumbnail"
+          if imagehash['sampleType'] != "thumbnail"
+            if earthalb.images.find_by_urlList(imagehash['urlList']).nil?
+              puts "\nUpdating Album Day #{earthday}..."
               n = earthalb.images.new
               imagehash.each do |info|
                 n[info[0]] = info[1].to_s
@@ -68,23 +66,22 @@ task :populate => :environment do
               n.save
               imagecount += 1
             else
-              thumbnailcount += 1
+              puts "**Image already exists.**"
             end
-            earthalb.num_images = imagecount + thumbnailcount
           else
-            puts "Album #{earthday} up to date \n"
+            thumbnailcount += 1
           end
+            earthalb.num_images += imagecount
+            earthalb.timestamp = Time.now.getutc 
+            earthalb.save
           #check if whole album is thumbnails
-          if numimages.to_i != 0 and thumbnailcount == numimages.to_i
-            puts "All images are thumbnails"
-            earthalb.destroy
-          end
         end
       end
       #puts "Thumbnails: #{thumbnailcount}"
-      earthalb = Album.find_by_earthday(earthday.to_s)
-      earthalb.timestamp = lastupdate
+      #puts "numimag #{earthalb.num_images}\n"
     end
   end
+  Album.destroy_all(:num_images => 0)
+  puts "\n**DESTROYING every ALBUM with 0 images...**\n"
 end
 end
