@@ -11,7 +11,11 @@
 	<% @images.find_in_batches do |img| %>
 		<% img.each do |image| %>
       		jsObj.push("<%= image.urlList %>"); 
-			hrefObj.push("<%= album_image_path(@album, image) %>");
+			<% if admin_signed_in? %>
+				hrefObj.push("<%= admin_show_path(img.album, img) %>");
+			<% else %>
+				hrefObj.push("<%= album_image_path(img.album, img) %>");
+			<% end %>
 		<% end %>
       <% end %>
   }

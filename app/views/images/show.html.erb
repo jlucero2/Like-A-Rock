@@ -24,6 +24,7 @@
       $.ajax({
         type: "POST", 
         url: <%= @image.id %> + "/tags", 
+		data
         data: {name: name, x: mouseX, y: mouseY},
         cache: true,
         success: function(data){
