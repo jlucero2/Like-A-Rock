@@ -12,7 +12,7 @@
       mouseX = e.pageX - $(imgtag).offset().left; // x and y axis
       mouseY = e.pageY - $(imgtag).offset().top;
       $('#tagit').remove(); // remove any tagit div first
-      $(imgtag).append('<div id="tagit"><div class="box"></div><div class="name"><div class="text">Comment?</div><input type="text" name="txtinput" id="tagname" /><input type="button" name="btnsave" value="Save" id="btnsave" /><input type="button" name="btncancel" value="Cancel" id="btncancel" /></div></div>');
+      $(imgtag).append('<div id="tagit"><div class="box"></div><input type="button" name="btnsave" value="Save" id="btnsave" /><input type="button" name="btncancel" value="Cancel" id="btncancel" /></div></div>');
       $('#tagit').css({top:mouseY,left:mouseX});
 
       $('#tagname').focus();
@@ -23,15 +23,13 @@
   	
       $.ajax({
         type: "POST", 
-        url: '/show', 
-  	dataType: 'json',
+        url: <%= @image.id %> + "/tags", 
         data: {name: name, x: mouseX, y: mouseY},
         cache: true,
         success: function(data){
           viewtag();
           $('#tagit').fadeOut();
         }
-
       });
   return false;
     });
@@ -72,8 +70,8 @@
       // get the tag list with action remove
       $.ajax({
         type: "POST", 
-        url: $(this).href, 
-        data: "image_id=" + pic_id,
+        url: <%= @image.id %> + "/tags" , 
+        data: {},
         cache: true, 
         success: function(data){
           $('#taglist ol').html(data);
@@ -83,8 +81,8 @@
       // get the tag list for boxes
       $.ajax({
         type: "POST", 
-        url: $(this).href, 
-        data: "image_id=" + pic_id,
+        url: <%= @image.id %> + "/tags",  
+        data: {},
         cache: true, 
         success: function(data){
           $('#tagbox').html(data);
@@ -94,12 +92,23 @@
   return false;
   });
 </script> 
-
 <div id="imgtag"> 
-  <!--img width = "990" height= "500" src="<%#= @image.urlList %>" align = "middle" /-->
   <%= image_tag(@image.urlList, :size => "900x500", :class => "main-image")%>
   <div id="tagbox">
   </div>
+</div>
+<p>
+  <b>Sol:</b>
+  <%= @image.sol %>
+</p>
+
+<p>
+  <b>URL:</b>
+  <%= @image.urlList %>
+</p>
+<p>
+<div id = "newvote">
+  <%= render "votes/vote" %>
 </div>
 <div id="imgsidebar">
   <p>
@@ -109,12 +118,6 @@
   <p>
     <b>URL:</b>
     <%= @image.urlList %>
-  </p>
-  <p>
-    <div id = "newvote">
-    <b>Score:</b>
-      <%= render "votes/newvote" %>
-    </div>
   </p>
 
   <%if admin_signed_in?%>
@@ -166,7 +169,6 @@
 		<% end %>	
   
   <%end%>
-
    <h2>Responses:</h2>
    <%if @responses.empty?%>
   		<p>There are no responses.</p>
@@ -176,4 +178,3 @@
   	<%end%>
 
   <%end%>
-

@@ -21,6 +21,10 @@ TestJpl::Application.routes.draw do
     end
   end
   
+  match "albums/:album_id/images/:image_id/tags" => "tags#create", :via => :post
+  #match "albums/:album_id/images/:image_id/show" => "tags#show"
+  #match "albums/:album_id/images/:image_id/deletetag" => "tags#delete"
+  
   get "albums/popular"
   root :to => 'albums#popular'
   #get "images/tagTest"
