@@ -46,6 +46,45 @@ class ImagesController < ApplicationController
 
     # GET /images/1
     # GET /images/1.json
+    
+  def adminShow
+    @album = Album.find(params[:album_id])
+    @image = @album.images.find(params[:id])
+
+    @comment = Comment.new
+    if user_signed_in?
+      @user = current_user
+    else
+      @user = User.find_by_ip(request.remote_ip)
+    end
+
+    if admin_signed_in?
+      @comments = Comment.where(:image_id => @image)
+      @admin = current_admin
+    else
+      @comments = Comment.where(:user_id => @user, :image_id => @image)
+    end
+    @votes = @image.votes
+    @vote = @image.votes.find_by_user_id(@user)
+    @newvote = @image.votes.new
+    @responses = Response.where(:image_id => @image)
+    @newresponse = Response.new
+
+      #@tag = @image.tags.find_by_user_id_and_image_id(@user, @image)
+      #@newtag = @image.tags.new
+    if user_signed_in? 
+        @tags = @image.tags.where(:user_id => @user)
+    else
+      flash[:notice] = "Must be signed in to see your tags."
+    end
+
+    respond_to do |format|
+        format.html 
+        format.json {render :layout => false}
+        format.js {render :layout => false }
+    end
+  end
+  
   def show
     @album = Album.find(params[:album_id])
     @image = @album.images.find(params[:id])
@@ -69,11 +108,6 @@ class ImagesController < ApplicationController
     @responses = Response.where(:image_id => @image)
     @newresponse = Response.new
     
-    if admin_signed_in?
-        render 'adminShow' and return
-    else
-        render 'show' and return
-    end
     #@tag = @image.tags.find_by_user_id_and_image_id(@user, @image)
     #@newtag = @image.tags.new
     if user_signed_in? 
@@ -81,10 +115,11 @@ class ImagesController < ApplicationController
     else
       flash[:notice] = "Must be signed in to see your tags."
     end
+    
     respond_to do |format|
-      format.html 
-      format.json {render :layout => false }
-      format.js {render :layout => false }
+        format.html 
+        format.json {render :layout => false}
+        format.js {render :layout => false }
     end
   end
 

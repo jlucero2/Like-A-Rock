@@ -1,14 +1,12 @@
 class TagsController < ApplicationController
+  respond_to :json
   def index
      @image = Image.find(params[:image_id])
      
      if user_signed_in?
        @user = current_user
        @tags = @image.tags.where(:user_id => @user)
-       respond_to do |format|
-          format.html 
-          format.js { redirect_to album_image_path(@image.album, @image)}
-       end
+       respond_with {@tags,}
      else
        flash[:notice] = "Must be signed in to see your tags."
        respond_to do |format|
@@ -35,7 +33,7 @@ class TagsController < ApplicationController
       respond_to do |format|
         if @newtag.save
             format.html { redirect_to album_image_path(@image.album, @image), notice: 'Tag was successfully created.' }
-            format.js {redirect_to album_image_path(@image.album, @image)}
+            #format.js {redirect_to album_image_path(@image.album, @image)}
             format.json {redirect_to album_image_path(@image.album, @image)}
         else
             format.html 
