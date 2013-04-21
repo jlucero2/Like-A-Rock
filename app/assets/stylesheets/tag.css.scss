@@ -1,3 +1,75 @@
-// Place all the styles related to the tag controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#imgtag {
+  position:relative;
+  width: 500px;
+  img {
+      width: 500px;
+      height: auto;    
+  }
+  float:left;
+  border:solid 3px #fff;
+  cursor: crosshair;
+}
+#imgsidebar {
+    background-color: #fff;
+    display: block;
+    float: left;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+}
+.tagview {
+  border:solid 3px #fff;
+  width:100px;
+  height:100px;
+  position:absolute;
+  display:none;
+}
+#tagit {
+  position:absolute;
+  top:0;left:0;
+  width:250px;
+}
+#tagit .box {
+  border:solid 3px #fff;
+  width:100px;
+  height:100px;
+  float:left;
+}
+ 
+#tagit .name {
+  float:left;
+  background-color:#fff;
+  width:130px;
+  height:80px;
+  padding:5px;
+}
+#tagit div.text {
+  margin-bottom:5px;
+}
+#tagit input[type=text] {
+  margin-bottom:5px;
+}
+#tagit #tagname {
+  width:110px;
+}
+#taglist {
+  background-color:#aaa;
+  width:300px;
+  min-height:200px;
+  height:auto !important;
+  height:200px;
+  float:left;
+  padding:10px;
+  margin-left:20px;
+  color:#000;
+ 
+}
+#taglist ol { padding:0 20px;float:left;cursor:pointer}
+#taglist ol a { }
+#taglist ol a:hover { text-decoration:underline }
+.tagtitle {
+  font-size:14px;
+  text-align:center;
+  width:100%;
+  float:left; 
+}

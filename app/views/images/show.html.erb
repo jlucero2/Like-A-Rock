@@ -1,94 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
-  <head> 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>  
-    <style> 
-    #imgtag
-    {
-      position:relative;
-      min-width:300px;
-      min-height:300px;
-      float:left;
-      border:solid 3px #fff;
-      cursor: crosshair;
-    }
-    .tagview
-    {
-      border:solid 3px #fff;
-      width:100px;
-      height:100px;
-      position:absolute;
-      display:none;
-    }
-    #tagit
-    {
-      position:absolute;
-      top:0;left:0;
-      width:250px;
-    }
-    #tagit .box
-    {
-      border:solid 3px #fff;
-      width:100px;
-      height:100px;
-      float:left;
-    }
-     
-    #tagit .name
-    {
-      float:left;
-      background-color:#fff;
-      width:130px;
-      height:80px;
-      padding:5px;
-    }
-    #tagit div.text
-    {
-      margin-bottom:5px;
-    }
-    #tagit input[type=text]
-    {
-      margin-bottom:5px;
-    }
-    #tagit #tagname
-    {
-      width:110px;
-    }
-    #taglist
-    {
-      background-color:#aaa;
-      width:300px;
-      min-height:200px;
-      height:auto !important;
-      height:200px;
-      float:left;
-      padding:10px;
-      margin-left:20px;
-      color:#000;
-     
-    }
-    #taglist ol { padding:0 20px;float:left;cursor:pointer}
-    #taglist ol a { }
-    #taglist ol a:hover { text-decoration:underline }
-    .tagtitle
-    {
-      font-size:14px;
-      text-align:center;
-      width:100%;
-      float:left; 
-    }
-    </style>
-    <script> 
- 
+<script> 
   $(document).ready(function(){
     var counter = 0;
     var mouseX = 0;
     var mouseY = 0;
-	$.ajaxSetup({
-	  'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
-	});
+  $.ajaxSetup({
+    'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
+  });
 
     $("#imgtag img").click(function(e){ // make sure the image is click
       var imgtag = $(this).parent(); // get the div to append the tagging list
@@ -103,11 +20,11 @@
 
     $('#tagit #btnsave').live('click',function(){
       name = $('#tagname').val();
-		
+  	
       $.ajax({
         type: "POST", 
         url: '/show', 
-		dataType: 'json',
+  	dataType: 'json',
         data: {name: name, x: mouseX, y: mouseY},
         cache: true,
         success: function(data){
@@ -116,12 +33,12 @@
         }
 
       });
-	return false;
+  return false;
     });
 
      $('#tagit #btncancel').live('click',function(){
       $('#tagit').fadeOut();
-	return false;
+  return false;
     });
 
     $('#taglist li').live('mouseover mouseout',function(event){
@@ -131,7 +48,7 @@
       }else{
         $('#view_' + id).hide();
       }
-	return false;
+  return false;
     });
 
     $('#taglist li a.remove').live('click',function(){
@@ -145,7 +62,7 @@
           viewtag();
         }
       });
-	return false;
+  return false;
     });
 
     viewtag(); // get all tag on page load
@@ -174,74 +91,72 @@
         }
       });
     }
-	return false;
+  return false;
   });
 </script> 
-  </head>
-<body> 
-	<div id="imgtag"> 
-	     <!--img width = "990" height= "500" src="<%#= @image.urlList %>" align = "middle" /-->
-		<%= image_tag(@image.urlList, :size => "980x500")%>
-	    <div id="tagbox">
-	    </div>
-	  </div> 
-<p>
-  <b>Sol:</b>
-  <%= @image.sol %>
-</p>
 
-<p>
-  <b>URL:</b>
-  <%= @image.urlList %>
-</p>
-<p>
-<div id = "newvote">
-<b>Score:</b>
-  <%= render "votes/newvote" %>
+<div id="imgtag"> 
+  <!--img width = "990" height= "500" src="<%#= @image.urlList %>" align = "middle" /-->
+  <%= image_tag(@image.urlList, :size => "900x500", :class => "main-image")%>
+  <div id="tagbox">
+  </div>
 </div>
-</p>
+<div id="imgsidebar">
+  <p>
+    <b>Sol:</b>
+    <%= @image.sol %>
+  </p>
+  <p>
+    <b>URL:</b>
+    <%= @image.urlList %>
+  </p>
+  <p>
+    <div id = "newvote">
+    <b>Score:</b>
+      <%= render "votes/newvote" %>
+    </div>
+  </p>
 
-<%if admin_signed_in?%>
-	<h2>Questions:</h2>
-	<%if @comments.empty?%>
-			<p>There are no Questions for this image.</p>
-	<%else%>
-		<%@comments.each do |comment|%>
-			<%= render comment %>
-		<%end%>
-	<%end%>
+  <%if admin_signed_in?%>
 
-	<h1>Respond</h1>
+  	<h2>Questions:</h2>
+  	<%if @comments.empty?%>
+  			<p>There are no Questions for this image.</p>
+  	<%else%>
+  		<%@comments.each do |comment|%>
+  			<%= render comment %>
+  		<%end%>
+  	<%end%>
+  	<h1>Respond</h1>
+  	<%= form_for(@newresponse) do |f| %>
+    	<div><%= f.label :body %><br />
+    	<%= f.text_area :body, :size => "100x10"%></div>
+    	<%= f.hidden_field :image_id, :value => @image.id%>
+    	<%= f.hidden_field :admin_id, :value => current_admin.id%>
+    	<div><%= f.submit "Respond" %></div>
+    <% end %>
 
-	<%= form_for(@newresponse) do |f| %>
-	<div><%= f.label :body %><br />
-	<%= f.text_area :body, :size => "100x10"%></div>
-	<%= f.hidden_field :image_id, :value => @image.id%>
-	<%= f.hidden_field :admin_id, :value => current_admin.id%>
-	<div><%= f.submit "Respond" %></div>
+  <%else%>
 
-<% end %>
-<%else%>
-	<%if @vote.nil?%>
-		<%= form_for(@newvote, remote: true) do |f| %>
-			<%= f.hidden_field :image_id, :value => @image.id %>
-			<%= f.hidden_field :user_id, :value => @user.id %>
-			<div><%= f.submit "Vote for Image" %></div>
-		<% end %>
-	<% end %>
-	
-	<h2>Your Questions</h2>
+  	<%if @vote.nil?%>
+  		<%= form_for(@newvote, remote: true) do |f| %>
+  			<%= f.hidden_field :image_id, :value => @image.id %>
+  			<%= f.hidden_field :user_id, :value => @user.id %>
+  			<div><%= f.submit "Vote for Image" %></div>
+  		<% end %>
+  	<% end %>
+  	
+  	<h2>Your Questions</h2>
 
-	<%if @comments.empty?%>
+  	<%if @comments.empty?%>
 			<p>You have asked no Questions.</p>
-	<%else%>
-	<ul id="comments">
-		<%@comments.each do |comment|%>
-			<%= render comment %>
-		<%end%>
-	<%end%>
-	</ul>
-	
+  	<%else%>
+  	<ul id="comments">
+  		<%@comments.each do |comment|%>
+  			<%= render comment %>
+  		<%end%>
+  	<%end%>
+  	</ul>
 		<h2>Ask a Question:</h2>
 		<%= form_for(@comment, remote: true) do |f| %>
 	  		<%= f.text_field :body, :autofocus => true %>
@@ -249,19 +164,16 @@
 			<%= f.hidden_field :user_id, :value => @user.id%>
 			<div><%= f.submit "Submit Question" %></div>
 		<% end %>	
-<%end%>
- <h2>Responses:</h2>
- <%if @responses.empty?%>
-		<p>There are no responses.</p>
-	<%else%>
-		<%@responses.each do |response|%>
-		<p>Response from <%= response.admin.name%>: <%= response.body%></p>
-	<%end%>
+  
   <%end%>
-	<div id="taglist"> 
-	    <!--span class="tagtitle">List of Tags</span--> 
-	    <ol> 
-	    </ol> 
-	  </div>
- </body>
-</html>
+
+   <h2>Responses:</h2>
+   <%if @responses.empty?%>
+  		<p>There are no responses.</p>
+  	<%else%>
+  		<%@responses.each do |response|%>
+  		<p>Response from <%= response.admin.name%>: <%= response.body%></p>
+  	<%end%>
+
+  <%end%>
+
