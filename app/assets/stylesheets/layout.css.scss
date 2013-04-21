@@ -99,3 +99,18 @@ body {
     background-repeat: no-repeat;
     clear: both;
 }
+.pageTitleBox {
+width: 990px;
+background-image: url('http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/content_titleBg.png');
+background-repeat: no-repeat;
+font-size: 30px;
+color: #FFFDFC;
+font-weight: bold;
+padding-left: 20px;
+vertical-align: top;
+margin-bottom: 0px;
+height: 17px !important;
+padding-bottom: 0px;
+padding-top: 40px;
+line-height: 17px;
+}
