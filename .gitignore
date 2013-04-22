@@ -9,7 +9,6 @@
 /lib/assets/*populate_albums*
 # Ignore the gemfile
 /Gemfile
-
 # Ignore the database.yml file
 /config/database.yml
 
