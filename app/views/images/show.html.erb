@@ -24,7 +24,6 @@ $(document).ready(function(){
       $.ajax({
         type: "POST", 
         url: <%= @image.id %> + "/tags", 
-        data
         data: {name: name, x: mouseX, y: mouseY},
         cache: true,
         success: function(data){
@@ -100,7 +99,6 @@ $(document).ready(function(){
     </div>
   </div>
   <div id="imgInfo">
-    <div id="imgsidebar">
       <div id = "newvote">
         <%= render "votes/vote" %>
       </div>
@@ -172,5 +170,4 @@ $(document).ready(function(){
 
       <%end%>
     </div>
-  </div>
 </div>

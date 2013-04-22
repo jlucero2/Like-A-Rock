@@ -1,5 +1,8 @@
 .imagePage{
   background-color: #fff;
+  min-height: 800px; 
+  min-width: 990px; 
+  border-top: 25px solid white;
 }
 #imgtag {
   position:relative;
@@ -9,25 +12,18 @@
       height: auto;    
   }
   float:left;
-  border:solid 3px #fff;
+  border:solid 15px #fff;
   cursor: crosshair;
    background-color: #fff;
 }
 #imgInfo {
   position:relative;
-  width: 300px;
+  display: block;
+  width: 260px;
   float:right;
-  border:solid 3px #fff;
+  border:solid 10px #fff;
   cursor: crosshair;
    background-color: #fff;
-}
-#imgsidebar {
-    background-color: #fff;
-    display: block;
-    float: left;
-    width: 300px;
-    margin: 10px;
-    padding: 10px;
 }
 .tagview {
   border:solid 3px #fff;
