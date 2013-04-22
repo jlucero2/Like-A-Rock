@@ -1,5 +1,6 @@
 .ContentFlow {
     width: 990px;
+    max-width: 990px; 
    background-color: white; 
 }
 .ContentFlow .flow .item canvas.content {
