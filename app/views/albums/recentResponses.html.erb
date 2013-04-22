@@ -9,8 +9,12 @@
   var titleObj = [];
   function bar(){
 	<% @images.each do |img| %>
-      	jsObj.push("<%= img.urlList %>"); 
-		hrefObj.push("<%= album_image_path(img.album, img) %>");
+      	jsObj.push("<%= img.urlList %>");
+ 		<% if admin_signed_in? %>
+			hrefObj.push("<%= album_image_path(img.album, img) %>");
+		<% else %>
+			hrefObj.push("<%= album_image_path(img.album, img) %>");
+		<% end %>
 		titleObj.push("<%= "Sol: #{img.sol}" %>");
       <% end %>
   }
@@ -47,3 +51,9 @@
 </div>
 <div id="testing1" class="testing2" style="display: hidden">
 </div>
+
+<!--This is the video example. I think its encoded with the type chrome likes.-->
+<!--video class="centre" id="sampleMovie" width=640 height=360 controls>
+	<source src="http://markpowell.s3.amazonaws.com/like_a_rock_movies/LikeARockCalTargetStory.mov"type='video/ogg;
+	 codecs="theora, vorbis"' />
+</video-->

@@ -157,7 +157,7 @@
       // get the tag list for boxes
       $.ajax({
         type: "POST", 
-        url: "%= image_tags_path(@image) %>", 
+        url: "<%= image_tags_path(@image) %>", 
         data: <%= @image %>,
         cache: true, 
         success: function(data){

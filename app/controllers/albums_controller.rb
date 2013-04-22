@@ -9,14 +9,14 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def responded
+  def recentResponses
     #@albums = Album.all
     @images = Image.order('responded_at DESC').all(:limit => 10)
 
     respond_to do |format|
       format.html # index.html.erb
-      #format.json { render json: @albums }
-      #format.js {render :layout => false}
+      format.json { render json: @albums }
+      format.js {render :layout => false}
     end
   end
 

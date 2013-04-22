@@ -12,9 +12,9 @@
 		<% img.each do |image| %>
       		jsObj.push("<%= image.urlList %>"); 
 			<% if admin_signed_in? %>
-				hrefObj.push("<%= admin_show_path(img.album, img) %>");
+				hrefObj.push("<%= admin_show_path(image.album, image) %>");
 			<% else %>
-				hrefObj.push("<%= album_image_path(img.album, img) %>");
+				hrefObj.push("<%= album_image_path(image.album, image) %>");
 			<% end %>
 		<% end %>
       <% end %>

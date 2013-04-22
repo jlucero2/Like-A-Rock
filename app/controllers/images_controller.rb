@@ -61,7 +61,7 @@ class ImagesController < ApplicationController
     if admin_signed_in?
       @comments = Comment.where(:image_id => @image)
       @admin = current_admin
-    else
+    elsif user_signed_in?
       @comments = Comment.where(:user_id => @user, :image_id => @image)
     end
     @votes = @image.votes
@@ -103,59 +103,25 @@ class ImagesController < ApplicationController
       @comments = Comment.where(:user_id => @user, :image_id => @image)
     end
     @votes = @image.votes
-    @vote = @image.votes.find_by_user_id(@user)
+    @vote = @image.votes.find_by_user_id_and_image_id(@user, @image)
     @newvote = @image.votes.new
     @responses = Response.where(:image_id => @image)
     @newresponse = Response.new
     
-    #@tag = @image.tags.find_by_user_id_and_image_id(@user, @image)
+    
+    @tag = @image.tags.find_by_user_id_and_image_id(@user, @image)
     #@newtag = @image.tags.new
     if user_signed_in? 
         @tags = @image.tags.where(:user_id => @user)
     else
       flash[:notice] = "Must be signed in to see your tags."
+      @tags = @image.tags
     end
     
     respond_to do |format|
         format.html 
         format.json {render :layout => false}
-        format.js {render :layout => false }
-    end
-  end
-
-    # GET /images/1/edit
-  def edit
-    @album = Album.find(params[:album_id])
-    @image = @album.images.find(params[:id])
-  end
-
-    # PUT /images/1
-    # PUT /images/1.json
-  def update
-    @album = Album.find(params[:album_id])
-    @image = @album.images.find(params[:id])
-
-    respond_to do |format|
-      if @image.update_attributes(params[:image])
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-    # DELETE /images/1
-    # DELETE /images/1.json
-  def destroy
-    @album = Album.find(params[:album_id])
-    @image = @album.images.find(params[:id])
-    @image.destroy
-
-    respond_to do |format|
-      format.html { redirect_to album_images_url }
-      format.json { head :no_content }
+        format.js { render :json => @tags.map(&:attributes) }
     end
   end
 end

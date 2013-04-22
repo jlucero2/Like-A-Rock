@@ -33,12 +33,12 @@
       border:solid 3px #fff;
       width:100px;
       height:100px;
-      float:left;
+      float:botto;
     }
      
     #tagit .name
     {
-      float:left;
+      float:bottom;
       background-color:#fff;
       width:130px;
       height:80px;
@@ -86,9 +86,6 @@
     var counter = 0;
     var mouseX = 0;
     var mouseY = 0;
-	$.ajaxSetup({
-	  'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
-	});
 
     $("#imgtag img").click(function(e){ // make sure the image is click
       var imgtag = $(this).parent(); // get the div to append the tagging list
@@ -98,24 +95,23 @@
       $(imgtag).append('<div id="tagit"><div class="box"></div><input type="button" name="btnsave" value="Save" id="btnsave" /><input type="button" name="btncancel" value="Cancel" id="btncancel" /></div></div>');
       $('#tagit').css({top:mouseY,left:mouseX});
 
-      $('#tagname').focus();
+      $('#tagbox').focus();
     });
 
     $('#tagit #btnsave').live('click',function(){
       name = $('#tagname').val();
-		
+	
       $.ajax({
         type: "POST", 
-        url: <%= @image.id %> + "/tags", 
-		data
-        data: {name: name, x: mouseX, y: mouseY},
+        url: <%= @image.id %> + "/newtag",
+        data: {x: mouseX, y: mouseY},
         cache: true,
         success: function(data){
           viewtag();
           $('#tagit').fadeOut();
         }
       });
-	return false;
+		return false;
     });
 
      $('#tagit #btncancel').live('click',function(){
@@ -124,12 +120,13 @@
     });
 
     $('#taglist li').live('mouseover mouseout',function(event){
-      id = $(this).attr("rel");
-      if (event.type == "mouseover"){
-        $('#view_' + id).show();
-      }else{
-        $('#view_' + id).hide();
-      }
+     <% @tags.each do |tag| %>
+      	if (event.type == "mouseover"){
+        	$('#view_' +  <%=tag.id %>).show();
+      	}else{
+        	$('#view_' + <%= tag.id %>).hide();
+      	}
+	 <% end %>
 	return false;
     });
 
@@ -137,7 +134,7 @@
       id = $(this).parent().attr("rel");
       // get all tag on page load
       $.ajax({
-        type: "DELETE", 
+        type: "POST", 
         url: $(this).href, 
         data: "tag_id=" + id,
         success: function(data){
@@ -152,28 +149,30 @@
     function viewtag(pic_id)
     {
       // get the tag list with action remove
-      $.ajax({
+      /*$.ajax({
         type: "POST", 
-        url: <%= @image.id %> + "/tags" , 
+        url: <%= @image.id %> , 
         data: {},
         cache: true, 
         success: function(data){
           $('#taglist ol').html(data);
         }
-      });
+      });*/
 
       // get the tag list for boxes
       $.ajax({
         type: "POST", 
-        url: <%= @image.id %> + "/tags",  
+        url: <%= @image.id %>,  
         data: {},
         cache: true, 
         success: function(data){
           $('#tagbox').html(data);
         }
       });
+		$('#imgtag').append('<div class="tagview" id="view_'+counter+'"></div>')
+		 $('#view_' + counter).css({top:mouseY,left:mouseX});
+		return false;
     }
-	return false;
   });
 </script> 
   </head>
@@ -185,14 +184,8 @@
 	    </div>
 	  </div>
 	<div id="taglist"> 
-		<% if user_signed_in? %> 
-			<% unless @image.tags.where(:user_id => @user.id).nil?%>
-				<% @tags = @image.tags.where(:user_id => @user.id) %>
-			<% end %>
-		<% else %>
-		    <p class="flash-notice"><%= flash[:notice] %></p>
-		<% end %>
-	</div>
+	    <!--span class="tagtitle">List of Tags</span--> 
+	  </div>
 </body>
 </html>
 <p>
