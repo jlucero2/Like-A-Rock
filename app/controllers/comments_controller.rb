@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  respond_to :html, :js
   
   def create
     @image = Image.find(params[:comment][:image_id])
@@ -12,15 +11,15 @@ class CommentsController < ApplicationController
     @comment.user = @user
     @comment.image = @image
     @comment.body = params[:comment][:body]
-    #flash[:notice] = 'Comment was successfully created.' if @comment.save
-    #respond_with(@comment, :location => album_image_path(@image.album, @image))
+    
+    @comments = Comment.where(:image_id => @image, :user_id => @user)
     respond_to do |format|
       if @comment.save
-        @image.commented_at = Time.now;
-        @image.save
         format.html { redirect_to album_image_path(@image.album, @image), notice: 'Question was successfully created.' }
+        format.js
       else
         format.html { redirect_to album_image_path(@image.album, @image), notice: 'Question was unsucessful.' }
+        format.js
       end
     end
   end

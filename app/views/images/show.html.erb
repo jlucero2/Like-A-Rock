@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script> 
 $(document).ready(function(){
   var counter = 0;
@@ -6,6 +7,96 @@ $(document).ready(function(){
   $.ajaxSetup({
     'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
   });
+=======
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+  <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>  
+    <style> 
+    #imgtag
+    {
+      position:relative;
+      min-width:300px;
+      min-height:300px;
+      float:left;
+      border:solid 3px #fff;
+      cursor: crosshair;
+    }
+    .tagview
+    {
+      border:solid 3px #fff;
+      width:100px;
+      height:100px;
+      position:absolute;
+      display:none;
+    }
+    #tagit
+    {
+      position:absolute;
+      top:0;left:0;
+      width:250px;
+    }
+    #tagit .box
+    {
+      border:solid 3px #fff;
+      width:100px;
+      height:100px;
+      float:botto;
+    }
+     
+    #tagit .name
+    {
+      float:bottom;
+      background-color:#fff;
+      width:130px;
+      height:80px;
+      padding:5px;
+    }
+    #tagit div.text
+    {
+      margin-bottom:5px;
+    }
+    #tagit input[type=text]
+    {
+      margin-bottom:5px;
+    }
+    #tagit #tagname
+    {
+      width:110px;
+    }
+    #taglist
+    {
+      background-color:#aaa;
+      width:300px;
+      min-height:200px;
+      height:auto !important;
+      height:200px;
+      float:left;
+      padding:10px;
+      margin-left:20px;
+      color:#000;
+     
+    }
+    #taglist ol { padding:0 20px;float:left;cursor:pointer}
+    #taglist ol a { }
+    #taglist ol a:hover { text-decoration:underline }
+    .tagtitle
+    {
+      font-size:14px;
+      text-align:center;
+      width:100%;
+      float:left; 
+    }
+    </style>
+    <script> 
+ 
+  $(document).ready(function(){
+    var counter = 0;
+    var mouseX = 0;
+    var mouseY = 0;
+>>>>>>> 93ab63bee56ba4c63271a8c3d1130ab2cd8de2b7
 
     $("#imgtag img").click(function(e){ // make sure the image is click
       var imgtag = $(this).parent(); // get the div to append the tagging list
@@ -15,23 +106,31 @@ $(document).ready(function(){
       $(imgtag).append('<div id="tagit"><div class="box"></div><input type="button" name="btnsave" value="Save" id="btnsave" /><input type="button" name="btncancel" value="Cancel" id="btncancel" /></div></div>');
       $('#tagit').css({top:mouseY,left:mouseX});
 
-      $('#tagname').focus();
+      $('#tagbox').focus();
     });
 
     $('#tagit #btnsave').live('click',function(){
       name = $('#tagname').val();
+<<<<<<< HEAD
 
       $.ajax({
         type: "POST", 
         url: <%= @image.id %> + "/tags", 
         data: {name: name, x: mouseX, y: mouseY},
+=======
+	
+      $.ajax({
+        type: "POST", 
+        url: <%= @image.id %> + "/newtag",
+        data: {x: mouseX, y: mouseY},
+>>>>>>> 93ab63bee56ba4c63271a8c3d1130ab2cd8de2b7
         cache: true,
         success: function(data){
           viewtag();
           $('#tagit').fadeOut();
         }
       });
-      return false;
+		return false;
     });
 
     $('#tagit #btncancel').live('click',function(){
@@ -40,20 +139,21 @@ $(document).ready(function(){
     });
 
     $('#taglist li').live('mouseover mouseout',function(event){
-      id = $(this).attr("rel");
-      if (event.type == "mouseover"){
-        $('#view_' + id).show();
-      }else{
-        $('#view_' + id).hide();
-      }
-      return false;
+     <% @tags.each do |tag| %>
+      	if (event.type == "mouseover"){
+        	$('#view_' +  <%=tag.id %>).show();
+      	}else{
+        	$('#view_' + <%= tag.id %>).hide();
+      	}
+	 <% end %>
+	return false;
     });
 
     $('#taglist li a.remove').live('click',function(){
       id = $(this).parent().attr("rel");
       // get all tag on page load
       $.ajax({
-        type: "DELETE", 
+        type: "POST", 
         url: $(this).href, 
         data: "tag_id=" + id,
         success: function(data){
@@ -68,48 +168,49 @@ $(document).ready(function(){
     function viewtag(pic_id)
     {
       // get the tag list with action remove
-      $.ajax({
+      /*$.ajax({
         type: "POST", 
-        url: <%= @image.id %> + "/tags" , 
+        url: <%= @image.id %> , 
         data: {},
         cache: true, 
         success: function(data){
           $('#taglist ol').html(data);
         }
-      });
+      });*/
 
       // get the tag list for boxes
       $.ajax({
         type: "POST", 
-        url: <%= @image.id %> + "/tags",  
+        url: <%= @image.id %>,  
         data: {},
         cache: true, 
         success: function(data){
           $('#tagbox').html(data);
         }
       });
+		$('#imgtag').append('<div class="tagview" id="view_'+counter+'"></div>')
+		 $('#view_' + counter).css({top:mouseY,left:mouseX});
+		return false;
     }
-    return false;
   });
 </script> 
-<div id="imagePage" class="imagePage">
-  <div id="imgtag"> 
-    <%= image_tag(@image.urlList, :size => "900x500", :class => "main-image")%>
-    <div id="tagbox">
-    </div>
-  </div>
-  <div id="imgInfo">
-      <div id = "newvote">
-        <%= render "votes/vote" %>
-      </div>
-      <p>
-        <b>Sol:</b>
-        <%= @image.sol %>
-      </p>
-      <p>
-        <b>URL:</b>
-        URL GOES HERE
-      </p>
+  </head>
+<body> 
+	<div id="imgtag"> 
+	     <!--img width = "990" height= "500" src="<%#= @image.urlList %>" align = "middle" /-->
+		<%= image_tag(@image.urlList, :size => "980x500")%>
+	    <div id="tagbox">
+	    </div>
+	  </div>
+	<div id="taglist"> 
+	    <!--span class="tagtitle">List of Tags</span--> 
+	  </div>
+</body>
+</html>
+<p>
+  <b>Sol:</b>
+  <%= @image.sol %>
+</p>
 
       <%if admin_signed_in?%>
 
@@ -141,36 +242,32 @@ $(document).ready(function(){
        <% end %>
 
        <h2>Your Questions</h2>
-
-       <%if @comments.empty?%>
-       <p>You have asked no Questions.</p>
-       <%else%>
-       <ul id="comments">
-        <%@comments.each do |comment|%>
-        <%= render comment %>
-        <%end%>
-        <%end%>
-      </ul>
-      <h2>Ask a Question:</h2>
-      <%= form_for(@comment, remote: true) do |f| %>
-      <%= f.text_field :body, :autofocus => true %>
-      <%= f.hidden_field :image_id, :value => @image.id%>
-      <%= f.hidden_field :user_id, :value => @user.id%>
-      <div><%= f.submit "Submit Question" %></div>
-      <% end %>	
-
-      <%end%>
-      <h2>Responses:</h2>
-      <%if @responses.empty?%>
-      <p>There are no responses.</p>
-      <%else%>
-      <%@responses.each do |response|%>
-      <p>Response from <%= response.admin.name%>: <%= response.body%></p>
-      <%end%>
-
-      <%end%>
+	<%if @comments.empty?%>
+			<p>You have asked no Questions.</p>
+	<%else%>
+	<ul id="comments">
+		<%@comments.each do |comment|%>
+			<%= render comment %>
+		<%end%>
+	<%end%>
+	</ul>
+	
+		<h2>Ask a Question:</h2>
+		<%= form_for(@comment, remote: true) do |f| %>
+	  		<%= f.text_field :body, :autofocus => true %>
+			<%= f.hidden_field :image_id, :value => @image.id%>
+			<%= f.hidden_field :user_id, :value => @user.id%>
+			<div><%= f.submit "Submit Question" %></div>
+		<% end %>	
+<%end%>
+ <h2>Responses:</h2>
+ <%if @responses.empty?%>
+		<p>There are no responses.</p>
+	<%else%>
+		<%@responses.each do |response|%>
+		<p>Response from <%= response.admin.name%>: <%= response.body%></p>
+	<%end%>
+  <%end%>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       <a href="https://www.facebook.com/dialog/feed?app_id=329186050540125&redirect_uri=http://www.Askcuriosity.com" target="_blank"><img src="/assets/fbookShare.jpg" border="2" alt="El libro de cara" width = "60px" /></a>
       <a href="https://twitter.com/intent/tweet?button_hashtag=Like-a-Rock&text=%40NASAJPL%20%40MarsCuriosity%20%23Like-a-Rock%20The%20Curiosity%20Rover%20is%20really%20cool!%20Come%20check%20it%20out%20at%20AskCuriosity.com" class="twitter-hashtag-button" data-related="MarsCuriosity,NASAJPL" data-url="http://askcuriosity.com">Tweet #Like-a-Rock</a>
-</div>
-    </div>
