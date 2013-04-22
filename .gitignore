@@ -9,6 +9,7 @@
 /lib/assets/*populate_albums*
 # Ignore the gemfile
 /Gemfile
+
 # Ignore the database.yml file
 /config/database.yml
 
@@ -24,13 +25,9 @@
 
 #Ignore lock files 
 /*.lock
-
-<<<<<<< HEAD
 #ignore database.yml
 /config/database.yml
 
-=======
 #ignore database config file 
 /config/database.yml
->>>>>>> bc33a40d60af77d381f7abb38ec1bc67164c061b
 

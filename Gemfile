@@ -13,8 +13,8 @@ end
 gem 'httparty'
 gem 'curb'
 gem 'ruby-json'
-#gem 'pg'
-gem 'mysql2', '0.3.11' #do not delete this line!! our amazon is using mysql!
+gem 'pg'
+#gem 'mysql2', '0.3.11' #do not delete this line!! our amazon is using mysql!
 
 # Gems used only for assets and not required
 # in production environments by default.
