@@ -1,5 +1,6 @@
 <div class="responsesContainer" id="responsesContainer">
 <div id ="ourRecentResponses" class ="recentResponses">
+<div class="type"> Latest Responses </div>
 <% #@latest = Response.limit(1).find(:all, :order => "created_at DESC") %>
 <% #@images.find_in_batches do |img| %>
 
@@ -14,7 +15,6 @@
 <div class="newsList_Article">
                 <div class="articleInner">
                   <div class="left">
-                    <div class="type"> Latest Responses </div>
                     <div class="image">
       <!-- for the thumbnail, grab the image that the response is about put that there.  The link should be the link to the article
    <div class="imageGrayBorder"><a href="#"><img src="image.urlList" width="160" height="120" border="0" hspace="0" vspace="0" align="absmiddle" alt="Latest responses"></a></div>
