@@ -1,8 +1,8 @@
 <script> 
-  $(document).ready(function(){
-    var counter = 0;
-    var mouseX = 0;
-    var mouseY = 0;
+$(document).ready(function(){
+  var counter = 0;
+  var mouseX = 0;
+  var mouseY = 0;
   $.ajaxSetup({
     'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
   });
@@ -20,11 +20,11 @@
 
     $('#tagit #btnsave').live('click',function(){
       name = $('#tagname').val();
-  	
+
       $.ajax({
         type: "POST", 
         url: <%= @image.id %> + "/tags", 
-		data
+        data
         data: {name: name, x: mouseX, y: mouseY},
         cache: true,
         success: function(data){
@@ -32,12 +32,12 @@
           $('#tagit').fadeOut();
         }
       });
-  return false;
+      return false;
     });
 
-     $('#tagit #btncancel').live('click',function(){
+    $('#tagit #btncancel').live('click',function(){
       $('#tagit').fadeOut();
-  return false;
+      return false;
     });
 
     $('#taglist li').live('mouseover mouseout',function(event){
@@ -47,7 +47,7 @@
       }else{
         $('#view_' + id).hide();
       }
-  return false;
+      return false;
     });
 
     $('#taglist li a.remove').live('click',function(){
@@ -61,7 +61,7 @@
           viewtag();
         }
       });
-  return false;
+      return false;
     });
 
     viewtag(); // get all tag on page load
@@ -90,92 +90,87 @@
         }
       });
     }
-  return false;
+    return false;
   });
 </script> 
-<div id="imgtag"> 
-  <%= image_tag(@image.urlList, :size => "900x500", :class => "main-image")%>
-  <div id="tagbox">
+<div id="imagePage" class="imagePage">
+  <div id="imgtag"> 
+    <%= image_tag(@image.urlList, :size => "900x500", :class => "main-image")%>
+    <div id="tagbox">
+    </div>
+  </div>
+  <div id="imgInfo">
+    <div id="imgsidebar">
+      <div id = "newvote">
+        <%= render "votes/vote" %>
+      </div>
+      <p>
+        <b>Sol:</b>
+        <%= @image.sol %>
+      </p>
+      <p>
+        <b>URL:</b>
+        URL GOES HERE
+      </p>
+
+      <%if admin_signed_in?%>
+
+      <h2>Questions:</h2>
+      <%if @comments.empty?%>
+      <p>There are no Questions for this image.</p>
+      <%else%>
+      <%@comments.each do |comment|%>
+      <%= render comment %>
+      <%end%>
+      <%end%>
+      <h1>Respond</h1>
+      <%= form_for(@newresponse) do |f| %>
+      <div><%= f.label :body %><br />
+       <%= f.text_area :body, :size => "100x10"%>
+       <%= f.hidden_field :image_id, :value => @image.id%>
+       <%= f.hidden_field :admin_id, :value => current_admin.id%>
+       <div><%= f.submit "Respond" %></div>
+       <% end %>
+
+       <%else%>
+
+       <%if @vote.nil?%>
+       <%= form_for(@newvote, remote: true) do |f| %>
+       <%= f.hidden_field :image_id, :value => @image.id %>
+       <%= f.hidden_field :user_id, :value => @user.id %>
+       <div><%= f.submit "Vote for Image" %></div>
+       <% end %>
+       <% end %>
+
+       <h2>Your Questions</h2>
+
+       <%if @comments.empty?%>
+       <p>You have asked no Questions.</p>
+       <%else%>
+       <ul id="comments">
+        <%@comments.each do |comment|%>
+        <%= render comment %>
+        <%end%>
+        <%end%>
+      </ul>
+      <h2>Ask a Question:</h2>
+      <%= form_for(@comment, remote: true) do |f| %>
+      <%= f.text_field :body, :autofocus => true %>
+      <%= f.hidden_field :image_id, :value => @image.id%>
+      <%= f.hidden_field :user_id, :value => @user.id%>
+      <div><%= f.submit "Submit Question" %></div>
+      <% end %>	
+
+      <%end%>
+      <h2>Responses:</h2>
+      <%if @responses.empty?%>
+      <p>There are no responses.</p>
+      <%else%>
+      <%@responses.each do |response|%>
+      <p>Response from <%= response.admin.name%>: <%= response.body%></p>
+      <%end%>
+
+      <%end%>
+    </div>
   </div>
 </div>
-<p>
-  <b>Sol:</b>
-  <%= @image.sol %>
-</p>
-
-<p>
-  <b>URL:</b>
-  <%= @image.urlList %>
-</p>
-<p>
-<div id = "newvote">
-  <%= render "votes/vote" %>
-</div>
-<div id="imgsidebar">
-  <p>
-    <b>Sol:</b>
-    <%= @image.sol %>
-  </p>
-  <p>
-    <b>URL:</b>
-    <%= @image.urlList %>
-  </p>
-
-  <%if admin_signed_in?%>
-
-  	<h2>Questions:</h2>
-  	<%if @comments.empty?%>
-  			<p>There are no Questions for this image.</p>
-  	<%else%>
-  		<%@comments.each do |comment|%>
-  			<%= render comment %>
-  		<%end%>
-  	<%end%>
-  	<h1>Respond</h1>
-  	<%= form_for(@newresponse) do |f| %>
-    	<div><%= f.label :body %><br />
-    	<%= f.text_area :body, :size => "100x10"%></div>
-    	<%= f.hidden_field :image_id, :value => @image.id%>
-    	<%= f.hidden_field :admin_id, :value => current_admin.id%>
-    	<div><%= f.submit "Respond" %></div>
-    <% end %>
-
-  <%else%>
-
-  	<%if @vote.nil?%>
-  		<%= form_for(@newvote, remote: true) do |f| %>
-  			<%= f.hidden_field :image_id, :value => @image.id %>
-  			<%= f.hidden_field :user_id, :value => @user.id %>
-  			<div><%= f.submit "Vote for Image" %></div>
-  		<% end %>
-  	<% end %>
-  	
-  	<h2>Your Questions</h2>
-
-  	<%if @comments.empty?%>
-			<p>You have asked no Questions.</p>
-  	<%else%>
-  	<ul id="comments">
-  		<%@comments.each do |comment|%>
-  			<%= render comment %>
-  		<%end%>
-  	<%end%>
-  	</ul>
-		<h2>Ask a Question:</h2>
-		<%= form_for(@comment, remote: true) do |f| %>
-	  		<%= f.text_field :body, :autofocus => true %>
-			<%= f.hidden_field :image_id, :value => @image.id%>
-			<%= f.hidden_field :user_id, :value => @user.id%>
-			<div><%= f.submit "Submit Question" %></div>
-		<% end %>	
-  
-  <%end%>
-   <h2>Responses:</h2>
-   <%if @responses.empty?%>
-  		<p>There are no responses.</p>
-  	<%else%>
-  		<%@responses.each do |response|%>
-  		<p>Response from <%= response.admin.name%>: <%= response.body%></p>
-  	<%end%>
-
-  <%end%>
