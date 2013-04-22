@@ -11,7 +11,15 @@
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <%= stylesheet_link_tag "application" %> 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script> 
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=329186050540125";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script> 
   </head>
   <body>
     <div class="page-container">
@@ -36,6 +44,7 @@
               <a href="<%=new_user_session_path%>">Sign In</a> |
               <a href="<%=new_user_registration_path%>">Sign Up</a>
             <% end %>
+            <div class="fb-like" data-href="http://www.AskCuriosity.com" data-send="true" data-layout="button_count" data-width="500" data-show-faces="true" data-font="verdana"></div>
           </div><!-- /nav-user -->
         </div><!-- /header-nav -->
       </div>
