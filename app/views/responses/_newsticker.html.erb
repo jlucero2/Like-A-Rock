@@ -1,19 +1,40 @@
+
+<div class="responsesContainer" id="responsesContainer">
+<div id ="ourRecentResponses" class ="recentResponses">
+<% #@latest = Response.limit(1).find(:all, :order => "created_at DESC") %>
+<% #@images.find_in_batches do |img| %>
+
+<% #@latest.each do |response| %>
+
+<% @latestResponses = Response.order('created_at DESC').all(:limit => 3) %>
+
+<% @latestResponses.each do |response| %>
+
+<% @image = response.image %>
+
 <div class="newsList_Article">
                 <div class="articleInner">
                   <div class="left">
                     <div class="type"> Latest Responses </div>
                     <div class="image">
 			<!-- for the thumbnail, grab the image that the response is about put that there.  The link should be the link to the article -->
-                      <div class="imageGrayBorder"><a href="#"><img src="image.urlList" width="160" height="120" border="0" hspace="0" vspace="0" align="absmiddle" alt="Latest responses"></a></div>
+                      <div><a href="http://mars.jpl.nasa.gov/msl-raw-images/msss/00000/mrdi/0000MD9999000014E1_DXXX.jpg">
+				<!--<img src="http://mars.jpl.nasa.gov/msl-raw-images/msss/00000/mrdi/0000MD9999000014E1_DXXX.jpg" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">-->
+				<img src="<%= @image.urlList %>" width="180px" height="145px" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">
+				</a></div>
                     </div>
                   </div>
                   <div class="right">
-                    <div class="date">response.date_added</div>
+                    <div class="date"><%= response.created_at %></div>
                     <div class="source">Source: Jet Propulsion Laboratory</div>
                     <br clear="all">
-                    <div class="title"><a href="#">response.title</a></div>
-                      <div class="blurb"> first 250 characters of response goes here <br>
-                        <a href="response.url" style="color:#b25524;text-decoration:none;font-size:14px;"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/newsList_more_latest_smbl.gif" width="3" height="10" alt="read the article 'NASA Rover Confirms First Drilled Mars Rock Sample'" border="0" hspace="0" vspace="0" align="absmiddle">&nbsp;Read More</a> </div>
+                    <div class="title"><a href="#">The Title<%#= response.title %></a></div>
+                      <div class="blurb"><%= response.body %> <!--first 250 characters of response goes here --><br>
+                        <a href="<%= newsticker_response_path(@image.id, response) %>" style="color:#b25524;text-decoration:none;font-size:14px;"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/newsList_more_latest_smbl.gif" width="3" height="10" alt="read the article 'NASA Rover Confirms First Drilled Mars Rock Sample'" border="0" hspace="0" vspace="0" align="absmiddle">&nbsp;Read More</a> </div>
                       </div>
                     </div>
                   </div>
+
+<% end %>
+</div>
+</div>

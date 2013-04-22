@@ -1,5 +1,13 @@
 class ResponsesController < ApplicationController
 
+  def newsticker
+    @image = Image.find(params[:image_id])
+    @response = @image.responses.find(params[:response_id])
+    respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @response }
+    end
+  end
   
   def new
     @response = Response.new
