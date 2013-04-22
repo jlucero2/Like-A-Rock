@@ -8,7 +8,6 @@ class ResponsesController < ApplicationController
         format.json { render json: @response }
     end
   end
-  
   def new
     @response = Response.new
     @comment = Comment.find(params[:comment])

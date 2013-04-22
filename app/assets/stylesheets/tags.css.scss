@@ -16,14 +16,15 @@
   cursor: crosshair;
    background-color: #fff;
 }
-#imgInfo {
+#imageInfo {
   position:relative;
   display: block;
   width: 260px;
   float:right;
-  border:solid 10px #fff;
+  
   cursor: crosshair;
-   background-color: #fff;
+  background-color: #fff;
+  border-top: 100px solid white;
 }
 .tagview {
   border:solid 3px #fff;

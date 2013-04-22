@@ -1,4 +1,3 @@
-
 <div class="responsesContainer" id="responsesContainer">
 <div id ="ourRecentResponses" class ="recentResponses">
 <% #@latest = Response.limit(1).find(:all, :order => "created_at DESC") %>
@@ -6,23 +5,25 @@
 
 <% #@latest.each do |response| %>
 
-
 <% @latestResponses = Response.order('created_at DESC').all(:limit => 3) %>
 
 <% @latestResponses.each do |response| %>
 
 <% @image = response.image %>
+
 <div class="newsList_Article">
                 <div class="articleInner">
                   <div class="left">
                     <div class="type"> Latest Responses </div>
                     <div class="image">
-			<!-- for the thumbnail, grab the image that the response is about put that there.  The link should be the link to the article -->
-
+      <!-- for the thumbnail, grab the image that the response is about put that there.  The link should be the link to the article
+   <div class="imageGrayBorder"><a href="#"><img src="image.urlList" width="160" height="120" border="0" hspace="0" vspace="0" align="absmiddle" alt="Latest responses"></a></div>
++                  
+       -->
                       <div><a href="http://mars.jpl.nasa.gov/msl-raw-images/msss/00000/mrdi/0000MD9999000014E1_DXXX.jpg">
-				<!--<img src="http://mars.jpl.nasa.gov/msl-raw-images/msss/00000/mrdi/0000MD9999000014E1_DXXX.jpg" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">-->
-				<img src="<%= @image.urlList %>" width="180px" height="145px" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">
-				</a></div>
+        <!--<img src="http://mars.jpl.nasa.gov/msl-raw-images/msss/00000/mrdi/0000MD9999000014E1_DXXX.jpg" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">-->
+        <img src="<%= @image.urlList %>" width="180px" height="145px" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">
+        </a></div>
                     </div>
                   </div>
                   <div class="right">
@@ -39,4 +40,3 @@
 <% end %>
 </div>
 </div>
-
