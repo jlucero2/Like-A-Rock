@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <script> 
 $(document).ready(function(){
   var counter = 0;
@@ -7,96 +6,6 @@ $(document).ready(function(){
   $.ajaxSetup({
     'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
   });
-=======
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
-  <head> 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>  
-    <style> 
-    #imgtag
-    {
-      position:relative;
-      min-width:300px;
-      min-height:300px;
-      float:left;
-      border:solid 3px #fff;
-      cursor: crosshair;
-    }
-    .tagview
-    {
-      border:solid 3px #fff;
-      width:100px;
-      height:100px;
-      position:absolute;
-      display:none;
-    }
-    #tagit
-    {
-      position:absolute;
-      top:0;left:0;
-      width:250px;
-    }
-    #tagit .box
-    {
-      border:solid 3px #fff;
-      width:100px;
-      height:100px;
-      float:botto;
-    }
-     
-    #tagit .name
-    {
-      float:bottom;
-      background-color:#fff;
-      width:130px;
-      height:80px;
-      padding:5px;
-    }
-    #tagit div.text
-    {
-      margin-bottom:5px;
-    }
-    #tagit input[type=text]
-    {
-      margin-bottom:5px;
-    }
-    #tagit #tagname
-    {
-      width:110px;
-    }
-    #taglist
-    {
-      background-color:#aaa;
-      width:300px;
-      min-height:200px;
-      height:auto !important;
-      height:200px;
-      float:left;
-      padding:10px;
-      margin-left:20px;
-      color:#000;
-     
-    }
-    #taglist ol { padding:0 20px;float:left;cursor:pointer}
-    #taglist ol a { }
-    #taglist ol a:hover { text-decoration:underline }
-    .tagtitle
-    {
-      font-size:14px;
-      text-align:center;
-      width:100%;
-      float:left; 
-    }
-    </style>
-    <script> 
- 
-  $(document).ready(function(){
-    var counter = 0;
-    var mouseX = 0;
-    var mouseY = 0;
->>>>>>> 93ab63bee56ba4c63271a8c3d1130ab2cd8de2b7
 
     $("#imgtag img").click(function(e){ // make sure the image is click
       var imgtag = $(this).parent(); // get the div to append the tagging list
@@ -111,19 +20,12 @@ $(document).ready(function(){
 
     $('#tagit #btnsave').live('click',function(){
       name = $('#tagname').val();
-<<<<<<< HEAD
 
       $.ajax({
         type: "POST", 
         url: <%= @image.id %> + "/tags", 
         data: {name: name, x: mouseX, y: mouseY},
-=======
-	
-      $.ajax({
-        type: "POST", 
-        url: <%= @image.id %> + "/newtag",
-        data: {x: mouseX, y: mouseY},
->>>>>>> 93ab63bee56ba4c63271a8c3d1130ab2cd8de2b7
+
         cache: true,
         success: function(data){
           viewtag();
