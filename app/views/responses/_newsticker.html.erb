@@ -1,6 +1,7 @@
 <div class="responsesContainer" id="responsesContainer">
 <div id ="ourRecentResponses" class ="recentResponses">
-<div class="type"> Latest Responses </div>
+<div class="newsTickerTitle"> Latest Stories </div>
+<br/>
 <% #@latest = Response.limit(1).find(:all, :order => "created_at DESC") %>
 <% #@images.find_in_batches do |img| %>
 

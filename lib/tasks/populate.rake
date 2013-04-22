@@ -34,7 +34,7 @@ task :populate => :environment do
         datetime = imagehash['utc']
         earthday = datetime.split('T', 2).first
         if Album.find_by_earthday(earthday.to_s).nil?
-          puts "\nCreating new album for #{earthday} \n"
+          puts "**\nCreating new album for #{earthday} \n**"
           #create it if it doesn't
           a = Album.new
           a.earthday = earthday.to_s
@@ -58,7 +58,7 @@ task :populate => :environment do
           earthalb = Album.find_by_earthday(earthday.to_s)
           if imagehash['sampleType'] != "thumbnail"
             if earthalb.images.find_by_urlList(imagehash['urlList']).nil?
-              puts "\nUpdating Album Day #{earthday}..."
+              puts "Updating Album Day #{earthday}..."
               n = earthalb.images.new
               imagehash.each do |info|
                 n[info[0]] = info[1].to_s
