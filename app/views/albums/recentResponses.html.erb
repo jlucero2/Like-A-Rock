@@ -11,7 +11,7 @@
 	<% @images.each do |img| %>
       	jsObj.push("<%= img.urlList %>");
  		<% if admin_signed_in? %>
-			hrefObj.push("<%= album_image_path(img.album, img) %>");
+			hrefObj.push("<%= admin_show_path(img.album, img) %>");
 		<% else %>
 			hrefObj.push("<%= album_image_path(img.album, img) %>");
 		<% end %>
@@ -32,7 +32,7 @@
   function updateCoverFlow(){
     var ic = document.getElementById('testing1');
     var is = ic.getElementsByTagName('img');
-      for (var i=0; i< is.length; i++) {
+      for (var i=is.length-1; i>=0; i--) {
           myCF.addItem(is[i], 'last');}
   }
   function window_OnLoadEvent() {

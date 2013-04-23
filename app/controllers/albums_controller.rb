@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def responded
+  def recentResponses
     #@albums = Album.all
     @images = Image.order('responded_at DESC').all(:limit => 10)
 

@@ -111,16 +111,18 @@ $(document).ready(function(){
 	<div><%= f.submit "Submit Question" %></div>
 <% end %>
 
+<% if user_signed_in?%>
 <h2>Your Comments</h2>
-<ul id="comments">
-<%if @comments.empty?%>
-	<p>You have asked no Questions.</p>
-<%else%>
-	<%@comments.each do |comment|%>
-		<%= render comment %>
+	<%if @comments.empty?%>
+		<p>You have asked no Questions.</p>
+	<%else%>
+	<ul id="comments">
+		<%@comments.each do |comment|%>
+			<%= render comment %>
+		<%end%>
+	</ul>
 	<%end%>
 <%end%>
-</ul>
 
  <h2>Responses:</h2>
  <%if @responses.empty?%>
