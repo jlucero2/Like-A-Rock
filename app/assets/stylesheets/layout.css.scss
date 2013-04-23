@@ -175,7 +175,6 @@ input:not([type=submit]):not([type=file]){
 }
 .newsTickerTitle{
     text-align: center; 
-<<<<<<< HEAD
 }
 .newsticker_image {
     float: right;
@@ -185,7 +184,9 @@ input:not([type=submit]):not([type=file]){
 .newstickerVideo {
     padding-left: 75px;
 }
-=======
+
+.newsTickerTitle{
+    text-align: center;
     font-size: 50px;
     letter-spacing: -5px;
     color: #656270;
@@ -201,4 +202,3 @@ input:not([type=submit]):not([type=file]){
     float: right; 
     margin-right: 10px; 
 }
->>>>>>> e833a9328e6d6b258efa36451acb178b60073e6a
