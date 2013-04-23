@@ -3,9 +3,6 @@ $(document).ready(function(){
   var counter = 0;
   var mouseX = 0;
   var mouseY = 0;
-  $.ajaxSetup({
-    'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
-  });
 
     $("#imgtag img").click(function(e){ // make sure the image is click
       var imgtag = $(this).parent(); // get the div to append the tagging list
@@ -23,8 +20,8 @@ $(document).ready(function(){
 
       $.ajax({
         type: "POST", 
-        url: <%= @image.id %> + "/tags", 
-        data: {name: name, x: mouseX, y: mouseY},
+        url: <%= @image.id %> + "/newtag",
+        data: {x: mouseX, y: mouseY},
         cache: true,
         success: function(data){
           viewtag();
@@ -53,7 +50,7 @@ $(document).ready(function(){
       id = $(this).parent().attr("rel");
       // get all tag on page load
       $.ajax({
-        type: "DELETE", 
+        type: "POST", 
         url: $(this).href, 
         data: "tag_id=" + id,
         success: function(data){
@@ -81,7 +78,7 @@ $(document).ready(function(){
       // get the tag list for boxes
       $.ajax({
         type: "POST", 
-        url: <%= @image.id %> + "/tags",  
+        url: <%= @image.id %>,  
         data: {},
         cache: true, 
         success: function(data){
@@ -98,79 +95,50 @@ $(document).ready(function(){
     <div id="tagbox"></div>
   </div>
   <div id="imageInfo">
-    <div id = "newvote">
-      <%= render "votes/vote" %>
-    </div>
-    <p>
-      <b>Date: </b>
-      <%= @album.earthday %>
-    </p>
-    <p>
-      <%if admin_signed_in?%>
-
-      <h2>Questions:</h2>
-      <%if @comments.empty?%>
-      <p>There are no Questions for this image.</p>
-      <%else%>
-      <%@comments.each do |comment|%>
-      <%= render comment %>
-      <%end%>
-      <%end%>
-      <h1>Respond</h1>
-      <%= form_for(@newresponse) do |f| %>
-      <div><%= f.label :body %><br />
-       <%= f.text_area :body, :size => "100x10"%>
-       <%= f.hidden_field :image_id, :value => @image.id%>
-       <%= f.hidden_field :admin_id, :value => current_admin.id%>
-       <div><%= f.submit "Respond" %></div></div>
-       <% end %>
-
-       <%else%>
-
-       <%if @vote.nil?%>
-       <%= form_for(@newvote, remote: true) do |f| %>
-       <%= f.hidden_field :image_id, :value => @image.id %>
-       <%= f.hidden_field :user_id, :value => @user.id %>
-       <div><%= f.submit "Vote for Image" %></div>
-       <% end %>
-       <% end %>
-
-       <h2>Your Questions</h2>
-
-       <%if @comments.empty?%>
-       <p>You have asked no Questions.</p>
-       <%else%>
-       <ul id="comments">
-        <%@comments.each do |comment|%>
-        <%= render comment %>
-        <%end%>
-        <%end%>
-      </ul>
-      <h2>Ask a Question:</h2>
-      <%= form_for(@comment, remote: true) do |f| %>
-      <%= f.text_field :body, :autofocus => true %>
-      <%= f.hidden_field :image_id, :value => @image.id%>
-      <%= f.hidden_field :user_id, :value => @user.id%>
-      <div><%= f.submit "Submit Question" %></div>
-      <% end %> 
-
-      <%end%>
-      <h2>Responses:</h2>
-      <%if @responses.empty?%>
-      <p>There are no responses.</p>
-      <%else%>
-      <%@responses.each do |response|%>
-      <p>Response from <%= response.admin.name%>:</p> <p><%= response.body%></p>
-      <p>
-        <video src="<%= response.url %>" width="640" height="360" poster="" controls>
-          Problem loading video.  Please make sure your browser supports html5 video.
-        </video>
-
-        <%end%>
-
-        <%end%>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        <a href="https://www.facebook.com/dialog/feed?app_id=329186050540125&redirect_uri=http://www.Askcuriosity.com" target="_blank"><img src="/assets/fbookShare.jpg" border="2" alt="El libro de cara" width = "60px" /></a>
-        <a href="https://twitter.com/intent/tweet?button_hashtag=Like-a-Rock&text=%40NASAJPL%20%40MarsCuriosity%20%23Like-a-Rock%20The%20Curiosity%20Rover%20is%20really%20cool!%20Come%20check%20it%20out%20at%20AskCuriosity.com" class="twitter-hashtag-button" data-related="MarsCuriosity,NASAJPL" data-url="http://askcuriosity.com">Tweet #Like-a-Rock</a>
+      <div id = "newvote">
+        <%= render "votes/vote" %>
       </div>
-  </div>
+      <p>
+        <b>Date: </b>
+        <%= @album.earthday %>
+      </p>
+
+<h2>Ask a Question:</h2>
+<%= form_for(@comment, remote: true) do |f| %>
+  	<%= f.text_field :body, :autofocus => true %>
+	<%= f.hidden_field :image_id, :value => @image.id%>
+	<%= f.hidden_field :user_id, :value => @user.id%>
+	<div><%= f.submit "Submit Question" %></div>
+<% end %>
+
+<h2>Your Comments</h2>
+<ul id="comments">
+<%if @comments.empty?%>
+	<p>You have asked no Questions.</p>
+<%else%>
+	<%@comments.each do |comment|%>
+		<%= render comment %>
+	<%end%>
+<%end%>
+</ul>
+
+ <h2>Responses:</h2>
+ <%if @responses.empty?%>
+	<p>There are no responses for this image.</p>
+<%else%>
+	<% @responses.each do |response|%>
+	<p>
+		Response from <%= response.admin.name%>: 
+		<%= response.body%></p>
+		<p>
+      <video src="<%= response.url %>" width="640" height="360" poster="" controls>
+        Problem loading video.  Please make sure your browser supports html5 video.
+      </video></p>
+	<%end%>
+<%end%>
+
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <a href="https://www.facebook.com/dialog/feed?app_id=329186050540125&redirect_uri=http://www.Askcuriosity.com" target="_blank"><img src="/assets/fbookShare.jpg" border="2" alt="El libro de cara" width = "60px" /></a>
+      <a href="https://twitter.com/intent/tweet?button_hashtag=Like-a-Rock&text=%40NASAJPL%20%40MarsCuriosity%20%23Like-a-Rock%20The%20Curiosity%20Rover%20is%20really%20cool!%20Come%20check%20it%20out%20at%20AskCuriosity.com" class="twitter-hashtag-button" data-related="MarsCuriosity,NASAJPL" data-url="http://askcuriosity.com">Tweet #Like-a-Rock</a>
+</div>
+    </div>

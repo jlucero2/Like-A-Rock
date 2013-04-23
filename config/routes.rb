@@ -20,6 +20,8 @@ TestJpl::Application.routes.draw do
     resources :images do
     end
   end
+  
+  match "albums/:album_id/images/:id/adminrespond" => "responses#create"
   match "newsticker_response/:image_id/:response_id" => "responses#newsticker", :as => "newsticker_response"
   match "recent_responses" => "albums#recentResponses", :as => "recent_album", :via => :get
   match "albums/:album_id/images/:image_id/newtag" => "tags#create", :via => :post
