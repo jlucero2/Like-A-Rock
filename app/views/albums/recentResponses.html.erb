@@ -8,36 +8,36 @@
   var hrefObj = [];
   var titleObj = [];
   function bar(){
-	<% @images.each do |img| %>
-      	jsObj.push("<%= img.urlList %>");
- 		<% if admin_signed_in? %>
-			hrefObj.push("<%= admin_show_path(img.album, img) %>");
-		<% else %>
-			hrefObj.push("<%= album_image_path(img.album, img) %>");
-		<% end %>
+	<% @latestResponses.each do |response| %>
+		<% img = response.image %>
+      		jsObj.push("<%= img.urlList %>");
+ 			<% if admin_signed_in? %>
+				hrefObj.push("<%= admin_show_path(img.album, img) %>");
+			<% else %>
+				hrefObj.push("<%= album_image_path(img.album, img) %>");
+			<% end %>
 		titleObj.push("<%= "Sol: #{img.sol}" %>");
-      <% end %>
+   	<% end %>
   }
 	function populateImageArray(){
     bar(); 
     $("#testing1").hide();
-    for (var i=0; i< jsObj.length; i++) {
+    for (var i=jsObj.length-1; i>=0; i--) {
       var img = $('<img class="image">');
       img.attr('src', jsObj[i]);
 		img.attr('href', hrefObj[i]);
-		img.attr('title', titleObj[i]);
       img.appendTo('#testing1');
       }     
   }
   function updateCoverFlow(){
     var ic = document.getElementById('testing1');
     var is = ic.getElementsByTagName('img');
-      for (var i=is.length-1; i>=0; i--) {
+      for (var i=0; i< is.length; i++) {
           myCF.addItem(is[i], 'last');}
   }
   function window_OnLoadEvent() {
       populateImageArray(); 
-      updateCoverFlow(); 
+      setTimeout(updateCoverFlow, 1000);
       }
   window.onload = setTimeout(window_OnLoadEvent,800);
 </script>
