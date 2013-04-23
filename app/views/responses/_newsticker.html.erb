@@ -18,10 +18,9 @@
                   <div class="left">
                     <div class="image">
       <!-- for the thumbnail, grab the image that the response is about put that there.  The link should be the link to the article
-   <div class="imageGrayBorder"><a href="#"><img src="image.urlList" width="160" height="120" border="0" hspace="0" vspace="0" align="absmiddle" alt="Latest responses"></a></div>
-+                  
+   <div class="imageGrayBorder"><a href="#"><img src="image.urlList" width="160" height="120" border="0" hspace="0" vspace="0" align="absmiddle" alt="Latest responses"></a></div>                  
        -->
-                      <div><a href="http://mars.jpl.nasa.gov/msl-raw-images/msss/00000/mrdi/0000MD9999000014E1_DXXX.jpg">
+                      <div><a href="<%= album_image_path(@image.album, @image) %>">
         <!--<img src="http://mars.jpl.nasa.gov/msl-raw-images/msss/00000/mrdi/0000MD9999000014E1_DXXX.jpg" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">-->
         <img src="<%= @image.urlList %>" width="180px" height="145px" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">
         </a></div>

@@ -161,7 +161,12 @@ $(document).ready(function(){
       <p>There are no responses.</p>
       <%else%>
       <%@responses.each do |response|%>
-      <p>Response from <%= response.admin.name%>: <%= response.body%></p>
+      <p>Response from <%= response.admin.name%>:</p> <p><%= response.body%></p>
+      <p>
+      <video src="<%= response.url %>" width="640" height="360" poster="" controls>
+        Problem loading video.  Please make sure your browser supports html5 video.
+      </video>
+
       <%end%>
 
       <%end%>
