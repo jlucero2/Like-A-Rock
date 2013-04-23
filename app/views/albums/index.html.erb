@@ -7,11 +7,13 @@
   var imageURLs = []; 
   var jsObj = [];
   var hrefObj = [];
+  var titleObj = [];
   function bar(){
 	<% @albums.each do |alb| %>
 		<% alb.images.find_in_batches do |img| %>
       		jsObj.push("<%= img.first.urlList %>"); 
 			hrefObj.push("<%= album_path(alb) %>");
+			titleObj.push("<%= alb.earthday%>");
 		<% end %>
       <% end %>
   }
@@ -22,6 +24,7 @@
       var img = $('<img class="image">');
       img.attr('src', jsObj[i]);
 		img.attr('href', hrefObj[i]);
+		img.attr('title', titleObj[i])
       img.appendTo('#testing1');
       }     
   }

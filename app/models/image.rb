@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
   attr_accessible :sol, :urlList
-  validates :urlList, :presence => true, :uniqueness => true
+  validates :urlList, :presence => true
   validates :sol, :presence => true
   belongs_to :album
   has_many :votes, :dependent => :destroy

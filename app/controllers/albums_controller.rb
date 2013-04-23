@@ -1,6 +1,15 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.all
+    @albums = Album.where('earthday IS NOT NULL')
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @albums }
+      format.js {render :layout => false}
+    end
+  end
+  def solAlbums
+    @albums = Album.where('earthday IS NULL')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,7 +31,7 @@ class AlbumsController < ApplicationController
 
   def popular
     #@albums = Album.all
-    @images = Image.order('votes_count DESC').all(:limit => 50)
+    @images = Image.order('votes_count DESC').all(:limit => 10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,9 +39,8 @@ class AlbumsController < ApplicationController
       format.js {render :layout => false}
     end
   end
-
-  # GET /albums/1
-  # GET /albums/1.json
+  
+  
   def show
     @album = Album.find(params[:id])
     @images = @album.images

@@ -19,12 +19,12 @@ class ResponsesController < ApplicationController
     respond_to do |format|
       if @newresponse.save
         format.html {redirect_to admin_show_path(@image.album, @image)}
-        format.js 
+        format.js { render :layout => false}
         format.json
       else
         format.html {redirect_to admin_show_path(@image.album, @image)}
         format.json 
-        format.js 
+        format.js { render :layout => false}
       end
     end
   end

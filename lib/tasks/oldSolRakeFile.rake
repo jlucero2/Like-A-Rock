@@ -44,14 +44,11 @@ task :update_albums => :environment do
          solarray[3][1].each do |j|
            imagearray = j.to_a
            imagehash = Hash[*imagearray.flatten]
-           #sampletype = imagearray[22][1]
            if imagehash['sampleType'] != "thumbnail"
              n = solalb.images.new
              imagehash.each do |info|
-               #puts info[0] + ": " + info[1]
                n[info[0]] = info[1].to_s
              end
-             #puts "n: #{n.inspect}"
              n.save
            else
              thumbnailcount += 1
