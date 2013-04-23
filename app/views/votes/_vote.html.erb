@@ -1,13 +1,17 @@
-<div id="VoteScore">
-	<div id="vote" class="vote">
+<%unless @vote.nil?%>
 	<%= form_for(@newvote, remote: true) do |f| %>
+		<%= f.hidden_field :image_id, :value => @image.id %>
+		<%= f.hidden_field :user_id, :value => @user.id %>
+		<%= f.submit 'Voted!', :disabled=>'disabled'%>
+	<% end %>
+<%else%>
+<%= form_for(@newvote, remote: true) do |f| %>
 	<%= f.hidden_field :image_id, :value => @image.id %>
 	<%= f.hidden_field :user_id, :value => @user.id %>
-	<%= f.submit 'Voted!', :disabled=>'disabled'%>
-	</div>
-	<div id="score" class="score">Score:<%= @votes.count %><% unless @vote.nil? %> </div>
+	<%= f.submit 'Vote' %>
+<% end %>
+<% end %>
+
+Score:<%= @votes.count %>
 	</br>
 
-<% end %>
-
-<% end %>
