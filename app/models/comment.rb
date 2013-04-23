@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  belongs_to :image, :counter_cache => true, :presence => true
+  belongs_to :image, :counter_cache => true
   belongs_to :user
   attr_accessible :body
 
