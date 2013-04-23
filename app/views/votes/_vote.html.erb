@@ -1,6 +1,13 @@
-<b>Score:</b> <%= @votes.count %>
-<br />
-<br />
-<% unless @vote.nil? %>
-	<%= "Already voted for this image." %>
+<div id="VoteScore">
+	<div id="vote" class="vote">
+	<%= form_for(@newvote, remote: true) do |f| %>
+	<%= f.hidden_field :image_id, :value => @image.id %>
+	<%= f.hidden_field :user_id, :value => @user.id %>
+	<%= f.submit 'Voted!', :disabled=>'disabled'%>
+	</div>
+	<div id="score" class="score">Score:<%= @votes.count %><% unless @vote.nil? %> </div>
+	</br>
+
+<% end %>
+
 <% end %>

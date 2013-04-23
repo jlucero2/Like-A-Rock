@@ -103,14 +103,10 @@ $(document).ready(function(){
         <%= render "votes/vote" %>
       </div>
       <p>
-        <b>Photo Taken:</b>
+        <b>Date: </b>
         <%= @album.earthday %>
       </p>
       <p>
-        <b>URL:</b>
-        URL GOES HERE
-      </p>
-
       <%if admin_signed_in?%>
 
       <h2>Questions:</h2>
