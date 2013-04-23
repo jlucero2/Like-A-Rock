@@ -9,23 +9,26 @@
 
 <div class="newstickerInfo">
 
+<a href="<%= album_image_path(@image.album, @image) %>">
 <img src="<%= @image.urlList %>" width="200px" height="160" hspace="0" vspace="0" class="newsticker_image"/>
+</a>
 
 <br />
 <div>The Title<%#= response.title %></div>
 <br />
 <div class="source">Source: Jet Propulsion Laboratory</div>
 <br />
-<div class="date"><%= @response.created_at %></div>
+<div class="date"><%= response.created_at %></div>
 <br />
-<%= @response.body %>
+<textarea class="responseTextarea"><%= response.body %></textarea>
 </div>
 
-<br />
-<video class="newstickerVideo" src="<%= @response.url %>" width="400" height="340" controls >
+<video class="newstickerVideo" src="<%= response.url %>" width="500" height="340" controls >
 Problem loading video.  Please make sure your browser supports html5 video.
 </video>
 
+<br />
+<br />
 <br />
 <br />
 <br />

@@ -28,7 +28,7 @@
                     <br clear="all">
                     <div class="title"><a href="#">The Title<%#= response.title %></a></div>
                       <div class="blurb"><%= response.body %> <!--first 250 characters of response goes here --><br>
-                        <a href="<%= newsticker_response_path(@image.id, response) %>" style="color:#b25524;text-decoration:none;font-size:14px;"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/newsList_more_latest_smbl.gif" width="3" height="10" alt="read the article 'NASA Rover Confirms First Drilled Mars Rock Sample'" border="0" hspace="0" vspace="0" align="absmiddle">&nbsp;Read More</a> </div>
+                        <a href="<%= album_image_path(@image.album, @image) %>" style="color:#b25524;text-decoration:none;font-size:14px;"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/newsList_more_latest_smbl.gif" width="3" height="10" border="0" hspace="0" vspace="0" align="absmiddle">&nbsp;Read More</a> </div>
                       </div>
                     </div>
                   </div>
