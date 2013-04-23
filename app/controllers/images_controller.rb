@@ -40,7 +40,7 @@ class ImagesController < ApplicationController
     respond_to do |format|
         format.html 
         format.json {render :layout => false}
-        format.js# { render :json => @tags.map(&:attributes) }
+        format.js { render :layout => false} # { render :json => @tags.map(&:attributes) }
     end
   end
 end

@@ -16,10 +16,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to album_image_path(@image.album, @image), notice: 'Question was successfully created.' }
-        format.js
+        format.js { render :layout => false}
       else
         format.html { redirect_to album_image_path(@image.album, @image), notice: 'Question was unsucessful.' }
-        format.js
+        format.js { render :layout => false}
       end
     end
   end
