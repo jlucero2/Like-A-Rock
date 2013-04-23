@@ -103,7 +103,7 @@ $(document).ready(function(){
         <%= @album.earthday %>
       </p>
 
-<h2>Ask a Question:</h2>
+<h2><b>Ask a Question:</b></h2>
 <%= form_for(@comment, remote: true) do |f| %>
   	<%= f.text_field :body, :autofocus => true %>
 	<%= f.hidden_field :image_id, :value => @image.id%>
@@ -112,7 +112,7 @@ $(document).ready(function(){
 <% end %>
 
 <% if user_signed_in?%>
-<h2>Your Comments</h2>
+<h2><b>Your Comments</b></h2>
 	<%if @comments.empty?%>
 		<p>You have asked no Questions.</p>
 	<%else%>
@@ -123,19 +123,15 @@ $(document).ready(function(){
 	</ul>
 	<%end%>
 <%end%>
-
- <h2>Responses:</h2>
+<br />
+<br />
+ <h2><b>Responses:<b></h2>
  <%if @responses.empty?%>
 	<p>There are no responses for this image.</p>
 <%else%>
 	<% @responses.each do |response|%>
 	<p>
-		Response from <%= response.admin.name%>: 
-		<%= response.body%></p>
-		<p>
-      <video src="<%= response.url %>" width="640" height="360" poster="" controls>
-        Problem loading video.  Please make sure your browser supports html5 video.
-      </video></p>
+		<%= response.admin.name%>: <%= response.body%></p>
 	<%end%>
 <%end%>
 
@@ -144,3 +140,15 @@ $(document).ready(function(){
       <a href="https://twitter.com/intent/tweet?button_hashtag=Like-a-Rock&text=%40NASAJPL%20%40MarsCuriosity%20%23Like-a-Rock%20The%20Curiosity%20Rover%20is%20really%20cool!%20Come%20check%20it%20out%20at%20AskCuriosity.com" class="twitter-hashtag-button" data-related="MarsCuriosity,NASAJPL" data-url="http://askcuriosity.com">Tweet #Like-a-Rock</a>
 </div>
     </div>
+<div="vidresps">
+<% unless @responses.empty? %>
+	<% @responses.each do |r| %>
+		<%unless r.url.empty?%>
+      		<video src="<%= r.url %>" width="640" height="360" poster="" controls>
+        		Problem loading video.  Please make sure your browser supports html5 video.
+      		</video></p>
+		<%end%>
+	<%end %>
+<% end%>
+</div>
+
