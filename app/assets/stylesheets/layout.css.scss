@@ -166,11 +166,9 @@ font-size: x-large;
 text-align:left;
 }
 /* Rounded Corner */
-input:not([type=submit]):not([type=file]){
+input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
     border:2px solid #BFA491;
     border-radius:10px;
-    height: 22px;
-    width: 230px;
 }
 .newsTickerTitle{
     text-align: center; 
