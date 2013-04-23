@@ -2,10 +2,6 @@
 <div id ="ourRecentResponses" class ="recentResponses">
 <div class="newsTickerTitle"> Latest Stories </div>
 <br/>
-<% #@latest = Response.limit(1).find(:all, :order => "created_at DESC") %>
-<% #@images.find_in_batches do |img| %>
-
-<% #@latest.each do |response| %>
 
 <% @latestResponses = Response.order('created_at DESC').all(:limit => 3) %>
 

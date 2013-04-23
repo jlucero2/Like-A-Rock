@@ -1,26 +1,38 @@
 <div class="responsesContainer" id="responsesContainer">
 <div id ="ourRecentResponses" class ="recentResponses">
 
+<% @latestResponses = Response.order('created_at DESC').all %>
+
+<% @latestResponses.each do |response| %>
+
+<% @image = response.image %>
+
+<div class="newstickerInfo">
+
 <img src="<%= @image.urlList %>" width="200px" height="160" hspace="0" vspace="0" class="newsticker_image"/>
 
-
+<br />
 <div>The Title<%#= response.title %></div>
 <br />
 <div class="source">Source: Jet Propulsion Laboratory</div>
 <br />
-<div class="newstickerInfo">
-</div>
-                    <div class="date"><%= @response.created_at %></div>
-                      <br />
+<div class="date"><%= @response.created_at %></div>
+<br />
 <%= @response.body %>
-<br />
-<br />
-<br />
+</div>
 
-
-<video class="newstickerVideo" src="<%= @response.url %>" width="640" height="360" controls>
-Problem loading video.  Please make sure your browser supports html5 video. 
+<br />
+<video class="newstickerVideo" src="<%= @response.url %>" width="400" height="340" controls >
+Problem loading video.  Please make sure your browser supports html5 video.
 </video>
+
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<% end %>
 
 </div>
 </div>

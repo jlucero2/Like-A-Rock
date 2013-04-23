@@ -173,14 +173,14 @@ input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
     text-align: center; 
 }
 .newsticker_image {
-    float: right;
-    padding-left: 20px;
+    padding-left: 10px;
     padding-bottom: 20px;
 }
 .newstickerVideo {
-    padding-left: 75px;
 }
-
+.newstickerInfo {
+   float: right;
+}
 .newsTickerTitle{
     text-align: center;
     font-size: 50px;
