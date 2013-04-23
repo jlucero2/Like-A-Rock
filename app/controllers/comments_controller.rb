@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     else
       @user = User.find_by_ip(request.remote_ip)
     end
-    @comment = Comment.new
+    @comment = @image.comments.new
     @comment.user = @user
     @comment.image = @image
     @comment.body = params[:comment][:body]

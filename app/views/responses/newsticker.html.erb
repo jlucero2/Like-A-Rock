@@ -1,19 +1,17 @@
 <div class="responsesContainer" id="responsesContainer">
 <div id ="ourRecentResponses" class ="recentResponses">
 
-
-
-                    <img src="<%= @image.urlList %>" width="700px" height="560" hspace="0" vspace="0" align="absmiddle" />
+<img src="<%= @image.urlList %>" width="700px" height="560" hspace="0" vspace="0" align="absmiddle" />
 
 <br />
-                    <div class="date"><%= @response.created_at %></div>
+ <div class="date"><%= @response.created_at %></div>
 <br />
-                    <div class="source">Source: Jet Propulsion Laboratory</div>
-                    <br clear="all">
-                    <div class="title">The Title<%#= response.title %></div>
-                      <br />
-		    <%= @response.body %>
-<br>
+<div class="source">Source: Jet Propulsion Laboratory</div>
+<br clear="all">
+<div class="title">The Title<%#= response.title %></div>
+<br />
+<!--%= @response.body %>
+<br-->
 <video src="<%= @response.url %>" poster="" controls>
 Problem loading video.  Please make sure your browser supports html5 video. 
 </video>
