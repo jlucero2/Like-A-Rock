@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :sol, :urlList, :responded_at, :commented_at
+  attr_accessible :sol, :urlList
   validates :urlList, :presence => true, :uniqueness => true
   validates :sol, :presence => true
   belongs_to :album

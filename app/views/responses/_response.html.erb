@@ -1,0 +1,10 @@
+<% unless @responses.empty?%>
+	<% @responses.each do |response|%>
+	<p>
+	Response from <%= response.admin.name%>: 
+	<%= response.body%>
+	</p>
+	<%end%>
+<% else %>
+	<p>There are no responses for this image.</p>
+<% end %>
