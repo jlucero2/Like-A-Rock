@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20130410032017) do
     t.string   "lmst"
     t.string   "sampleType"
     t.string   "xyz"
-    t.datetime "responded_at",             :default => '2013-04-22 21:25:32'
-    t.datetime "commented_at",             :default => '2013-04-22 21:25:32'
+    t.datetime "responded_at",             :default => '2013-04-23 20:51:24'
+    t.datetime "commented_at",             :default => '2013-04-23 20:51:24'
     t.datetime "created_at",                                                  :null => false
     t.datetime "updated_at",                                                  :null => false
   end
