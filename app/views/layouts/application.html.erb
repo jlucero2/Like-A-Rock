@@ -59,13 +59,13 @@
         <div class="nav-main">
           <a href="<%=root_path%>">Popular</a> |
 		  <% unless admin_signed_in? %>
+			<a href="<%=trending_album_path%>">Trending</a> |
+			<a href="<%=comment_album_path%>">Most Commented</a> |
           	<a href="<%=albums_path%>">Albums By Day</a> |
 		  	<a href="<%=sol_albums_path%>">Albums By Sol</a> |
        	  	<a href="<%=recent_album_path%>">Recent Responses</a> 
 		  <% else %>
-				<a href="<%=trending_album_path%>">Trending</a> |
-				<a href="<%=comment_album_path%>">Most Commented</a> |
-				<a href="<%=albums_path%>">Albums By Day</a> |
+				<a href="<%=admins_path%>">Trending</a> |
 			  	<a href="<%=sol_albums_path%>">Albums By Sol</a> 
 		  <% end %>
  		  
