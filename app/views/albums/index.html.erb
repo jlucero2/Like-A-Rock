@@ -12,7 +12,7 @@
 	<% @albums.each do |alb| %>
 		jsObj.push("<%= alb.images.first.urlList %>");
 		hrefObj.push("<%= album_path(alb) %>");
-		titleObj.push("<%= "Sol #{alb.sol}" %>");
+		titleObj.push("<%= "#{alb.earthday}" %>");
 	<% end %>
   }
 	function populateImageArray(){

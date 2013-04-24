@@ -4,8 +4,7 @@
 <% @latestResponses = Response.order('created_at DESC').all %>
 
 <% @latestResponses.each do |response| %>
-
-<% @image = response.image %>
+	<% @image = response.image %>
 
 <div class="newstickerInfo">
 
