@@ -1,10 +1,12 @@
 class ResponsesController < ApplicationController
   def newsticker
+    @latestResponses = Response.order('created_at DESC').all(:limit => 3) 
     @image = Image.find(params[:image_id])
     @response = @image.responses.find(params[:response_id])
     respond_to do |format|
         format.html # index.html.erb
-        format.json 
+        format.json
+        format.js 
     end
   end
   
