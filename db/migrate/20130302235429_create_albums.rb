@@ -3,8 +3,8 @@ class CreateAlbums < ActiveRecord::Migration
     create_table :albums do |t|
       t.string :url
       t.string :sol
-      t.string :timestamp
       t.integer :num_images
+      t.string :earthday
 
       t.timestamps
     end

@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   def index
-    @albums = Album.where('earthday IS NOT NULL')
+    @albums = Album.order('earthday DESC').where('earthday IS NOT NULL')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -8,8 +8,9 @@ class AlbumsController < ApplicationController
       format.js {render :layout => false}
     end
   end
+  
   def solAlbums
-    @albums = Album.where('earthday IS NULL')
+    @albums = Album.order('cast(sol AS INT) DESC').where('earthday IS NULL')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,7 +32,7 @@ class AlbumsController < ApplicationController
 
   def popular
     #@albums = Album.all
-    @images = Image.order('votes_count DESC').all(:limit => 10)
+    @images = Image.order('votes_count DESC').all(:limit => 20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -39,7 +40,6 @@ class AlbumsController < ApplicationController
       format.js {render :layout => false}
     end
   end
-  
   
   def show
     @album = Album.find(params[:id])
@@ -51,23 +51,26 @@ class AlbumsController < ApplicationController
       format.js {render :layout => false}
     end
   end
-
-  # GET /albums/new
-  # GET /albums/new.json
-  def new
-    @album = Album.new
-
+  
+  def commentsAlbum
+    @images = Image.where(:responses_count => 0).order('comments_count DESC').limit(20)
+  
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @album }
+      format.html # index.html.erb
+      format.json { render json: @albums }
+      format.js {render :layout => false}
     end
   end
+  
+  def trendingAlbum
+    @images = Image.where(:responses_count => 0).order('votes_count DESC').limit(20)
 
-  # GET /albums/1/edit
-  def edit
-    @album = Album.find(params[:id])
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @albums }
+      format.js {render :layout => false}
+    end
   end
-
   # POST /albums
   # POST /albums.json
   def create
