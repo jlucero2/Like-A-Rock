@@ -10,16 +10,10 @@
   var titleObj = [];
   function bar(){
 	<% @albums.each do |alb| %>
-		<% alb.images.find_in_batches do |img| %>
-			jsObj.push("<%= img.urlList %>");
-      		<% if admin_signed_in? %>
-				hrefObj.push("<%= admin_show_path(img.album, img) %>");
-			<% else %>
-				hrefObj.push("<%= album_image_path(img.album, img) %>");
-			<% end %>
-			titleObj.push("<%= "Sol #{img.sol}" %>");
-	      <% end %>
-		<% end %>
+		jsObj.push("<%= alb.images.first.urlList %>");
+		hrefObj.push("<%= album_path(alb) %>");
+		titleObj.push("<%= "Sol #{alb.sol}" %>");
+	<% end %>
   }
 	function populateImageArray(){
     bar(); 

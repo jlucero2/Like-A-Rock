@@ -7,16 +7,14 @@
   var jsObj = [];
   var hrefObj = [];
   function bar(){
-	<% @images.find_in_batches do |img| %>
-		<% img.each do |image| %>
-      		jsObj.push("<%= image.urlList %>"); 
-			<% if admin_signed_in? %>
-				hrefObj.push("<%= admin_show_path(image.album, image) %>");
-			<% else %>
-				hrefObj.push("<%= album_image_path(image.album, image) %>");
-			<% end %>
+	<% @images.each do |img| %>
+      	jsObj.push("<%= img.urlList %>");
+ 		<% if admin_signed_in? %>
+			hrefObj.push("<%= admin_show_path(img.album, img) %>");
+		<% else %>
+			hrefObj.push("<%= album_image_path(img.album, img) %>");
 		<% end %>
-      <% end %>
+   	<% end %>
   }
 	function populateImageArray(){
     bar(); 
