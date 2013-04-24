@@ -1,6 +1,6 @@
 <div class="recentResponsesContainer" id="recentResponsesContainer">
 	<div id ="ourRecentResponses" class ="recentResponses">
-		<div class="CoverFlowTitle">Recent Responses</div>
+		<div class="CoverFlowTitle">Recent Stories</div>
 		<% @latestResponses = Response.order('created_at DESC').all %>
 		<% @latestResponses.each do |response| %>
 		<% @image = response.image %>

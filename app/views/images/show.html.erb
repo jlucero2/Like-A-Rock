@@ -95,7 +95,7 @@ $(document).ready(function(){
     <div id="tagbox"></div>
   </div>
   <div id="imageInfo">
-	<a href="<%= album_path(@album) %>">Back to Album</a>
+	<a href="../">Back to Album</a>
 	<br /> <br />
 	<%if @image == @first %>
 		<a href="<%= album_image_path(@album, @last) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
@@ -140,34 +140,8 @@ $(document).ready(function(){
       <a href="https://www.facebook.com/dialog/feed?app_id=329186050540125&redirect_uri=http://www.Askcuriosity.com" target="_blank"><img src="/assets/fbookShare.jpg" border="2" alt="El libro de cara" width = "60px" /></a>
       <a href="https://twitter.com/intent/tweet?button_hashtag=Like-a-Rock&text=%40NASAJPL%20%40MarsCuriosity%20%23Like-a-Rock%20The%20Curiosity%20Rover%20is%20really%20cool!%20Come%20check%20it%20out%20at%20AskCuriosity.com" class="twitter-hashtag-button" data-related="MarsCuriosity,NASAJPL" data-url="http://askcuriosity.com">Tweet #Like-a-Rock</a>
 </div>
-<div="vidresps">
-<% unless @responses.empty? %>
-	<% @responses.each do |r| %>
-		<%unless r.url.empty?%>
-		<!--[if IE]>
-  <script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-  <![endif]-->
-  <video width="640" height="360" poster="/assets/JPLogoSmall.jpg" controls="controls">
-  	<source src="<%=response.url%>"/>
-  		<!--<source src="path/to/your/movie.ogv" />-->
-  		To view this video you need the latest version of <a href="http://www.apple.com/safari/">Safari</a>, <a href="http://www.mozilla.com/firefox/">Firefox</a> or <a href="http://www.google.com/chrome">Chrome</a>. Alterantively download the videos and watch them offline. <a href="<%=response.url%>">Windows / Mac (mp4)</a>, <!--<a href="path/to/your/movie.ogv">Linux (ogv)</a>-->
-  	</video>
-<!--[if IE]>
-<script type="text/javascript">
-
-  var flashvars = {};
-  var params = {
-      allowscriptaccess: "true",
-      file:"../video/mov/movie.mov"
-  };
-  var attributes = {};
-
-  swfobject.embedSWF("swf/player.swf", "player", "640", "480", "9.0.0", flashvars, params, attributes);
-
-</script>
-<![endif]-->
-		<%end%>
-	<%end %>
-<% end%>
+<h2 class="newsTickerTitle">Stories:</h2>
+	<ul class="IndentResponse" id="userResponse">
+		<%= render 'responses/response' %>
 </div>
 

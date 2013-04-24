@@ -37,7 +37,7 @@
 		<%= f.label "Video URL" %><br />
 		<%= f.text_area :url, :size => "100x1"%>
 	</br>
-	<div><%= f.label "Text Response" %><br />
+	<div><%= f.label "Text Stories" %><br />
 		<%= f.text_area :body, :size => "100x10"%></div>
 		<%= f.hidden_field :image_id, :value => @image.id %>
 		<%= f.hidden_field :admin_id, :value => current_admin.id%>
@@ -53,7 +53,7 @@
 </br>
 </div>
 <br />
-<h2 class="newsTickerTitle">Previous Responses:</h2>
+<h2 class="newsTickerTitle">Previous Stories:</h2>
 	<ul class="IndentResponse" id="adminresp">
 		<%= render 'responses/response'%>
 	</ul>

@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
       @comments = Comment.where(:image_id => @image, :user_id => @user)
     else
       @user = User.find_by_ip(request.remote_ip)
+      @comments = Comment.where(:image_id => @image, :user_id => @user)
     end
     @comment = Comment.new
     @comment.image = @image

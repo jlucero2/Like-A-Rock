@@ -36,7 +36,7 @@ class ImagesController < ApplicationController
     else
       @user = User.find_by_ip(request.remote_ip)
       flash[:notice] = "Must be signed in to see your tags."
-      @comments = @image.comments.where(User.find_by_ip(request.remote_ip))
+      @comments = @image.comments.where(:user_id => @user)
     end
     @votes = @image.votes
     @vote = @image.votes.find_by_user_id(@user)
