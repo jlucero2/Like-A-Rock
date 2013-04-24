@@ -109,8 +109,8 @@ body {
 .newsList_Article {
     display: block;
     float:left; 
-    width:33%;
-    padding-right:20px;
+    width:30%;
+    padding-right:30px;
 }
 .responsesContainer {
     width: 990px;
@@ -118,7 +118,7 @@ body {
     background-color: #FFF;
 }
 .recentResponses {
-    width: 800px;
+    width: 920px;
     background-color: #FFF;
     margin: 0 auto;
     padding: 30px 0;
@@ -192,7 +192,7 @@ input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
 .newsTickerSubTitle{
     text-align: center;
     font-size: 30px;
-    letter-spacing: -5px;
+    letter-spacing: -2px;
     color: #000;
     text-align: left;
     font-family: "Geo", Impact, Arial, sans-serif;

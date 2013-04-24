@@ -1,34 +1,35 @@
 <div class="responsesContainer" id="responsesContainer">
-<div id ="ourRecentResponses" class ="recentResponses">
-<div class="newsTickerTitle"> Latest Stories </div>
-<br/>
+  <div id ="ourRecentResponses" class ="recentResponses">
+    <div class="newsTickerTitle"> Latest Stories </div>
+    <br/>
+    <div class="IndentResponse">
+      <% @latestResponses = Response.order('created_at DESC').all(:limit => 3) %>
 
-<% @latestResponses = Response.order('created_at DESC').all(:limit => 3) %>
+      <% @latestResponses.each do |response| %>
 
-<% @latestResponses.each do |response| %>
+      <% @image = response.image %>
 
-<% @image = response.image %>
+      <div class="newsList_Article">
+        <div class="articleInner">
+          <div class="left">
+            <div class="image">
+              <div><a href="<%= album_image_path(@image.album, @image) %>">
+                <img src="<%= @image.urlList %>" width="250px" height="198px" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">
+              </a></div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="date"><%= response.created_at %></div>
+            <div class="source">Source: Jet Propulsion Laboratory</div>
+            <br clear="all">
+            <div class="title">The Title<%#= response.title %></div>
+            <div class="blurb"><textarea class="responseTextarea"><%= response.body %></textarea><br>
+              <a href="<%= album_image_path(@image.album, @image) %>" style="color:#b25524;text-decoration:none;font-size:14px;"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/newsList_more_latest_smbl.gif" width="3" height="10" border="0" hspace="0" vspace="0" align="absmiddle">&nbsp;Read More</a> </div>
+            </div>
+          </div>
+        </div>
 
-<div class="newsList_Article">
-                <div class="articleInner">
-                  <div class="left">
-                    <div class="image">
-                      <div><a href="<%= album_image_path(@image.album, @image) %>">
-        <img src="<%= @image.urlList %>" width="250px" height="198px" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">
-        </a></div>
-                    </div>
-                  </div>
-                  <div class="right">
-                    <div class="date"><%= response.created_at %></div>
-                    <div class="source">Source: Jet Propulsion Laboratory</div>
-                    <br clear="all">
-                    <div class="title">The Title<%#= response.title %></div>
-                      <div class="blurb"><textarea class="responseTextarea"><%= response.body %></textarea><br>
-                        <a href="<%= album_image_path(@image.album, @image) %>" style="color:#b25524;text-decoration:none;font-size:14px;"><img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/newsList_more_latest_smbl.gif" width="3" height="10" border="0" hspace="0" vspace="0" align="absmiddle">&nbsp;Read More</a> </div>
-                      </div>
-                    </div>
-                  </div>
-
-<% end %>
-</div>
-</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
