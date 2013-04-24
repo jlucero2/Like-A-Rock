@@ -15,7 +15,7 @@
 		<% else %>
 			hrefObj.push("<%= album_image_path(img.album, img) %>");
 		<% end %>
-		titleObj.push("<%= "Sol: #{img.sol}" %>");
+		titleObj.push("<%= "Sol: #{img.album.sol}" %>");
       <% end %>
   }
 	function populateImageArray(){
