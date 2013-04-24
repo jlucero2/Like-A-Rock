@@ -90,6 +90,7 @@ body {
     margin: auto;
     padding: 30px 0;
     min-height: 900px;
+    height: auto; 
     border-radius: 15px;
 }
 .pageTitleBox {
@@ -113,7 +114,13 @@ body {
     width:30%;
     padding-right:30px;
 }
-.responsesContainer {
+.recentResponsesContainer {
+    width: 990px;
+    height:auto;
+    min-height: 500px; 
+    background-color: #FFF;
+}
+.newsTickerContainer{
     width: 990px;
     height:500px;
     background-color: #FFF;
@@ -190,6 +197,17 @@ input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
     text-shadow: 0px 2px 0px #BFA491;
     text-shadow: 0px 2px 4px #BFA491;
 }
+.CoverFlowTitle{
+    text-align: center;
+    font-size: 50px;
+    letter-spacing: -5px;
+    color: #656270;
+    text-align: left;
+    font-family: "Geo", Impact, Arial, sans-serif;
+    text-shadow: 0px 2px 0px #BFA491;
+    text-shadow: 0px 2px 4px #BFA491;
+    border-left: 30px solid white; 
+}
 .newsTickerSubTitle{
     text-align: center;
     font-size: 30px;
@@ -199,6 +217,15 @@ input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
     font-family: "Geo", Impact, Arial, sans-serif;
     text-shadow: 0px 2px 0px #BFA491;
     text-shadow: 0px 2px 4px #BFA491;
+}
+.SolDefinition{
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: +0px;
+    color: #000;
+    font-family: "Geo", Impact, Arial, sans-serif;
+    width: 600px; 
+    border-left: 195px solid white; 
 }
 .score{
    text-align: left; 
