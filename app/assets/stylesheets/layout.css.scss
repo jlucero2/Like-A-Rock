@@ -44,6 +44,7 @@ body {
     .breadcrumbs, .nav-user {
         color: rgba(221,223,213,1);
         margin-bottom: 10px;
+        text-align: right; 
         a, a:visited {
             color: rgba(221,223,213,1);
             &:hover {
