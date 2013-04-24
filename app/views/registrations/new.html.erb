@@ -1,25 +1,21 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<div class="registrationPage">
+  <h2 class="adminPageTitle">Sign up</h2>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true %></div>
-
-  <%if resource == User%>
-  	<%= f.hidden_field :ip, :value => request.remote_ip.to_s %>
-  <%end%>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <div style="margin-right:325px;">
+  <div><%= f.label :name %>:
+    <%= f.text_field :name, :autofocus => true %></div>
+    <%if resource == User%>
+    <%= f.hidden_field :ip, :value => request.remote_ip.to_s %>
+    <%end%>
+    <div><%= f.label :email %>:
+      <%= f.email_field :email, :autofocus => true %></div>
+      <div><%= f.label :password %>:
+        <%= f.password_field :password %></div>
+        <div><%= f.label :password_confirmation %>:
+          <%= f.password_field :password_confirmation %></div>
+          <div><%= f.submit "Sign up" %></div>
+          <% end %>
+          <%= render "devise/shared/links" %>
+        </div>
+  </div>
