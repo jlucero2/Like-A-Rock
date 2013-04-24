@@ -199,6 +199,19 @@ input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
     margin-right: 10px; 
 }
 .adminResponse{
-
-     border: 25px solid white; 
+border: 25px solid white; 
+}
+.adminImageInfo{
+float: right;
+padding: 10px;
+padding-top: 30px; 
+height: 500px;
+max-height: 500px; 
+max-width: 270px;
+}
+.ImageLinks
+{
+    vertical-align: middle;
+    margin: 5px;
+    text-align: right; 
 }
