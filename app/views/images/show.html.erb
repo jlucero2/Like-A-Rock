@@ -95,6 +95,8 @@ $(document).ready(function(){
     <div id="tagbox"></div>
   </div>
   <div id="imageInfo">
+	<a href="<%= album_path(@album) %>">Back to Album</a>
+	<br /> <br />
 	<%if @image == @first %>
 		<a href="<%= album_image_path(@album, @last) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
 	<%elsif @last == @image %>
@@ -119,9 +121,10 @@ $(document).ready(function(){
 <% end %>
 
 <% if user_signed_in?%>
-<h2><b>Your Comments</b></h2>
+<br />
+<h2><b>Your Comments:</b></h2>
 	<%if @comments.empty?%>
-		<p>You have asked no Questions.</p>
+		<p>:=> You have asked no Questions.</p>
 	<%else%>
 	<ul id="comments">
 		<%@comments.each do |comment|%>
@@ -132,15 +135,6 @@ $(document).ready(function(){
 <%end%>
 <br />
 <br />
- <h2><b>Responses:<b></h2>
- <%if @responses.empty?%>
-	<p>There are no responses for this image.</p>
-<%else%>
-	<% @responses.each do |response|%>
-	<p>
-		<%= response.admin.name%>: <%= response.body%></p>
-	<%end%>
-<%end%>
 
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       <a href="https://www.facebook.com/dialog/feed?app_id=329186050540125&redirect_uri=http://www.Askcuriosity.com" target="_blank"><img src="/assets/fbookShare.jpg" border="2" alt="El libro de cara" width = "60px" /></a>

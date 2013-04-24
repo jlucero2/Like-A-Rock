@@ -3,7 +3,6 @@
   </div>
   <br/>
   <div class="IndentTickers">
-    <% @latestResponses = Response.order('created_at DESC').all(:limit => 3) %>
     <% @latestResponses.each do |response| %>
     <% @image = response.image %>
     <div class="newsList_Article">
@@ -11,7 +10,11 @@
         <div class="left">
           <div class="image">
             <div>
+			<% unless admin_signed_in? %>
               <a href="<%= album_image_path(@image.album, @image) %>">
+			<% else %>
+			  <a href="<%= admin_show_path(@image.album, @image) %>">
+			<% end %>
                 <img src="<%= @image.urlList %>" width="250px" height="198px" hspace="0" vspace="0" align="absmiddle" alt="Latest responses">
               </a>
             </div>
@@ -29,7 +32,12 @@
             <textarea class="responseTextarea"><%= response.body %>
             </textarea>
             <br>
-            <a href="<%= album_image_path(@image.album, @image) %>" style="color:#b25524;text-decoration:none;font-size:14px;">
+            <% unless admin_signed_in? %>
+              <a href="<%= album_image_path(@image.album, @image) %>"
+			<% else %>
+			  <a href="<%= admin_show_path(@image.album, @image) %>"
+			<% end %> 
+			style="color:#b25524;text-decoration:none;font-size:14px;">
               <img src="http://marsstaticcdn.jpl.nasa.gov/layout/mep/images/newsList_more_latest_smbl.gif" width="3" height="10" border="0" hspace="0" vspace="0" align="absmiddle">&nbsp;Read More
             </a> 
           </div>

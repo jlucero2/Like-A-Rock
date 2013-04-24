@@ -1,101 +1,11 @@
-<script> 
-$(document).ready(function(){
-	var counter = 0;
-	var mouseX = 0;
-	var mouseY = 0;
-
-    $("#imgtag img").click(function(e){ // make sure the image is click
-      var imgtag = $(this).parent(); // get the div to append the tagging list
-      mouseX = e.pageX - $(imgtag).offset().left; // x and y axis
-      mouseY = e.pageY - $(imgtag).offset().top;
-      $('#tagit').remove(); // remove any tagit div first
-      $(imgtag).append('<div id="tagit"><div class="box"></div><input type="button" name="btnsave" value="Save" id="btnsave" /><input type="button" name="btncancel" value="Cancel" id="btncancel" /></div></div>');
-      $('#tagit').css({top:mouseY,left:mouseX});
-
-      $('#tagname').focus();
-  });
-
-    $('#tagit #btnsave').live('click',function(){
-    	name = $('#tagname').val();
-
-    	$.ajax({
-    		type: "POST", 
-    		url: <%= @image.id %> + "/newtag",
-    		data: {x: mouseX, y: mouseY},
-    		cache: true,
-    		success: function(data){
-    			viewtag();
-    			$('#tagit').fadeOut();
-    		}
-    	});
-    	return false;
-    });
-
-    $('#tagit #btncancel').live('click',function(){
-    	$('#tagit').fadeOut();
-    	return false;
-    });
-
-    $('#taglist li').live('mouseover mouseout',function(event){
-    	id = $(this).attr("rel");
-    	if (event.type == "mouseover"){
-    		$('#view_' + id).show();
-    	}else{
-    		$('#view_' + id).hide();
-    	}
-    	return false;
-    });
-
-    $('#taglist li a.remove').live('click',function(){
-    	id = $(this).parent().attr("rel");
-      // get all tag on page load
-      $.ajax({
-      	type: "POST", 
-      	url: $(this).href, 
-      	data: "tag_id=" + id,
-      	success: function(data){
-      		viewtag();
-      	}
-      });
-      return false;
-  });
-
-    viewtag(); // get all tag on page load
-
-    function viewtag(pic_id)
-    {
-      // get the tag list with action remove
-      $.ajax({
-      	type: "POST", 
-      	url: <%= @image.id %> + "/tags" , 
-      	data: {},
-      	cache: true, 
-      	success: function(data){
-      		$('#taglist ol').html(data);
-      	}
-      });
-
-      // get the tag list for boxes
-      $.ajax({
-      	type: "POST", 
-      	url: <%= @image.id %>,  
-      	data: {},
-      	cache: true, 
-      	success: function(data){
-      		$('#tagbox').html(data);
-      	}
-      });
-  }
-  return false;
-});
-</script> 
 <div id="adminImagePage" class="imagePage">
 	<div class="imageStuff"> 
 		<div id="imgtag"> 
 			<%= image_tag(@image.urlList, :size => "980x500")%>
-			<div id="tagbox"></div>
 		</div>
 		<div class="adminImageInfo">
+			<a href="<%= album_path(@album) %>">Back to Album</a>
+			<br /> <br />
 			<%if @image == @first %>
 				<a href="<%= album_image_path(@album, @last) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
 			<%elsif @last == @image %>
@@ -103,19 +13,20 @@ $(document).ready(function(){
 			<%else%>
 				<a href="<%= album_image_path(@album, @prev) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
 			<%end%>
+			<br />
 			<p>
 				<b>Score:</b>
 				<%= @votes.count%>
 			</p>
 		</br>
-	<h2>Questions:</h2>
-	<%if @comments.empty?%>
+		<h2>Questions:</h2>
+		<%if @comments.empty?%>
 		<p>There are no Questions for this image.</p>
-	<%else%>
+		<%else%>
 		<%@comments.each do |comment|%>
-	<p>Comment from <%= comment.user.name%>: <%= comment.body%></p>
+		<p><%= comment.user.name%>: <%= comment.body%></p>
 		<%end%>
-	<%end%>
+		<%end%>
 	</div>
 </div>
 <div class="adminResponse">	
@@ -141,9 +52,10 @@ $(document).ready(function(){
 <%end%>
 </br>
 </div>
+<br />
 <h2 class="newsTickerTitle">Previous Responses:</h2>
-<ul class="IndentResponse" id="adminresp">
-	<%= render 'responses/response'%>
-</ul>
+	<ul class="IndentResponse" id="adminresp">
+		<%= render 'responses/response'%>
+	</ul>
 </div>
 </div>
