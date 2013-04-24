@@ -1,41 +1,42 @@
-<h1>Listing Admins</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @admins.each do |admin| %>
-  <tr>
-    <td><%= admin.name %></td>
-    <td><%= admin.email %></td>
-    <td><%= link_to 'Edit', edit_admin_registration_path(admin)%></td>
-  </tr>
-<% end %>
-</table>
-<p><%=link_to 'Create New Admin', new_admin_path%></p>
-
-<h1>Popular Images</h1>
-<h2>All Time Most Popular Images</h2>
-      <% @images1.each do |img| %>
-        <%=link_to (image_tag(img.urlList, :size =>'100x100')), admin_show_path(img.album, img)%>
-      <%end%>
-<br />
-<h1>Most Popular Images Without Responses</h1>
-<h2>Images that are popular but have no responses</h2>
-      <% @images2.each do |img| %>
-      	<%=link_to (image_tag(img.urlList, :size =>'100x100')), admin_show_path(img.album, img)%>
-        <!--img class="image" href= "<%=album_image_path(img.album, img)%>"  src="<%= img.urlList %>" width = "100" height = "100" /-->
-      <%end%>
-<br />
-<h1>Most Commented Images Without Responses</h1>
-<h2>Images that have been Commented but have no responses</h2>
-      <% @images3.each do |img| %>
-        <%=link_to (image_tag(img.urlList, :size =>'100x100')), admin_show_path(img.album, img)%>
-      <%end%>
-
-<br />
+<div class="AdminRootPage">
+  <h1 class="adminPageTitle">Popular Images</h1>
+  <br>
+  <div class ="adminLargeIndent">
+    <h2 class="adminSubPageTitle">All Time Most Popular Images</h2>
+    <% @images1.each do |img| %>
+    <%=link_to (image_tag(img.urlList, :size =>'100x100')), admin_show_path(img.album, img)%>
+    <%end%>
+    <br />
+    <h1  class="adminSubPageTitle">Popular Images Without Responses</h1>
+    <h2>Images that are popular but have no responses</h2>
+    <% @images2.each do |img| %>
+    <%=link_to (image_tag(img.urlList, :size =>'100x100')), admin_show_path(img.album, img)%>
+    <!--img class="image" href= "<%=album_image_path(img.album, img)%>"  src="<%= img.urlList %>" width = "100" height = "100" /-->
+    <%end%>
+    <br />
+    <h1  class="adminSubPageTitle">Most Commented Images Without Responses</h1>
+    <h2>Images that have been Commented but have no responses</h2>
+    <% @images3.each do |img| %>
+    <%=link_to (image_tag(img.urlList, :size =>'100x100')), admin_show_path(img.album, img)%>
+    <%end%>
+    <br />
+    <h1 class="adminSubPageTitle">Listing Admins</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.name %></td>
+        <td><%= admin.email %></td>
+        <td><%= link_to 'Edit', edit_admin_registration_path(admin)%></td>
+      </tr>
+      <% end %>
+    </table>
+      <p><%=link_to 'Create New Admin', new_admin_path%></p>
+  </div>
+</div>
