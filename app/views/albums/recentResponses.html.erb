@@ -1,58 +1,41 @@
-<script type = "text/javascript" src="/assets/contentflow.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
-</script>
-  <script type="text/javascript">
-  var myCF = new ContentFlow('popContentFlow', {flowDragFriction: 0.3, flowSpeedFactor: 0.01});
-  var imageURLs = []; 
-  var jsObj = [];
-  var hrefObj = [];
-  var titleObj = [];
-  function bar(){
-	<% @latestResponses.each do |response| %>
-		<% img = response.image %>
-      		jsObj.push("<%= img.urlList %>");
- 			<% if admin_signed_in? %>
-				hrefObj.push("<%= admin_show_path(img.album, img) %>");
-			<% else %>
-				hrefObj.push("<%= album_image_path(img.album, img) %>");
-			<% end %>
-		titleObj.push("<%= "Sol: #{img.sol}" %>");
-   	<% end %>
-  }
-	function populateImageArray(){
-    bar(); 
-    $("#testing1").hide();
-    for (var i=jsObj.length-1; i>=0; i--) {
-      var img = $('<img class="image">');
-      img.attr('src', jsObj[i]);
-		img.attr('href', hrefObj[i]);
-      img.appendTo('#testing1');
-      }     
-  }
-  function updateCoverFlow(){
-    var ic = document.getElementById('testing1');
-    var is = ic.getElementsByTagName('img');
-      for (var i=0; i< is.length; i++) {
-          myCF.addItem(is[i], 'last');}
-  }
-  function window_OnLoadEvent() {
-      populateImageArray(); 
-      setTimeout(updateCoverFlow, 1000);
-      }
-  window.onload = setTimeout(window_OnLoadEvent,800);
-</script>
+<div class="responsesContainer" id="responsesContainer">
+<div id ="ourRecentResponses" class ="recentResponses">
 
-<div id="popContentFlow" class="ContentFlow">
-    <div class="flow">
-    </div>
-    <div class="globalCaption"></div>
-    <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
-</div>
-<div id="testing1" class="testing2" style="display: hidden">
+<% @latestResponses = Response.order('created_at DESC').all %>
+
+<% @latestResponses.each do |response| %>
+
+<% @image = response.image %>
+
+<div class="newstickerInfo">
+
+<a href="<%= album_image_path(@image.album, @image) %>">
+<img src="<%= @image.urlList %>" width="200px" height="160" hspace="0" vspace="0" class="newsticker_image"/>
+</a>
+
+<br />
+<div>The Title<%#= response.title %></div>
+<br />
+<div class="source">Source: Jet Propulsion Laboratory</div>
+<br />
+<div class="date"><%= response.created_at %></div>
+<br />
+<textarea class="responseTextarea"><%= response.body %></textarea>
 </div>
 
-<!--This is the video example. I think its encoded with the type chrome likes.-->
-<!--video class="centre" id="sampleMovie" width=640 height=360 controls>
-	<source src="http://markpowell.s3.amazonaws.com/like_a_rock_movies/LikeARockCalTargetStory.mov"type='video/ogg;
-	 codecs="theora, vorbis"' />
-</video-->
+<video class="newstickerVideo" src="<%= response.url %>" width="500" height="340" controls >
+Problem loading video.  Please make sure your browser supports html5 video.
+</video>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
+<% end %>
+
+</div>
+</div>
