@@ -173,14 +173,14 @@ input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
     text-align: center; 
 }
 .newsticker_image {
-    float: right;
-    padding-left: 20px;
+    padding-left: 10px;
     padding-bottom: 20px;
 }
 .newstickerVideo {
-    padding-left: 75px;
 }
-
+.newstickerInfo {
+   float: right;
+}
 .newsTickerTitle{
     text-align: center;
     font-size: 50px;
@@ -214,4 +214,8 @@ max-width: 270px;
     vertical-align: middle;
     margin: 5px;
     text-align: right; 
+}
+.responseTextarea {
+    height: 100px;
+    width: 250px;
 }
