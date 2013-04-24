@@ -7,7 +7,11 @@ class ImagesController < ApplicationController
     @votes = @image.votes
     @newresponse = @image.responses.new
     @responses = Response.where(:image_id => @image)
-
+    @prev = @album.images.where("id < ?", @image.id).order("id DESC").first
+    @next = @album.images.where("id > ?", @image.id).order("id ASC").first
+    @comment = @image.comments.new
+    @last = @album.images.order("id DESC").limit(1).first
+    @first = @album.images.order("id ASC").limit(1).first
     respond_to do |format|
       format.html 
       format.js {render :layout => false }
@@ -18,8 +22,12 @@ class ImagesController < ApplicationController
   def show
     @album = Album.find(params[:album_id])
     @image = @album.images.find(params[:id])
-    
+    @next = @album.images.where("id > ?", @image.id).order("id ASC").first
+    @prev = @album.images.where("id < ?", @image.id).order("id DESC").first
     @comment = @image.comments.new
+    @last = @album.images.order("id DESC").limit(1).first
+    @first = @album.images.order("id ASC").limit(1).first
+    
     if user_signed_in?
       @user = current_user
       @tags = @image.tags.where(:user_id => @user)

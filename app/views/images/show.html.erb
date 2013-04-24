@@ -95,6 +95,13 @@ $(document).ready(function(){
     <div id="tagbox"></div>
   </div>
   <div id="imageInfo">
+	<%if @image == @first %>
+		<a href="<%= album_image_path(@album, @last) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
+	<%elsif @last == @image %>
+		<a href="<%= album_image_path(@album, @prev) %>">Previous</a> | <a href="<%= album_image_path(@album, @first)%>">Next</a>
+	<%else%>
+		<a href="<%= album_image_path(@album, @prev) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
+	<%end%>
       <div id = "newvote">
         <%= render "votes/vote" %>
       </div>
