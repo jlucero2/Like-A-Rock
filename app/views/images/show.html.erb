@@ -95,6 +95,8 @@ $(document).ready(function(){
     <div id="tagbox"></div>
   </div>
   <div id="imageInfo">
+	<a href="<%= album_path(@album) %>">Back to Album</a>
+	<br /> <br />
 	<%if @image == @first %>
 		<a href="<%= album_image_path(@album, @last) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
 	<%elsif @last == @image %>
