@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
     @album = Album.find(params[:album_id])
     @image = @album.images.find(params[:id])
     @admin = current_admin
-    @comments = @image.comments
+    @comments = Comment.where(:image_id => @image)
     @votes = @image.votes
     @newresponse = @image.responses.new
     @responses = Response.where(:image_id => @image)
@@ -12,6 +12,7 @@ class ImagesController < ApplicationController
     @comment = @image.comments.new
     @last = @album.images.order("id DESC").limit(1).first
     @first = @album.images.order("id ASC").limit(1).first
+    
     respond_to do |format|
       format.html 
       format.js {render :layout => false }

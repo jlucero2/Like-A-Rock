@@ -108,14 +108,14 @@ $(document).ready(function(){
 				<%= @votes.count%>
 			</p>
 		</br>
-		<h2>Questions:</h2>
-		<%if @comments.empty?%>
+	<h2>Questions:</h2>
+	<%if @comments.empty?%>
 		<p>There are no Questions for this image.</p>
-		<%else%>
+	<%else%>
 		<%@comments.each do |comment|%>
-		<p>Comment from <%= comment.user.name%>: <%= comment.body%></p>
+	<p>Comment from <%= comment.user.name%>: <%= comment.body%></p>
 		<%end%>
-		<%end%>
+	<%end%>
 	</div>
 </div>
 <div class="adminResponse">	
