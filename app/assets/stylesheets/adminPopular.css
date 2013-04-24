@@ -31,16 +31,45 @@ max-width: 270px;
     text-align: center;
     font-size: 30px;
     letter-spacing: -2px;
-    color: #000;
+    color: #1F2C46;
     text-align: left;
     font-family: "Geo", Impact, Arial, sans-serif;
-    text-shadow: 0px 2px 0px #BFA491;
-    text-shadow: 0px 2px 4px #BFA491;
+    text-shadow: 0px 2px 0px #B25624;
+    text-shadow: 0px 2px 4px #B25624;
     border-left: 40px solid white; 
+}
+.adminPageText{
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 0px;
+    color: #fff;
+    text-align: center;
+    font-family: "Geo", Impact, Arial, sans-serif;
 }
 .adminSmallIndent{
    margin-left:20px;
 }
 .adminLargeIndent{
    margin-left:50px;
+}
+.adminLargeIndent img{
+   margin-right: 10px;
+   margin-top: 5px; 
+   margin-bottom: 5px; 
+}
+.adminPageText td{
+	width:300px;
+	max-width:300px; 
+	border:1px solid black;
+}
+.adminPageText th{
+	border:1px solid black;
+}
+.adminPageText table{
+	border: 2px solid black;
+	border-collapse:collapse;
+}
+.adminPageText table{
+	border: 2px solid black;
+	border-collapse:collapse;
 }

@@ -29,9 +29,9 @@ class AdminsController < ApplicationController
   
   def index
     @admins = Admin.all
-    @images1 = Image.order('votes_count DESC').all(:limit => 9)
-    @images2 = Image.where(:responses_count => 0 ).order('votes_count DESC').all(:limit => 9)
-    @images3 = Image.where(:responses_count => 0 ).order('comments_count DESC').all(:limit => 9)
+    @images1 = Image.order('votes_count DESC').all(:limit => 8)
+    @images2 = Image.where(:responses_count => 0 ).order('votes_count DESC').all(:limit => 8)
+    @images3 = Image.where(:responses_count => 0 ).order('comments_count DESC').all(:limit => 8)
     
     respond_to do |format|
       format.html # index.html.erb after it's finished running the controller function

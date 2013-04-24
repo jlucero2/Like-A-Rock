@@ -1,0 +1,13 @@
+
+.AdminNewPage{
+	text-align: right;
+background-color: #fff;
+  min-height: 550px; 
+  min-width: 990px; 
+  border-top: 25px solid white;
+  padding-left: 30px solid white; 
+}
+.newAdminIndent{
+
+	 margin-right:380px;
+}
