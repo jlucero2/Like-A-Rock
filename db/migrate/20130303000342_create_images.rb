@@ -6,6 +6,7 @@ class CreateImages < ActiveRecord::Migration
       t.references :album
       t.integer :votes_count, :default => 0
       t.integer :responses_count, :default => 0
+      t.integer :comments_count, :default => 0
       t.string :bucket
       t.string :cameraModelComponentList
       t.string :dateAdded
@@ -29,9 +30,6 @@ class CreateImages < ActiveRecord::Migration
       t.string :lmst
       t.string :sampleType
       t.string :xyz
-      t.datetime :responded_at, :default => Time.now
-      t.datetime :commented_at, :default => Time.now
-
       t.timestamps
     end
     add_index :images, :album_id

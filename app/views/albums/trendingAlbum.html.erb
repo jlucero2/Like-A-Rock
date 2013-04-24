@@ -1,25 +1,21 @@
-
 <script type = "text/javascript" src="/assets/contentflow.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
 </script>
   <script type="text/javascript">
-  var myCF = new ContentFlow('albContentFlow',  {flowDragFriction: 0.3, flowSpeedFactor: 0.01});
+  var myCF = new ContentFlow('popContentFlow', {flowDragFriction: 0.3, flowSpeedFactor: 0.01});
   var imageURLs = []; 
   var jsObj = [];
   var hrefObj = [];
   var titleObj = [];
   function bar(){
-	<% @albums.each do |alb| %>
-		<% alb.images.find_in_batches do |img| %>
-			jsObj.push("<%= img.urlList %>");
-      		<% if admin_signed_in? %>
-				hrefObj.push("<%= admin_show_path(img.album, img) %>");
-			<% else %>
-				hrefObj.push("<%= album_image_path(img.album, img) %>");
-			<% end %>
-			titleObj.push("<%= "Sol #{img.sol}" %>");
-	      <% end %>
+	<% @images.each do |img| %>
+      	jsObj.push("<%= img.urlList %>");
+ 		<% if admin_signed_in? %>
+			hrefObj.push("<%= admin_show_path(img.album, img) %>");
+		<% else %>
+			hrefObj.push("<%= album_image_path(img.album, img) %>");
 		<% end %>
+		titleObj.push("<%= "Sol #{img.sol}" %>");
       <% end %>
   }
 	function populateImageArray(){
@@ -29,7 +25,6 @@
       var img = $('<img class="image">');
       img.attr('src', jsObj[i]);
 		img.attr('href', hrefObj[i]);
-		img.attr('title', titleObj[i])
       img.appendTo('#testing1');
       }     
   }
@@ -43,13 +38,19 @@
       populateImageArray(); 
       setTimeout(updateCoverFlow, 1000);
       }
-  window.onload = setTimeout(window_OnLoadEvent,1000);
+  window.onload = setTimeout(window_OnLoadEvent,800);
 </script>
-<div id="albContentFlow" class="ContentFlow" >
+
+<div id="popContentFlow" class="ContentFlow">
     <div class="flow">
     </div>
     <div class="globalCaption"></div>
     <div class="scrollbar"><div class="slider"><div class="position"></div></div></div>
 </div>
-<div id="testing1" class="testing2" style="display: hidden">
-</div>
+<div id="testing1" class="testing2" style="display: hidden"></div>
+
+<!--This is the video example. I think its encoded with the type chrome likes.-->
+<!--video class="centre" id="sampleMovie" width=640 height=360 controls>
+	<source src="http://markpowell.s3.amazonaws.com/like_a_rock_movies/LikeARockCalTargetStory.mov"type='video/ogg;
+	 codecs="theora, vorbis"' />
+</video-->

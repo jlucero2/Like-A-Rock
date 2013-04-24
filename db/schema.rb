@@ -35,11 +35,10 @@ ActiveRecord::Schema.define(:version => 20130410032017) do
   create_table "albums", :force => true do |t|
     t.string   "url"
     t.string   "sol"
-    t.string   "timestamp"
     t.integer  "num_images"
+    t.string   "earthday"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "earthday"
   end
 
   create_table "comments", :force => true do |t|
@@ -59,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20130410032017) do
     t.integer  "album_id"
     t.integer  "votes_count",              :default => 0
     t.integer  "responses_count",          :default => 0
+    t.integer  "comments_count",           :default => 0
     t.string   "bucket"
     t.string   "cameraModelComponentList"
     t.string   "dateAdded"
@@ -82,15 +82,8 @@ ActiveRecord::Schema.define(:version => 20130410032017) do
     t.string   "lmst"
     t.string   "sampleType"
     t.string   "xyz"
-<<<<<<< HEAD
-    t.datetime "responded_at",             :default => '2013-04-23 20:51:24'
-    t.datetime "commented_at",             :default => '2013-04-23 20:51:24'
-=======
-    t.datetime "responded_at",             :default => '2013-04-23 21:23:42'
-    t.datetime "commented_at",             :default => '2013-04-23 21:23:42'
->>>>>>> dde4e06bd311ddcf989adb44970696ded514273a
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   add_index "images", ["album_id"], :name => "index_images_on_album_id"
@@ -118,13 +111,6 @@ ActiveRecord::Schema.define(:version => 20130410032017) do
 
   add_index "tags", ["image_id"], :name => "index_tags_on_image_id"
   add_index "tags", ["user_id"], :name => "index_tags_on_user_id"
-
-  create_table "tests", :force => true do |t|
-    t.string   "name"
-    t.boolean  "complete"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

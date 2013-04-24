@@ -6,6 +6,11 @@ TestJpl::Application.routes.draw do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
     get 'albums/:album_id/images/:id/admin' => 'images#adminShow', :as => 'admin_show'
   end
+  
+  authenticated :admin do
+    get "admins/index"
+    root :to => "admins#index"
+  end
 
   devise_for :users, :controllers => {:registrations => "registrations"}
 
@@ -21,6 +26,9 @@ TestJpl::Application.routes.draw do
     end
   end
   
+  match "lotsovotes" => "albums#trendingAlbum", :as => "trending_album"
+  match "lotsocomments" => "albums#commentsAlbum", :as => "comment_album"
+  match "solalbums" =>"albums#solAlbums", :as => "sol_albums"
   match "albums/:album_id/images/:id/adminrespond" => "responses#create"
   match "newsticker_response/:image_id/:response_id" => "responses#newsticker", :as => "newsticker_response"
   match "recent_responses" => "albums#recentResponses", :as => "recent_album", :via => :get

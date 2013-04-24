@@ -30,15 +30,14 @@ class AdminsController < ApplicationController
   def index
     @admins = Admin.all
     @images1 = Image.order('votes_count DESC').all(:limit => 9)
-    @images2 = Image.where(:responses_count => 0).order('votes_count DESC').all(:limit => 9)
-    @images3 = Image.where(:responses_count => 0).order('commented_at DESC').all(:limit => 9)
+    @images2 = Image.where(:responses_count => 0 ).order('votes_count DESC').all(:limit => 9)
+    @images3 = Image.where(:responses_count => 0 ).order('comments_count DESC').all(:limit => 9)
     
-
-
     respond_to do |format|
       format.html # index.html.erb after it's finished running the controller function
                   #index it looks for a file index.erb.html 
       format.json { render json: @admins } #index it looks for a file index.json 
+      format.js
     end   
   end
 
