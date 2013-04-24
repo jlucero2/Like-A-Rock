@@ -1,10 +1,15 @@
 <% unless @responses.empty?%>
 	<% @responses.each do |response|%>
-	<p>
-	Response from <%= response.admin.name%>: 
-	<%= response.body%>
+	<p >
+		</br>
+	<div class="newsTickerSubTitle">Response from <%= response.admin.name%>: </div></br>
+	<div  class="IndentResponse"> <%= response.body%></div>
+		<%unless response.url.empty?%>
+		<video src="<%= response.url %>" width="640" height="360" poster="" controls>
+			Problem loading video.  Please make sure your browser supports html5 video.</video>
 	</p>
+		<%end%>
 	<%end%>
-<% else %>
-	<p>There are no responses for this image.</p>
-<% end %>
+	<% else %>
+	<p class="newsTickerSubTitle">There are no responses for this image.</p>
+	<% end %>

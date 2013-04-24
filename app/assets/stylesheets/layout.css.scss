@@ -114,6 +114,7 @@ body {
 }
 .responsesContainer {
     width: 990px;
+    height:500px;
     background-color: #FFF;
 }
 .recentResponses {
@@ -169,9 +170,6 @@ input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
     border:2px solid #BFA491;
     border-radius:10px;
 }
-.newsTickerTitle{
-    text-align: center; 
-}
 .newsticker_image {
     padding-left: 10px;
     padding-bottom: 20px;
@@ -186,6 +184,16 @@ input:not([type=submit]):not([type=file]):not([type=image]):not([type=img]){
     font-size: 50px;
     letter-spacing: -5px;
     color: #656270;
+    text-align: left;
+    font-family: "Geo", Impact, Arial, sans-serif;
+    text-shadow: 0px 2px 0px #BFA491;
+    text-shadow: 0px 2px 4px #BFA491;
+}
+.newsTickerSubTitle{
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: -5px;
+    color: #000;
     text-align: left;
     font-family: "Geo", Impact, Arial, sans-serif;
     text-shadow: 0px 2px 0px #BFA491;
