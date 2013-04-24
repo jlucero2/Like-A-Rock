@@ -4,7 +4,7 @@ class TagsController < ApplicationController
      
      if user_signed_in?
        @user = current_user
-       @tags = @image.tags.where(:user_id => @user)
+       @tags = Tag.where(:user_id => @user,:image_id => @image) 
        respond_with @tags
      else
        flash[:notice] = "Must be signed in to see your tags."
