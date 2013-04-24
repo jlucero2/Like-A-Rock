@@ -8,14 +8,14 @@
   var hrefObj = [];
   var titleObj = [];
   function bar(){
-	<% @images.each do |img| %>
-      	jsObj.push("<%= img.urlList %>");
+	<% @votes.each do |vote| %>
+      	jsObj.push("<%= vote.image.urlList %>");
  		<% if admin_signed_in? %>
-			hrefObj.push("<%= admin_show_path(img.album, img) %>");
+			hrefObj.push("<%= admin_show_path(vote.image.album, vote.image) %>");
 		<% else %>
-			hrefObj.push("<%= album_image_path(img.album, img) %>");
+			hrefObj.push("<%= album_image_path(vote.image.album, vote.image) %>");
 		<% end %>
-		titleObj.push("<%= "#{img.votes_count} Votes" %>");
+		titleObj.push("<%= "#{vote.image.votes_count} Votes" %>");
       <% end %>
   }
 	function populateImageArray(){

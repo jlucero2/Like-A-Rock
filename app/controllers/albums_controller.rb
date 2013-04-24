@@ -21,7 +21,7 @@ class AlbumsController < ApplicationController
 
   def recentResponses
     #@albums = Album.all
-    @latestResponses = Response.order('created_at DESC').all(:limit => 10)
+    @latestResponses = Response.order('created_at DESC').all(:limit => 20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -63,7 +63,7 @@ class AlbumsController < ApplicationController
   end
   
   def trendingAlbum
-    @images = Image.where(:responses_count => 0).order('votes_count DESC').limit(20)
+    @votes = Vote.order('created_at DESC').all(:limit => 20)
 
     respond_to do |format|
       format.html # index.html.erb

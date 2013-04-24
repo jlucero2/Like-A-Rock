@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
     else
       @user = User.find_by_ip(request.remote_ip)
     end
-    @comment = @image.comments.new
-    @comment.user = @user
+    @comment = Comment.new
     @comment.image = @image
     @comment.body = params[:comment][:body]
+    @comment.user = @user
     
     respond_to do |format|
       if @comment.save
