@@ -19,10 +19,28 @@
 			<textarea class="responseTextarea"><%= response.body %></textarea>
 		</div>
 
-		<video class="newstickerVideo" src="<%= response.url %>" width="500" height="340" controls >
-			Problem loading video.  Please make sure your browser supports html5 video.
-		</video>
+		<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <![endif]-->
+  <video width="640" height="360" poster="/assets/JPLogoSmall.jpg" controls="controls">
+  	<source src="<%=response.url%>"/>
+  		<!--<source src="path/to/your/movie.ogv" />-->
+  		To view this video you need the latest version of <a href="http://www.apple.com/safari/">Safari</a>, <a href="http://www.mozilla.com/firefox/">Firefox</a> or <a href="http://www.google.com/chrome">Chrome</a>. Alterantively download the videos and watch them offline. <a href="<%=response.url%>">Windows / Mac (mp4)</a>, <!--<a href="path/to/your/movie.ogv">Linux (ogv)</a>-->
+  	</video>
+<!--[if IE]>
+<script type="text/javascript">
 
+  var flashvars = {};
+  var params = {
+      allowscriptaccess: "true",
+      file:"../video/mov/movie.mov"
+  };
+  var attributes = {};
+
+  swfobject.embedSWF("swf/player.swf", "player", "640", "480", "9.0.0", flashvars, params, attributes);
+
+</script>
+<![endif]-->
 		<br />
 		<br />
 		<br />
