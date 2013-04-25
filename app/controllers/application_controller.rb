@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def application
      @pageTitle = "University of South Florida"
-     @latestResponses = Response.order('created_at DESC').all(:limit => 3)
+     @TickerResponses = Response.order('created_at DESC').all(:limit => 3)
     if !admin_signed_in? && !user_signed_in?
       if User.where(:name => "Guest" + request.remote_ip).empty?
         user = User.new
