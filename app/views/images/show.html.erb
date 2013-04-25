@@ -90,55 +90,57 @@ $(document).ready(function(){
   });
 </script> 
 <div id="imagePage" class="imagePage">
-  <div id="imgtag"> 
-    <%= image_tag(@image.urlList, :size => "900x500", :class => "main-image")%>
-    <div id="tagbox"></div>
-  </div>
-  <div id="imageInfo">
-   <a href="../">Back to Album</a>
-   <br /> <br />
-   <%if @image == @first %>
-   <a href="<%= album_image_path(@album, @last) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
-   <%elsif @last == @image %>
-   <a href="<%= album_image_path(@album, @prev) %>">Previous</a> | <a href="<%= album_image_path(@album, @first)%>">Next</a>
-   <%else%>
-   <a href="<%= album_image_path(@album, @prev) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
-   <%end%>
-   <div id = "newvote">
-    <%= render "votes/vote" %>
-   </div>
-   <p>
-    <b>Date: </b>
-    <%= @album.earthday %>
-   </p>
+  <div style="height: 550px;"> <!--image Container-->
+    <div id="imgtag"> 
+      <%= image_tag(@image.urlList, :size => "900x500", :class => "main-image")%>
+      <div id="tagbox"></div>
+    </div>
+    <div id="imageInfo">
+     <a href="../">Back to Album</a>
+     <br /> <br />
+     <%if @image == @first %>
+     <a href="<%= album_image_path(@album, @last) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
+     <%elsif @last == @image %>
+     <a href="<%= album_image_path(@album, @prev) %>">Previous</a> | <a href="<%= album_image_path(@album, @first)%>">Next</a>
+     <%else%>
+     <a href="<%= album_image_path(@album, @prev) %>">Previous</a> | <a href="<%= album_image_path(@album, @next)%>">Next</a>
+     <%end%>
+     <div id = "newvote">
+      <%= render "votes/vote" %>
+     </div>
+     <p>
+      <b>Date: </b>
+      <%= @album.earthday %>
+     </p>
 
-   <h2><b>Ask a Question:</b></h2>
-  <%= form_for(@comment, remote: true) do |f| %>
-  <%= f.text_field :body, :autofocus => true %>
-  <%= f.hidden_field :image_id, :value => @image.id%>
-  <%= f.hidden_field :user_id, :value => @user.id%>
-  <div><%= f.submit "Submit Question" %></div>
-  <% end %>
-  <% if user_signed_in?%>
-   <br />
-   <h2><b>Your Comments:</b></h2>
-    <%if @comments.empty?%>
-      <p>You have asked no Questions.</p>
-    <%else%>
-      <ul id="comments">
-      <%@comments.each do |comment|%>
-      <%= render comment %>
-       </ul>
+     <h2><b>Ask a Question:</b></h2>
+    <%= form_for(@comment, remote: true) do |f| %>
+    <%= f.text_field :body, :autofocus => true %>
+    <%= f.hidden_field :image_id, :value => @image.id%>
+    <%= f.hidden_field :user_id, :value => @user.id%>
+    <div><%= f.submit "Submit Question" %></div>
+    <% end %>
+    <% if user_signed_in?%>
+     <br />
+     <h2><b>Your Comments:</b></h2>
+      <%if @comments.empty?%>
+        <p>You have asked no Questions.</p>
+      <%else%>
+        <ul id="comments">
+        <%@comments.each do |comment|%>
+        <%= render comment %>
+         </ul>
+      <%end%>
+      <%end%>
     <%end%>
-    <%end%>
-  <%end%>
-  <br />
-  <br />
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  <a href="https://www.facebook.com/dialog/feed?app_id=329186050540125&redirect_uri=http://www.Askcuriosity.com" target="_blank"><img src="/assets/fbookShare.jpg" border="2" alt="El libro de cara" width = "60px" /></a>
-  <a href="https://twitter.com/intent/tweet?button_hashtag=Like-a-Rock&text=%40NASAJPL%20%40MarsCuriosity%20%23Like-a-Rock%20The%20Curiosity%20Rover%20is%20really%20cool!%20Come%20check%20it%20out%20at%20AskCuriosity.com" class="twitter-hashtag-button" data-related="MarsCuriosity,NASAJPL" data-url="http://askcuriosity.com">Tweet #Like-a-Rock</a>
+    <br />
+    <br />
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <a href="https://www.facebook.com/dialog/feed?app_id=329186050540125&redirect_uri=http://www.Askcuriosity.com" target="_blank"><img src="/assets/fbookShare.jpg" border="2" alt="El libro de cara" width = "60px" /></a>
+    <a href="https://twitter.com/intent/tweet?button_hashtag=Like-a-Rock&text=%40NASAJPL%20%40MarsCuriosity%20%23Like-a-Rock%20The%20Curiosity%20Rover%20is%20really%20cool!%20Come%20check%20it%20out%20at%20AskCuriosity.com" class="twitter-hashtag-button" data-related="MarsCuriosity,NASAJPL" data-url="http://askcuriosity.com">Tweet #Like-a-Rock</a>
+   </div>
  </div>
- <h2 class="newsTickerTitle">Stories:</h2>
+ <h2 class="storyTitle">Stories:</h2>
  <ul class="IndentResponse" id="userResponse">
   <%= render 'responses/response' %>
  </ul>
